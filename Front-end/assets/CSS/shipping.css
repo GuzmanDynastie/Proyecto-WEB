@@ -1,0 +1,244 @@
+nav {
+    background-color: rgb(53, 58, 64);
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav .navbar-brand {
+    color: white;
+    font-size: larger;
+    font-weight: bold;
+    text-align: left;
+    margin-left: 15px;
+}
+
+nav .navbar-brand:hover {
+    color: rgb(153, 156, 161);
+}
+
+nav div .form-control {
+    width: 500px;
+}
+
+nav div .boton__ {
+    color: rgb(153, 156, 161);
+    border: 1px solid rgb(153, 156, 161);
+    margin-right: 10px;
+}
+
+a.dropdown__ {
+    color: rgb(153, 156, 161);
+}
+
+.pasos-compra {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(234, 236, 238);
+    padding: 30px;
+}
+
+.pasos-compra h3 {
+    padding: 40px 90px;
+}
+
+.pasos-compra h3:nth-of-type(2) {
+    color: #2874A6;
+    font-weight: 700;
+    border-bottom: solid;
+}
+
+.pasos-compra h3:first-of-type,
+.pasos-compra h3:last-of-type {
+    color: #ABB2B9 ;
+    font-weight: 700;
+    border-bottom: solid;
+}
+
+h1 {
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+    padding-bottom: 40px;
+}
+
+h4 {
+    margin-left: 30px;
+    width: 355px;
+    padding: 20px 0px;
+}
+
+h5 {
+    padding: 15px 25px;
+}
+
+.media {
+    display: flex;
+    margin-right: 40px;
+    margin-left: 40px;
+    height: 280px;
+    width: 760px;
+    border: 2px solid rgb(153, 156, 161);
+}
+
+.media-2 {
+    display: flex;
+    margin-right: 40px;
+    width: 420px;
+    height: 560px;
+    border-radius: 5px;
+    border: 2px solid rgb(153, 156, 161);
+}
+
+.trash {
+    background-color: red;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.icon-trash {
+    color: white;
+}
+
+.icon-pencil {
+    color: white;
+}
+
+.resumen-together {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+img {
+    position: absolute;
+    width: 150px;
+    margin: 10px;
+}
+
+div.media-right {
+    display: flex;
+    margin-left: 150px;
+}
+
+.cantidad-producto {
+    position: absolute;
+    background-color: rgb(232, 235, 237);
+    padding: 6px 10px;
+    margin-left: 26px;
+    margin-top: 2px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border: 0;
+    border-right: 2px solid rgb(153, 156, 161);
+}
+
+.cantidad-precio {
+    position: absolute;
+    background-color: rgb(232, 235, 237);
+    padding: 6px 10px;
+    margin-left: 25px;
+    margin-top: 20px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border: 2px solid rgb(153, 156, 161);
+}
+
+.input-cantidad:focus {
+    border-color:  rgb(153, 156, 161);
+    outline: none;
+}
+
+.input-precio:focus {
+    border-color:  rgb(153, 156, 161);
+    outline: none;
+}
+
+.input-cantidad {
+    width: 400px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 25%;
+    margin-left: 25px;
+    border: 2px solid rgb(153, 156, 161);
+    border-radius: 5px;
+}
+
+.input-precio {
+    width: 350px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    text-align: center;
+    margin-left: 25px;
+    margin-top: 20px;
+    border: 2px solid rgb(153, 156, 161);
+    border-radius: 5px;
+}
+
+span.editar-cantidad {
+    position: absolute;
+    background-color: rgb(18, 161, 182);
+    padding: 7px 10px;
+    margin-left: -39px;
+    margin-top: 1px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border: 0;
+    border-right: 2px solid rgb(18, 161, 182);
+}
+
+label.pesos {
+    position: absolute;
+    background-color: rgb(232, 235, 237);
+    padding: 6px 10px;
+    margin-left: -62px;
+    margin-top: 20px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border: 2px solid rgb(153, 156, 161);
+}
+
+div p {
+    font-weight: 500;
+    text-align: left;
+    margin-left: 30px;
+    margin-top: 30px;
+}
+
+input[type="submit"] {
+    width: 200px;
+}
+
+div.inp {
+    display: flex;
+    justify-content: center;
+}
+
+div[class="inp-1"] input {
+    font-weight: bold;
+    font-size: x-large;
+    background-color: white;
+    color: rgb(97, 180, 115);
+    width: 380px;
+    margin-left: 5%;
+    margin-bottom: 30px;
+    margin-top: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 5px;
+    border: 2px solid rgb(97, 180, 115);
+} 
+
+div[class="inp-2"] input {
+    font-weight: bold;
+    font-size: x-large;
+    background-color: white;
+    color: red;
+    width: 380px;
+    margin-left: 5%;
+    margin-bottom: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+    border: 2px solid red;
+} 
