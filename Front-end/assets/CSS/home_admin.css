@@ -1,5 +1,6 @@
 nav {
     background-color: rgb(213, 216, 220);
+    width: 100%;
 }
 
 nav .navbar-brand {
@@ -13,6 +14,7 @@ nav .navbar-brand:hover {
 
 .espacio {
     padding: 30px;
+    width: 100%;
 }
 
 .info-admin img {
