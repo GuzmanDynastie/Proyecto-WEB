@@ -43,8 +43,8 @@
                 <div class="offcanvas-body">
                     <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="fa-solid fa-gear"></i> Configuracion</a>
+                        <li class="nav-item"> 
+                            <a class="nav-link" data-bs-toggle="modal" href="" data-bs-target="#id-modal-configurar-administrador"><i class="fa-solid fa-gear"></i> Configuracion</a>
                         </li>
                         <hr>
                         <li class="nav-item">
@@ -391,6 +391,40 @@
             </div>
         </div>
     </div>
+
+
+    <!-- Modal Configurar Administrador -->
+    <div class="modal fade" id="id-modal-configurar-administrador" tabindex="-1" data-bs-backdrop="static"
+        data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xmd" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitleId">
+                        Configurar Administrador
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="">
+                        <div class="input-together">
+                            <input id="name" "text" placeholder="Nombre(s)" class="register-input" autocomplete="name" required>
+                            <input id="input_apellidos" type="text" placeholder="Apellido(s)" class="register-input" required><br>
+                        </div>
+                        <input id="input_email_registro" type="email" class="register-input" readonly><br>
+                        <input id="input_password_registro" type="password" placeholder="Contraseña"
+                            class="register-input" required pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}"><br>
+                        <input id="input_password2_registro" type="password" placeholder="Confirmar contraseña"
+                            class="register-input" required><br>
+
+                        <input type="file" class="form-control" aria-describedby="fileHelpId" />
+
+                        <input type="submit" value="Guardar" class="registrar">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <!-- Bootstrap JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
