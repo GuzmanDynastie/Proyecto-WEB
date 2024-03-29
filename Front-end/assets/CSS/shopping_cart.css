@@ -88,9 +88,12 @@ span {
 
 .media-2 {
     display: flex;
+    flex-wrap: wrap;
     margin-right: 40px;
+    margin-bottom: 40px;
+    margin-top: 15px;
     width: 420px;
-    height: 560px;
+    height: auto;
     border-radius: 5px;
     border: 2px solid rgb(153, 156, 161);
 }
@@ -125,10 +128,11 @@ img {
 
 
 p.t-compra {
+    justify-content: center;
     font-weight: 500;
     text-align: left;
     margin-left: 30px;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
 div[class="inp-1"] button {
@@ -160,17 +164,21 @@ div[class="inp-2"] input {
     border: 2px solid red;
 } 
 
-.contenedor-compras {
+.contenedor-compras { 
     margin-right: 50px;
     width: 620px;
     height: 250px;
-    /* border-top: 2px solid rgb(153, 156, 161); */
-    /* border-bottom: 2px solid rgb(153, 156, 161);  */
 }
 
 .hr-divisor {
     width: 620px;
     border: 2px solid rgb(153, 156, 161);
+}
+
+.hr-divisor-ticket {
+    border: 1px solid;
+    margin-left: 10px;
+    margin-right: -20px;
 }
 
 .contenedor-cantidad {
@@ -212,20 +220,17 @@ div[class="inp-2"] input {
 
 h5 {
     width: 400px;
-    padding: 10px 0px;
-    /* border: 2px solid; */
 }
 
 p.descripcion {
-    /* border: 2px solid; */
+    height: 110px;
     width: 345px;
     margin-left: 30px;
     margin-top: 30px;
-    padding: px 0px;
 }
 
 .precio-label {
     font-size: 36px;
-    margin-top: 30px;
+    margin-top: -20px;
     margin-left: 30px;
 }
