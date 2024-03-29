@@ -1,0 +1,269 @@
+nav {
+    background-color: rgb(53, 58, 64);
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav .navbar-brand {
+    color: white;
+    font-size: larger;
+    font-weight: bold;
+    text-align: left;
+    margin-left: 15px;
+}
+
+nav .navbar-brand:hover {
+    color: rgb(153, 156, 161);
+}
+
+nav div .form-control {
+    width: 500px;
+}
+
+nav div .boton__ {
+    color: rgb(153, 156, 161);
+    border: 1px solid rgb(153, 156, 161);
+    margin-right: 10px;
+}
+
+.pasos-compra {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(234, 236, 238);
+    padding: 30px;
+}
+
+.pasos-compra h3 {
+    padding: 40px 90px;
+}
+
+.pasos-compra h3:first-of-type,
+.pasos-compra h3:nth-of-type(2) {
+    color: #ABB2B9;
+    font-weight: 700;
+    border-bottom: solid;
+}
+
+.pasos-compra h3:last-of-type {
+    color: #2874A6;
+    font-weight: 700;
+    border-bottom: solid;
+}
+
+.h4-ticket {
+    margin-left: 30px;
+    width: 355px;
+    padding-top: 20px;
+}
+
+.media {
+    display: flex;
+    margin-left: 60px;
+}
+
+.media-2 {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 40px;
+    margin-bottom: 40px;
+    margin-top: 40px;
+    width: 420px;
+    height: auto;
+    border-radius: 5px;
+    border: 2px solid rgb(153, 156, 161);
+}
+
+.resumen-together {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+p.t-compra {
+    justify-content: center;
+    font-weight: 500;
+    text-align: left;
+    margin-left: 30px;
+    margin-top: 20px;
+}
+
+div[class="inp-1"] button {
+    font-weight: bold;
+    font-size: x-large;
+    background-color: white;
+    color: rgb(97, 180, 115);
+    width: 380px;
+    margin-left: 5%;
+    margin-bottom: 30px;
+    margin-top: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 5px;
+    border: 2px solid rgb(97, 180, 115);
+}
+
+div[class="inp-2"] input {
+    font-weight: bold;
+    font-size: x-large;
+    background-color: white;
+    color: red;
+    width: 380px;
+    margin-left: 5%;
+    margin-bottom: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+    border: 2px solid red;
+}
+
+
+.detalles-linea-1 {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.h4-metodo-pago {
+    margin-top: 35px;
+    margin-left: 20px;
+}
+
+.hr-divisor {
+    width: auto;
+    border: 2px solid rgb(153, 156, 161);
+}
+
+.hr-divisor-ticket {
+    border: 1px solid;
+    margin-left: 10px;
+    margin-right: -20px;
+}
+
+.box-radio-1 {
+    width: 565px;
+    height: 220px;
+    border: 1px solid rgb(153, 156, 161);
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+}
+
+.box-radio-2 {
+    width: 565px;
+    height: 90px;
+    border: 1px solid rgb(153, 156, 161);
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+}
+
+.box-radio-3 {
+    width: 17px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 35px 25px;
+}
+
+.informacion-envio {
+    justify-content: center;
+    margin-top: 20px;
+}
+
+p.envio {
+    font-size: small;
+}
+
+.input-con-icono {
+    display: flex;
+    margin-left: 25px;
+    position: relative;
+}
+
+.input-with-icon {
+    position: relative;
+}
+
+.caja-inputs {
+    width: auto;
+    border: 2px solid;
+    align-items: center;
+}
+
+.input-card {
+    color: black;
+    width: 250px;
+    padding-left: 10px;
+    margin-top: 10px;
+    border: 1px solid rgb(219, 220, 223);
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.input-xs-1 {
+    color: black;
+    text-align: center;
+    width: 100px;
+    margin-top: 10px;
+    margin-left: 30px;
+    margin-right: 30px;
+    border: 1px solid rgb(219, 220, 223);
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.input-xs-2 {
+    padding-right: 40px;
+    color: black;
+    width: 100px;
+    padding-left: 20px;
+    margin-top: 10px;
+    border: 1px solid rgb(219, 220, 223);
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.input-titular {
+    display: flex;
+    margin-left: 25px;
+    width: 510px;
+    max-width: 510px;
+    color: black;
+    margin-top: 20px;
+    border: 1px solid rgb(219, 220, 223);
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.input-con-icono span {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-30%);
+}
+
+.input-con-icono span i {
+    font-size: 20px;
+}
+
+.iconos-tarjetas {
+    font-size: 30px;
+}
+
+img {
+    width: 150px;
+}
+
+p {
+    font-size: small;
+}
+
+.Paypal {
+    margin-top: -115px;
+    margin-left: 320px;
+}
