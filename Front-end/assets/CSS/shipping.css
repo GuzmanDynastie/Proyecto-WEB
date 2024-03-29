@@ -27,10 +27,6 @@ nav div .boton__ {
     margin-right: 10px;
 }
 
-a.dropdown__ {
-    color: rgb(153, 156, 161);
-}
-
 .pasos-compra {
     display: flex;
     justify-content: center;
@@ -40,9 +36,10 @@ a.dropdown__ {
 
 .pasos-compra h3 {
     padding: 40px 90px;
+    width: 100;
 }
 
-.pasos-compra h3:nth-of-type(2) {
+.pasos-compra h3:nth-child(2) {
     color: #2874A6;
     font-weight: 700;
     border-bottom: solid;
@@ -55,27 +52,16 @@ a.dropdown__ {
     border-bottom: solid;
 }
 
-h1 {
-    display: flex;
-    justify-content: center;
-    padding-top: 30px;
-    padding-bottom: 40px;
-}
-
-h4 {
+.h4-ticket {
     margin-left: 30px;
     width: 355px;
-    padding: 20px 0px;
-}
-
-h5 {
-    padding: 15px 25px;
+    padding-top: 20px;
 }
 
 .media {
     display: flex;
     margin-right: 40px;
-    margin-left: 40px;
+    margin-left: 60px;
     height: 280px;
     width: 760px;
     border: 2px solid rgb(153, 156, 161);
@@ -83,25 +69,14 @@ h5 {
 
 .media-2 {
     display: flex;
+    flex-wrap: wrap;
     margin-right: 40px;
+    margin-bottom: 40px;
+    margin-top: 40px;
     width: 420px;
-    height: 560px;
+    height: auto;
     border-radius: 5px;
     border: 2px solid rgb(153, 156, 161);
-}
-
-.trash {
-    background-color: red;
-    border-radius: 5px;
-    padding: 5px 10px;
-}
-
-.icon-trash {
-    color: white;
-}
-
-.icon-pencil {
-    color: white;
 }
 
 .resumen-together {
@@ -110,111 +85,15 @@ h5 {
     flex-wrap: wrap;
 }
 
-img {
-    position: absolute;
-    width: 150px;
-    margin: 10px;
-}
-
-div.media-right {
-    display: flex;
-    margin-left: 150px;
-}
-
-.cantidad-producto {
-    position: absolute;
-    background-color: rgb(232, 235, 237);
-    padding: 6px 10px;
-    margin-left: 26px;
-    margin-top: 2px;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-    border: 0;
-    border-right: 2px solid rgb(153, 156, 161);
-}
-
-.cantidad-precio {
-    position: absolute;
-    background-color: rgb(232, 235, 237);
-    padding: 6px 10px;
-    margin-left: 25px;
-    margin-top: 20px;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-    border: 2px solid rgb(153, 156, 161);
-}
-
-.input-cantidad:focus {
-    border-color:  rgb(153, 156, 161);
-    outline: none;
-}
-
-.input-precio:focus {
-    border-color:  rgb(153, 156, 161);
-    outline: none;
-}
-
-.input-cantidad {
-    width: 400px;
-    padding-top: 6px;
-    padding-bottom: 6px;
-    padding-left: 25%;
-    margin-left: 25px;
-    border: 2px solid rgb(153, 156, 161);
-    border-radius: 5px;
-}
-
-.input-precio {
-    width: 350px;
-    padding-top: 6px;
-    padding-bottom: 6px;
-    text-align: center;
-    margin-left: 25px;
-    margin-top: 20px;
-    border: 2px solid rgb(153, 156, 161);
-    border-radius: 5px;
-}
-
-span.editar-cantidad {
-    position: absolute;
-    background-color: rgb(18, 161, 182);
-    padding: 7px 10px;
-    margin-left: -39px;
-    margin-top: 1px;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    border: 0;
-    border-right: 2px solid rgb(18, 161, 182);
-}
-
-label.pesos {
-    position: absolute;
-    background-color: rgb(232, 235, 237);
-    padding: 6px 10px;
-    margin-left: -62px;
-    margin-top: 20px;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    border: 2px solid rgb(153, 156, 161);
-}
-
-div p {
+p.t-compra {
+    justify-content: center;
     font-weight: 500;
     text-align: left;
     margin-left: 30px;
-    margin-top: 30px;
+    margin-top: 20px;
 }
 
-input[type="submit"] {
-    width: 200px;
-}
-
-div.inp {
-    display: flex;
-    justify-content: center;
-}
-
-div[class="inp-1"] input {
+div[class="inp-1"] button {
     font-weight: bold;
     font-size: x-large;
     background-color: white;
@@ -241,4 +120,89 @@ div[class="inp-2"] input {
     padding-bottom: 10px;
     border-radius: 5px;
     border: 2px solid red;
-} 
+}
+
+input {
+    color: black;
+    width: 620px;
+    margin-top: 10px;
+    border: 1px solid rgb(219, 220, 223);
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.input-1 {
+    margin-right: 20px;
+}
+
+.input-3 {
+    margin-top: 10px;
+}
+
+.input-1,
+.input-2 {
+    color: black;
+    width: 300px;
+    margin-top: 10px;
+    border: 1px solid rgb(219, 220, 223);
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.detalles-linea-1 {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.h4-detalles-envio {
+    margin-top: 35px;
+    margin-left: 20px;
+}
+
+.hr-divisor {
+    width: auto;
+    border: 2px solid rgb(153, 156, 161);
+}
+
+.hr-divisor-ticket {
+    border: 1px solid;
+    margin-left: 10px;
+    margin-right: -20px;
+}
+
+.radios {
+    display: flex;
+    justify-content: center;
+}
+
+.box-radio-1, .box-radio-2 {
+    width: 300px;
+    height: 90px;
+    border: 1px solid rgb(153, 156, 161);
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+}
+
+.box-radio-1 {
+    margin-right: 20px;
+}
+
+.box-radio-3 {
+    width: 17px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 35px 25px;
+}
+
+.informacion-envio {
+    justify-content: center;
+    margin-top: 20px;
+}
+
+p.envio {
+    font-size: small;
+}
