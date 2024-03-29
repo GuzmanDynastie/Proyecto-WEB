@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Listado de productos</title>
+    <title>Detalles de envio</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -48,6 +48,85 @@
         <h3>1. Carro de compra</h3>
         <h3>2. Detalles de envio</h3>
         <h3>3. Opciones de pago</h3>
+    </div>
+
+    <div class="resumen-together">
+        <div class="contenedor-master">
+
+            <h4 class="h4-detalles-envio">Detalles de envio</h4>
+            <hr class="hr-divisor">
+            <div class="detalles-linea-1">
+                <input class="input-1" type="text" placeholder="Nombre">
+                <input class="input-2" type="text" placeholder="Apellido">
+            </div>
+
+            <div>
+                <input class="input-3" type="text" placeholder="Direccion 1">
+            </div>
+
+            <div>
+                <input class="input-3" type="text" placeholder="Direccion 2">
+            </div>
+
+            <div class="detalles-linea-1">
+                <input class="input-1" type="text" placeholder="Estado">
+                <input class="input-2" type="text" placeholder="Ciudad">
+            </div>
+
+            <div class="detalles-linea-1">
+                <input class="input-1" type="text" placeholder="Codigo Postal">
+                <input class="input-2" type="text" placeholder="Telefono">
+            </div>
+            <hr class="hr-divisor">
+            <div class="radios">
+                <div class="box-radio-1">
+                    <div class="box-radio-3">
+                        <input class="seleccion-radio" type="radio" name="envio" id="">
+                    </div>
+                    <div class="informacion-envio">
+                        <h6>Envio gratis</h6>
+                        <p class="envio">Llega entre 2 - 5 dias</p>
+                    </div>
+                </div>
+                <div class="box-radio-2">
+                    <div class="box-radio-3">
+                        <input class="seleccion-radio" type="radio" name="envio" id="">
+                    </div>
+                    <div class="informacion-envio">
+                        <h6>Entrega el dia siguiente $100</h6>
+                        <p class="envio">24 horas desde el pago</p>
+                    </div>
+                </div>
+            </div>
+            <hr class="hr-divisor">
+        </div>
+
+        <div class="total-compra">
+            <div class="media media-2">
+                <div class="media-rigth">
+                    <h4 class="h4-ticket">Total de compra</h4>
+                    <div class="horizontal">
+                        <hr class="hr-divisor-ticket">
+                    </div>
+                    <p class="t-compra">Nutrición canina cientifíca - Senior: 1 x $1099.00</p>
+                    <p class="t-compra">Nutrición canina cientifíca - Adulto: 1 x $999.00</p>
+                    <p class="t-compra">Costo del envio: $100.00</p>
+                    <p class="t-compra">IVA: $335.68</p>
+                    <div class="horizontal">
+                        <hr class="hr-divisor-ticket">
+                    </div>
+                    <!-- <p class="t-compra">Monto a pagar: 2128.00</p> -->
+                    <p class="t-compra">Total: $2533.68</p>
+                    <div class="inp-1">
+                        <button onclick="window.location.href = './payment.html';">Siguiente</button>
+                        <!-- <input type="submit" value="Pagar"> -->
+                    </div>
+                    <div class="inp-2">
+                        <input onclick="window.location.href = './shopping_cart.html';" type="submit" value="Cancelar">
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 
