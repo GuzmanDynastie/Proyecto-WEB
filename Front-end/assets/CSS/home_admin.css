@@ -1,0 +1,188 @@
+nav {
+    background-color: rgb(213, 216, 220);
+    width: 100%;
+}
+
+nav .navbar-brand {
+    font-weight: 700;
+    transition: transform 0.3s ease;
+}
+
+nav .navbar-brand:hover {
+    transform: scale(1.1);
+}
+
+.espacio {
+    padding: 30px;
+    width: 100%;
+}
+
+.info-admin img {
+    max-width: 100px;
+    border-radius: 5px;
+    margin-left: 15px;
+}
+
+.info-admin p {
+    font-weight: 700;
+    margin-left: 15px;
+}
+
+.contenedor-herramientas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.contenedor-herramientas img {
+    margin: 20px 25px 0px 25px;
+    width: 200px;
+    height: 200px;
+    border: 3px solid rgb(153, 156, 161);
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.contenedor-herramientas p {
+    margin-top: 5px;
+    color: rgb(53, 58, 64);
+    text-align: center;
+    font-size: larger;
+    font-weight: 700;
+}
+
+.herramienta {
+    transition: transform 0.3s ease;
+}
+
+.herramienta:hover {
+    color: black;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border-radius: 25px;
+    transform: scale(1.1);
+}
+
+.input-together {
+    display: flex;
+    justify-content: center;
+}
+
+.register-input {
+    color: black;
+    width: 465px;
+    margin-top: 10px;
+    border: 1px solid rgb(219, 220, 223);
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.registrar {
+    background-color: rgb(39, 168, 68);
+    width: 445px;
+    margin-top: 50px;
+    color: white;
+    border: 1px;
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-left: 10px;
+}
+
+.form-control {
+    margin-top: 20px;
+}
+
+#name {
+    margin-right: 30px;
+}
+
+.mb-3 {
+    display: flex;
+}
+
+select#combobox-piezas-producto {
+    width: 100px;
+    margin-right: 20px;
+}
+
+.input-stock {
+    width: 100px;
+    margin-right: 20px;
+    border-radius: 5px;
+    border: 1px solid rgb(213, 216, 220);
+}
+
+.input-precio {
+    width: 150px;
+    border-radius: 5px;
+    border: 1px solid rgb(213, 216, 220);
+}
+
+input:focus {
+    outline: none;
+}
+
+Input#searchInput {
+    width: 500px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+button#searchInput {
+    width: 100px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.hr-divisor {
+    border: 2px solid rgb(153, 156, 161);
+}
+
+.modal-body-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: auto;
+}
+
+.modal-body-tabla {
+    height: 400px;
+    width: auto;
+}
+
+.div-div {
+    width: 600px;
+    height: 500px;
+}
+
+.actualizar {
+    background-color: rgb(39, 168, 68);
+    width: 150px;
+    margin-top: 30px;
+    color: white;
+    border: 1px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.eliminar {
+    background-color: red;
+    width: 100px;
+    margin-top: 30px;
+    color: white;
+    border: 1px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.act-producto {
+    color: black;
+    width: 600px;
+    margin-top: 10px;
+    border: 1px solid rgb(219, 220, 223);
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}

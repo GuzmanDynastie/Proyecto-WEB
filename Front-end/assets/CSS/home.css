@@ -1,0 +1,170 @@
+.nav1 {
+    background-color: rgb(53, 58, 64);
+    position: fixed !important;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav .navbar-brand {
+    color: white;
+    font-size: larger;
+    font-weight: bold;
+    text-align: left;
+    margin-left: 15px;
+}
+
+nav .navbar-brand:hover {
+    color: rgb(153, 156, 161);
+}
+
+nav div .form-control {
+    width: 500px;
+}
+
+nav div .boton__ {
+    color: rgb(153, 156, 161);
+    border: 1px solid rgb(153, 156, 161);
+    margin-right: 10px;
+}
+
+.camara__ {
+    background-color: rgb(153, 156, 161);
+}
+
+a.dropdown__ {
+    color: rgb(153, 156, 161);
+}
+
+ol.carrusel__ {
+    list-style: none;
+}
+
+.carrusel-img {
+    max-width: 100%;
+}
+
+.card {
+    width: 260px;
+}
+
+.card-title {
+    font-size: small;
+}
+
+.product {
+    margin-top: 20px;
+    margin-left: 35px;
+    margin-bottom: 10px;
+    width: 190px;
+}
+
+.card-text {
+    font-size: small;
+}
+
+.card-img-top {
+    height: 250px;
+}
+
+.container-1 {
+    display: flex;
+    justify-content: center;
+    max-width: calc(60% - 0%); /*  */
+    margin-top: 30px;
+    margin-left: 20%; /*  */
+    flex-wrap: wrap;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 70px;
+}
+
+.login {
+    width: 460px;
+    margin: 3px;
+}
+
+.save {
+    background-color: rgb(39, 168, 68);
+    width: 460px;
+    margin: 3px;
+    color: white;
+    border: 1px;
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.link-registro {
+    text-decoration: none;
+}
+
+.login-input {
+    color: black;
+    width: 415px;
+    margin-left: 5px;
+    border: 1px solid rgb(219, 220, 223);
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.modal-discrepancia {
+    border: 1px solid rgb(219, 220, 223);
+    border-radius: 5px;
+}
+
+.form-label {
+    margin-top: 10px;
+    margin-bottom: 0;
+}
+
+.icon {
+    position: absolute;
+    background-color: rgb(231, 235, 238);
+    padding-top: 5px;
+    padding-left: 12px;
+    padding-right: 12px;
+    padding-bottom: 29px;
+    border: 1px solid rgb(219, 220, 223);
+    height: 36px;
+}
+
+.a {
+    padding-left: 1px;
+    padding-right: 1px;
+}
+
+.input-together {
+    display: flex;
+    justify-content: center;
+}
+
+.register-input {
+    color: black;
+    width: 465px;
+    margin-top: 10px;
+    border: 1px solid rgb(219, 220, 223);
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.registrar {
+    background-color: rgb(39, 168, 68);
+    width: 445px;
+    margin-top: 50px;
+    color: white;
+    border: 1px;
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-left: 10px;
+}
+
+#name {
+    margin-right: 30px;
+}
