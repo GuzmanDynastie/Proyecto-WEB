@@ -2,8 +2,7 @@ const router = require('express').Router();
 const path = require('path');
 
 router.get('/payment', (req, res) => {
-    const htmlFilePath = path.join(__dirname, '..','views', 'payment.html');
-    res.sendFile(htmlFilePath);
+    res.render('payment');
 });
 
 module.exports = router;
