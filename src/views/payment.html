@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Opciones de pago</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="/CSS/payment.css">
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <!-- FontAwesome 6.2.0 CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- (Optional) Use CSS or JS implementation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js"
+        integrity="sha512-naukR7I+Nk6gp7p5TMA4ycgfxaZBJ7MO5iC3Fp6ySQyKFHOGfpkSZkYVWV5R7u7cfAicxanwYQ5D1e17EfJcMA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+</head>
+
+<body>
+    <!-- class="navbar navbar-expand-sm navbar-light bg-light" -->
+    <nav class="navbar navbar-expand-sm navbar-light nav1">
+        <a class="navbar-brand" href="home">NutriPet Healthy</a>
+
+        <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <form class="d-flex my-2 my-lg-0">
+                <input class="form-control me-sm-2" type="text" placeholder="Buscar productos" />
+                <button class="boton__ btn btn-outline-success my-2 my-sm-0" type="submit">
+                    Buscar
+                </button>
+            </form>
+        </div>
+    </nav>
+
+    <div class="pasos-compra">
+        <h3>1. Carro de compra</h3>
+        <h3>2. Detalles de envio</h3>
+        <h3>3. Opciones de pago</h3>
+    </div>
+
+    <div class="resumen-together">
+        <div class="contenedor-master">
+
+            <h4 class="h4-metodo-pago">Metodo de pago</h4>
+            <hr class="hr-divisor">
+            <div class="radios">
+                <div class="box-radio-1">
+                    <div class="box-radio-3">
+                        <input class="seleccion-radio" type="radio" name="envio" id="">
+                    </div>
+                    <div class="informacion-envio">
+                        <h6>Tarjeta de credito / Debito</h6>
+                        <span class="iconos-tarjetas"><i class="fa-brands fa-cc-visa"></i> <i
+                                class="fa-brands fa-cc-mastercard"></i></span>
+                    </div>
+                    <div>
+                        <div class="input-con-icono">
+                            <div class="input-with-icon">
+                                <input class="input-card" type="text" placeholder="0000  0000  0000  0000">
+                                <span><i class="fa-regular fa-credit-card"></i></span>
+                            </div>
+                            <input id="dateInput" class="input-xs-1" type="tel" placeholder="MM/YY">
+                            <div class="input-with-icon">
+                                <input class="input-xs-2" type="tel" placeholder="CVV" maxlength="3">
+                                <span><i class="fa-solid fa-circle-info"></i></span>
+                            </div>
+                        </div>
+                        <input type="text" class="input-titular" placeholder="Nombre del titular">
+                    </div>
+                </div>
+
+                <hr class="hr-divisor">
+
+                <div class="box-radio-2">
+                    <div class="box-radio-3">
+                        <input class="seleccion-radio" type="radio" name="envio" id="">
+                    </div>
+                    <div class="informacion-envio">
+                        <h6>Paypal</h6>
+                        <p>La forma sencilla y segura de pagar</p>
+                        <div class="Paypal">
+                            <img src="/Images/paypal.png" alt="">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <hr class="hr-divisor">
+        </div>
+
+        <div class="total-compra">
+            <div class="media media-2">
+                <div class="media-rigth">
+                    <h4 class="h4-ticket">Total de compra</h4>
+                    <div class="horizontal">
+                        <hr class="hr-divisor-ticket">
+                    </div>
+                    <p class="t-compra">Nutrición canina cientifíca - Senior: 1 x $1099.00</p>
+                    <p class="t-compra">Nutrición canina cientifíca - Adulto: 1 x $999.00</p>
+                    <p class="t-compra">Costo del envio: $100.00</p>
+                    <p class="t-compra">IVA: $335.68</p>
+                    <div class="horizontal">
+                        <hr class="hr-divisor-ticket">
+                    </div>
+                    <!-- <p class="t-compra">Monto a pagar: 2128.00</p> -->
+                    <p class="t-compra">Total: $2533.68</p>
+                    <div class="inp-1">
+                        <button onclick="window.location.href = 'payment';">Pagar</button>
+                        <!-- <input type="submit" value="Pagar"> -->
+                    </div>
+                    <div class="inp-2">
+                        <input onclick="window.location.href = 'shipping';" type="submit" value="Cancelar">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

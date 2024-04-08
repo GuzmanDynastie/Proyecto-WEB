@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Resumen de compra</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="/CSS/shopping_cart.css">
+
+    <!-- Bootstrap CSS v5.2.1 -->
+    <!-- FontAwesome 6.2.0 CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- (Optional) Use CSS or JS implementation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/js/all.min.js"
+        integrity="sha512-naukR7I+Nk6gp7p5TMA4ycgfxaZBJ7MO5iC3Fp6ySQyKFHOGfpkSZkYVWV5R7u7cfAicxanwYQ5D1e17EfJcMA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+</head>
+
+<body>
+    <!-- class="navbar navbar-expand-sm navbar-light bg-light" -->
+    <nav class="navbar navbar-expand-sm navbar-light nav1">
+        <a class="navbar-brand" href="home">NutriPet Healthy</a>
+
+        <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <form class="d-flex my-2 my-lg-0">
+                <input class="form-control me-sm-2" type="text" placeholder="Buscar productos" />
+                <button class="boton__ btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+            </form>
+        </div>
+    </nav>
+
+    <div class="pasos-compra">
+        <h3>1. Carro de compra</h3>
+        <h3>2. Detalles de envio</h3>
+        <h3>3. Opciones de pago</h3>
+    </div>
+
+
+    <h1>Resumen de la compra</h1>
+
+    <div class="resumen-together">
+        <div class="contenedor-master">
+            <hr class="hr-divisor">
+            <div class="contenedor-compras">
+                <div class="contenedor-imagen">
+                    <img src="https://nupec.com/wp-content/uploads/2018/12/npc-empaque-senior.png" alt="">
+                </div>
+
+                <div class="icon-trash">
+                    <span class="trash">
+                        <i class="fa-solid fa-trash icon-trash"></i>
+                    </span>
+                </div>
+
+                <div class="alineador">
+                    <div class="contenedor-cantidad">
+                        <label class="texto-piezas">Piezas</label><br>
+                        <input type="number" name="" class="c-cantidad" min="1" placeholder="1">
+                    </div>
+                </div>
+
+                <div class="contenedor-info">
+                    <h5>NUPEC</h5>
+                    <h5>Nutrición canina cientifíca - Senior</h5>
+                </div>
+
+                <div class="contenedor-info-p">
+                    <p class="descripcion">
+                        Nutrición especializada para mejorar la vitalidad y calidad de vida de nuestras mascotas de edad
+                        avanzada.
+                    </p>
+                    <label class="precio-label">$ 1099</label>
+                </div>
+            </div>
+
+            <div class="contenedor-compras">
+                <div class="contenedor-imagen">
+                    <img src="https://nupec.com/wp-content/uploads/2018/12/npc-empaque-adulto.png" alt="">
+                </div>
+
+                <div class="icon-trash">
+                    <span class="trash">
+                        <i class="fa-solid fa-trash icon-trash"></i>
+                    </span>
+                </div>
+
+                <div class="alineador">
+                    <div class="contenedor-cantidad">
+                        <label class="texto-piezas">Piezas</label><br>
+                        <input type="number" name="" class="c-cantidad" min="1" placeholder="1">
+                    </div>
+                </div>
+
+                <div class="contenedor-info">
+                    <h5>NUPEC</h5>
+                    <h5>Nutrición canina cientifíca - Adulto</h5>
+                </div>
+
+                <div class="contenedor-info-p">
+                    <p class="descripcion">
+                        Máximo aprovechamiento nutricional para una mejor salud y calidad de vida.
+                    </p>
+                    <label class="precio-label">$ 999</label>
+                </div>
+            </div>
+            <hr class="hr-divisor">
+        </div>
+
+        <div class="total-compra">
+            <div class="media media-2">
+                <div class="media-left">
+                    <h4 class="mt-0 mb-1">Total de compra</h4>
+                    <div class="horizontal">
+                        <hr class="hr-divisor-ticket">
+                    </div>
+                    <p class="t-compra">Nutrición canina cientifíca - Senior: 1 x $1099.00</p>
+                    <p class="t-compra">Nutrición canina cientifíca - Adulto: 1 x $999.00</p>
+                    <p class="t-compra">Costo del envio: $0.00</p>
+                    <div class="horizontal">
+                        <hr class="hr-divisor-ticket">
+                    </div>
+                    <!-- <p class="t-compra">Monto a pagar: 2128.00</p> -->
+                    <p class="t-compra">Subtotal: $2098.00</p>
+                    <div class="inp-1">
+                        <button onclick="window.location.href = 'shipping';">Siguiente</button>
+                        <!-- <input type="submit" value="Pagar"> -->
+                    </div>
+                    <div class="inp-2">
+                        <input onclick="window.location.href = 'home';" type="submit" value="Cancelar">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
