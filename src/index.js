@@ -16,7 +16,7 @@ app.set('port', process.env.PORT || 3000);
 // Configuration of the Handlebars template engine
 app.set('views', path.join(__dirname, 'views'));
 app.engine('.html', exphbs({
-    defaultLayout: false,
+    defaultLayout: 'main',
     layoutsDir: path.join(app.get('views'), 'layouts'),
     partialsDir: path.join(app.get('views'), 'partials'),
     extname: '.html'
