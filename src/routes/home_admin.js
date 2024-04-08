@@ -4,10 +4,6 @@ const userSchema = require('../models/user');
 const productSchema = require('../models/product');
 const multer = require('multer');
 const fs = require('node:fs');
-const { scrypt } = require('crypto');
-const { error } = require('console');
-
-const htmlFilePath = path.join(__dirname, '..', 'public', 'home_admin.html');
 
 const domain = ['@support.com'];
 
@@ -32,7 +28,7 @@ function saveImageProduct(file, brand, animalCategory, line, category) {
 
 // Envia el archivo HTML al administrador como respuesta
 router.get('/home_admin', (req, res) => {
-    res.sendFile(htmlFilePath);
+    res.render('home_admin');
 });
 
 // Maneja la solicitud POST para agregar un administrador y guarda la información en la base de datos
