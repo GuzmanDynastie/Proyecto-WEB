@@ -33,6 +33,9 @@
 > ##### express-fileupload - 1.5.0:
 - Una biblioteca para Express.js que facilita la carga de archivos. Permite manejar fácilmente las solicitudes de carga de archivos en aplicaciones Express, simplificando el proceso de subida de archivos.
 
+> ##### express-handlebars - 3.0.0:
+- Un motor de plantillas para Express.js que permite la creación de vistas dinámicas utilizando Handlebars.
+
 > ##### express-session: - 1.18.0:
 - Almacena temporalmente información de sesión del usuario para mantener la autenticación entre solicitudes
 
