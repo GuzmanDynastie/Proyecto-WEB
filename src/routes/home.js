@@ -8,7 +8,7 @@ router.get('/home', (req, res) => {
     res.render('home')
 });
 
-router.post('/home/register', async (req, res) => {
+router.post('/home', async (req, res) => {
     const role = 'user';
     const image = '';
     const { name, surname, email, password, password_2 } = req.body;
@@ -41,7 +41,7 @@ router.post('/home/register', async (req, res) => {
             const newUser = new userSchema({ name, surname, email, password, image, role });
             newUser.password = await newUser.encryptPassword(password);
             await newUser.save();
-            res.redirect('/home');
+            res.redirect('home');
         } catch (error) {
             console.log(error);
             res.status(500).send('Ocurrió un error al guardar el usuario. Por favor, inténtalo de nuevo.');

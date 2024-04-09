@@ -1,3 +1,4 @@
 uploads/
-src/config/database.js
+src/config/
 src/public/Images
+node_modules/
