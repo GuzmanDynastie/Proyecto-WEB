@@ -1,0 +1,102 @@
+.nav1 {
+    justify-content: center;
+    background-color: rgb(53, 58, 64);
+    width: 100%;
+    z-index: 1000;
+}
+
+nav .navbar-brand {
+    color: white;
+    font-size: larger;
+    font-weight: bold;
+    text-align: left;
+    margin-left: 15px;
+}
+
+nav .navbar-brand:hover {
+    color: rgb(153, 156, 161);
+}
+
+nav .navbar-brand {
+    font-weight: 700;
+    transition: transform 0.3s ease;
+}
+
+nav .navbar-brand:hover {
+    transform: scale(1.1);
+}
+
+.contenedor {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 200px;
+}
+
+.boxRegister {
+    border: 2px solid rgb(219, 220, 223);
+    border-radius: 5px;
+    width: auto;
+    height: auto;
+    padding: 20px 60px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.boxSlogan {
+    width: auto;
+    height: auto;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+    margin: 0px 50px;
+    margin-bottom: 30px;
+    margin-top: 50px;
+}
+
+.register-input {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    color: black;
+    width: 465px;
+    margin-top: 10px;
+    border: 1px solid rgb(219, 220, 223);
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.registrar {
+    background-color: rgb(39, 168, 68);
+    font-size: large;
+    font-weight: 700;
+    width: 445px;
+    margin-top: 50px;
+    color: white;
+    border: 1px;
+    border-radius: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+hr {
+    border: 1px solid;
+}
+
+h1 {
+    color: blue;
+    font-weight: 700;
+}
+
+p {
+    font-size: larger;
+    font-weight: 400;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    width: 450px;
+}
+
+a {
+    text-decoration: none;
+}

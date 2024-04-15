@@ -1,20 +1,8 @@
 <title>Inicio</title>
 <link rel="stylesheet" href="CSS/home.css">
 
-{{#if registerErrors}}
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        const modal = new bootstrap.Modal(document.getElementById('modalRegistro'), {
-            backdrop: 'static',
-            keyboard: false
-        });
-        modal.show();
-    });
-</script>
-{{/if}}
-
 <nav class="navbar navbar-expand-sm navbar-light nav1">
-    <a class="navbar-brand" href="home">NutriPet Healthy</a>
+    <a class="navbar-brand" href="/">NutriPet Healthy</a>
 
     <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId"
         aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,7 +17,7 @@
             </button>
         </form>
 
-        <button id="id-tienda" class="boton__ btn btn-outline-primary my-2 my-sm-0" type="submit">
+        <button id="id-tienda" class="boton__ btn btn-outline-primary my-2 my-sm-0" type="submit" window.location.href="/shopping/shop">
             <i class="fa-solid fa-store"></i>&ensp;Tienda
         </button>
     </div>
@@ -42,9 +30,8 @@
                 <a class="dropdown__ nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">Mi cuenta</a>
                 <div class="dropdown-menu" aria-labelledby="dropdownId">
-                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalIngreso">Ingreso</a>
-                    <a class="dropdown-item" href="#" data-bs-toggle="modal"
-                        data-bs-target="#modalRegistro">Registro</a>
+                    <a class="dropdown-item" href="/users/userLogin">Ingreso</a>
+                    <a class="dropdown-item" href="/users/userRegister">Registro</a>
                     <hr>
                     <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalDiscrepancia"><i
                             class="fa-regular fa-envelope"></i>&ensp;Discrepancias</a>
@@ -53,7 +40,7 @@
         </ul>
     </div>
 
-    <a href="shopping_cart">
+    <a href="/shopping/shopping_cart">
         <button type="button" class="btn">
             <i class="fas fa-shopping-cart" style="color: rgb(153, 156, 161); font-size: 25px;"></i>
             <span class="text-white">2</span>
@@ -136,81 +123,6 @@
 
 <!-- Modal Body -->
 <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
-<div class="modal fade" id="modalIngreso" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog"
-    aria-labelledby="modalTitleId" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-md" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalTitleId">
-                    Ingresar
-                </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form action="">
-                    <label class="login">Correo <input id="input_name" type="email" placeholder="Ingresa tu correo"
-                            class="login-input" required><span class="input-group-addon icon">
-                            <i class="fa-solid fa-user a"></i>
-                        </span></label>
-
-                    <label class="login">Password <input id="input_password" type="password"
-                            placeholder="Ingresa tu contraseña" class="login-input" required><span
-                            class="input-group-addon icon">
-                            <i class="fa-solid fa-key"></i>
-                        </span></label>
-                    <br>
-                    <br>
-                    <input type="submit" value="Login" class="save">
-                </form>
-            </div>
-            <div class="modal-footer">
-                <p>No tienes cuenta! <a href="" class="link-registro" data-bs-toggle="modal"
-                        data-bs-target="#modalRegistro">Registrate aquí</a></p>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<!-- Modal Body -->
-<!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
-<div class="modal fade" id="modalRegistro" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
-    role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xmd" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalTitleId">
-                    Registrar Usuario
-                </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-
-                {{#each registerErrors}}
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <strong>{{text}}</strong>
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-                {{/each}}
-
-                <form action="/home" method="POST">
-                    <div class="input-together">
-                        <input name="name" type="text" placeholder="Nombre(s)" class="register-input" required>
-                        <input name="surname" type="text" placeholder="Apellido(s)" class="register-input" required>
-                    </div>
-                    <input name="email" type="email" placeholder="Tu correo" class="register-input" required>
-                    <input name="password" type="password" placeholder="Contraseña" class="register-input" required>
-                    <input name="password_2" type="password" placeholder="Confirmar contraseña" class="register-input"
-                        required>
-                    <input type="submit" value="Registrarse" class="registrar">
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal Body -->
-<!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
 <div class="modal fade" id="modalDiscrepancia" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
     role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-md" role="document">
@@ -233,3 +145,9 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.getElementById('id-tienda').addEventListener('click', function() {
+        window.location.href = '/shopping/shop';
+    });
+</script>

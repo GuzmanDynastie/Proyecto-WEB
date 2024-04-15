@@ -27,12 +27,12 @@ function saveImageProduct(file, brand, animalCategory, line, category) {
 }
 
 // Envia el archivo HTML al administrador como respuesta
-router.get('/home_admin', (req, res) => {
-    res.render('home_admin');
+router.get('/homeAdmin', (req, res) => {
+    res.render('homeAdmin');
 });
 
 // Maneja la solicitud POST para agregar un administrador y guarda la información en la base de datos
-router.post('/home_admin/admin', imageAdmin.single('image'), async (req, res) => {
+router.post('/homeAdmin/admin', imageAdmin.single('image'), async (req, res) => {
     const role = 'admin';
     const { name, surname, email, password, password_2 } = req.body;
     const image = saveImageAdmin(req.file);
@@ -42,7 +42,7 @@ router.post('/home_admin/admin', imageAdmin.single('image'), async (req, res) =>
             try {
                 const newSchema = new userSchema({ name, surname, email, password, image, role });
                 await newSchema.save();
-                res.status(200).send('<script>alert("Usuario guardado correctamente"); window.location.href="./home_admin";</script>');
+                res.status(200).send('<script>alert("Usuario guardado correctamente"); window.location.href="/homeAdmin";</script>');
             } catch (error) {
                 res.status(500).json('Ocurrió un error al guardar el usuario. Por favor, inténtalo de nuevo.');
             }
@@ -55,7 +55,7 @@ router.post('/home_admin/admin', imageAdmin.single('image'), async (req, res) =>
 });
 
 // Maneja la solicitud POST para agregar un producto y guarda la información en la base de datos
-router.post('/home_admin/product', imageProduct.array('image_product', 10), async (req, res) => {
+router.post('/homeAdmin/product', imageProduct.array('image_product', 10), async (req, res) => {
     const { piece, stock, pricePerUnit, expiration, principalCharacteristics, petCharacteristics, specifications, generalCharacteristics, others, description } = req.body;
     const images = [];
 
@@ -73,7 +73,7 @@ router.post('/home_admin/product', imageProduct.array('image_product', 10), asyn
     try {
         const newSchema = new productSchema({ images, piece, stock, pricePerUnit, expiration, principalCharacteristics, petCharacteristics, specifications, generalCharacteristics, others, description });
         await newSchema.save();
-        res.redirect('/home_admin');
+        res.redirect('/homeAdmin');
 
     } catch (error) {
         console.error(error);

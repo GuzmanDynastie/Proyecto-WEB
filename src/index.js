@@ -42,13 +42,15 @@ app.use((req, res, next) => {
 })
 
 // Routes
-app.use(require('./routes/home_admin'));
+app.use(require('./routes/homeAdmin'));
 app.use(require('./routes/home'));
 app.use(require('./routes/payment'));
 app.use(require('./routes/product'));
 app.use(require('./routes/shipping'));
 app.use(require('./routes/shop'));
 app.use(require('./routes/shopping_cart'));
+app.use(require('./routes/userRegister'));
+app.use(require('./routes/userLogin'));
 
 // Static files
 app.use(express.static(path.join(__dirname, 'public')));

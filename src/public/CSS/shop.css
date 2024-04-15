@@ -1,0 +1,60 @@
+nav {
+    background-color: rgb(53, 58, 64);
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+nav .navbar-brand {
+    color: white;
+    font-size: larger;
+    font-weight: bold;
+    text-align: left;
+    margin-left: 15px;
+}
+
+nav .navbar-brand:hover {
+    color: rgb(153, 156, 161);
+}
+
+nav div .form-control {
+    width: 500px;
+}
+
+nav div .boton__ {
+    color: rgb(153, 156, 161);
+    border: 1px solid rgb(153, 156, 161);
+    margin-right: 10px;
+}
+
+.card {
+    width: 260px;
+}
+
+.card-title {
+    font-size: small;
+}
+
+.product {
+    margin-top: 20px;
+    margin-left: 35px;
+    margin-bottom: 10px;
+    width: 190px;
+}
+
+.card-text {
+    font-size: small;
+}
+
+.card-img-top {
+    height: 250px;
+}
+
+.container-1 {
+    display: flex;
+    justify-content: center;
+    max-width: calc(60% - 0%); /*  */
+    margin-top: 30px;
+    margin-left: 20%; /*  */
+    flex-wrap: wrap;
+}

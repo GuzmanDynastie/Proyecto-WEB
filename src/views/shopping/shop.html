@@ -1,0 +1,35 @@
+<title>Tienda</title>
+<link rel="stylesheet" href="../CSS/shop.css">
+
+<nav class="navbar navbar-expand-sm navbar-light nav1">
+    <a class="navbar-brand" href="/">NutriPet Healthy</a>
+
+    <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId"
+        aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="collapsibleNavId">
+        <form class="d-flex my-2 my-lg-0">
+            <input class="form-control me-sm-2" type="text" placeholder="Buscar productos" />
+            <button class="boton__ btn btn-outline-success my-2 my-sm-0" type="submit">
+                Buscar
+            </button>
+        </form>
+    </div>
+</nav>
+
+<div class="container-1">
+    {{#each products}}
+    <div class="card">
+        <div class="product">
+            <img class="card-img-top" src="https://nupec.com/wp-content/uploads/2018/12/npc-empaque-cachorro-raza-pequena.png"
+                alt="Imagen producto"/>
+            <div class="card-body">
+                <h4 class="card-title"></h4>
+                <p class="card-text"></p>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</div>
