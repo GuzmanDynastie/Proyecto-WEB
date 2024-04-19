@@ -269,6 +269,9 @@ button#searchInput {
 }
 
 hr {
-    border: none;
-    height: 5px;
+    border: 1px solid;
+}
+
+a {
+    text-decoration: none;
 }

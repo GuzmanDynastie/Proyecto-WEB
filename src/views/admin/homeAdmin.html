@@ -1,9 +1,9 @@
 <title>Administrador</title>
-<link rel="stylesheet" href="CSS/homeAdmin.css">
+<link rel="stylesheet" href="/CSS/homeAdmin.css">
 
 <nav class="navbar navbar-light fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="/homeAdmin">NutriPet Healthy</a>
+        <a class="navbar-brand" href="/admin/homeAdmin">NutriPet Healthy</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
             aria-controls="offcanvasNavbar">
             <span class="navbar-toggler-icon"></span>
@@ -18,7 +18,7 @@
             </div>
 
             <div class="info-admin">
-                <img src="./Images/admin.jpeg" class="img-fluid rounded-top" alt="" />
+                <img src="/Images/admin.jpeg" class="img-fluid rounded-top" alt="" />
                 <p>Jesus Emmanuel Guzman Covarrubias</p>
             </div>
 
@@ -48,66 +48,40 @@
 
 <div class="contenedor-herramientas">
 
-    <div class="herramienta" data-bs-toggle="modal" data-bs-target="#id-modal-agregar-administrador">
-        <img src="./Images/add_user.jpg" alt="">
-        <p>Agregar administrador</p>
-    </div>
-
-    <div class="herramienta" data-bs-toggle="modal" data-bs-target="#id-modal-agregar-producto">
-        <img src="./Images/add_product.png" alt="">
-        <p>Agregar producto</p>
-    </div>
-
-    <div class="herramienta" data-bs-toggle="modal" data-bs-target="#id-modal-eliminar-administrador">
-        <img src="./Images/del_user.jpg" alt="">
-        <p>Eliminar administrador</p>
-    </div>
-
-    <div class="herramienta" data-bs-toggle="modal" data-bs-target="#id-modal-EE-producto">
-        <img src="./Images/update.png" alt="">
-        <p>Editar/Eliminar producto</p>
-    </div>
-
-    <div class="herramienta" data-bs-toggle="modal" data-bs-target="#id-modal-discrepancias">
-        <img src="/Images/discrepanse.png" alt="">
-        <p>Discrepancias</p>
-    </div>
-
-</div>
-
-<!-- Modal Agregar Administrador -->
-<div class="modal fade" id="id-modal-agregar-administrador" tabindex="-1" data-bs-backdrop="static"
-    data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xmd" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalTitleId">
-                    Registrar Administrador
-                </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form action="/homeAdmin/admin" method="POST" enctype="multipart/form-data" id="add_admin_form">
-
-                    <div id="liveAlertPlaceholder"></div>
-
-                    <div class="input-together">
-                        <input name="name" type="text" placeholder="Nombre(s)" class="register-input"
-                            autocomplete="name" required>
-                        <input name="surname" type="text" placeholder="Apellido(s)" class="register-input" required><br>
-                    </div>
-                    <input name="email" type="email" placeholder="Correo" class="register-input" required><br>
-                    <input name="password" type="password" placeholder="Contraseña" class="register-input" required
-                        pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}"><br>
-                    <input name="password_2" type="password" placeholder="Confirmar contraseña" class="register-input"
-                        required><br>
-                    <input name="image" type="file" class="form-control" aria-describedby="fileHelpId" />
-
-                    <input type="submit" value="Registrar" class="registrar" id="liveAlertBtn">
-                </form>
-            </div>
+    <a href="/admin/adminRegister">
+        <div class="herramienta">
+            <img src="/Images/add_user.jpg" alt="">
+            <p>Agregar administrador</p>
         </div>
-    </div>
+    </a>
+
+    <a href="">
+        <div class="herramienta">
+            <img src="/Images/add_product.png" alt="">
+            <p>Agregar producto</p>
+        </div>
+    </a>
+
+    <a href="">
+        <div class="herramienta">
+            <img src="/Images/del_user.jpg" alt="">
+            <p>Eliminar administrador</p>
+        </div>
+    </a>
+
+    <a href="">
+        <div class="herramienta">
+            <img src="/Images/update.png" alt="">
+            <p>Editar/Eliminar producto</p>
+        </div>
+    </a>
+
+    <a href="">
+        <div class="herramienta">
+            <img src="/Images/discrepanse.png" alt="">
+            <p>Discrepancias</p>
+        </div>
+    </a>
 </div>
 
 

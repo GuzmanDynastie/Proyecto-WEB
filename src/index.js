@@ -42,6 +42,7 @@ app.use((req, res, next) => {
 })
 
 // Routes
+app.use(require('./routes/adminRegister'));
 app.use(require('./routes/homeAdmin'));
 app.use(require('./routes/home'));
 app.use(require('./routes/payment'));
