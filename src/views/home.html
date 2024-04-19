@@ -17,7 +17,8 @@
             </button>
         </form>
 
-        <button id="id-tienda" class="boton__ btn btn-outline-primary my-2 my-sm-0" type="submit" window.location.href="/shopping/shop">
+        <button id="id-tienda" class="boton__ btn btn-outline-primary my-2 my-sm-0" type="submit"
+            window.location.href="/shopping/shop">
             <i class="fa-solid fa-store"></i>&ensp;Tienda
         </button>
     </div>
@@ -147,7 +148,12 @@
 </div>
 
 <script>
-    document.getElementById('id-tienda').addEventListener('click', function() {
+    document.getElementById('id-tienda').addEventListener('click', function () {
         window.location.href = '/shopping/shop';
     });
 </script>
+
+<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+<df-messenger intent="WELCOME" chat-title="Pet-AesthetiCare" agent-id="2e663f34-8a1d-4bbd-9f69-deeffb87c143"
+    language-code="es">
+</df-messenger>

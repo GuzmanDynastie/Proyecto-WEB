@@ -29,6 +29,13 @@ nav div .boton__ {
 
 .card {
     width: 260px;
+    margin-right: 20px;
+    margin-top: 20px;
+}
+
+.card:first-child,
+.card::first-line {
+    margin-left: 20px;
 }
 
 .card-title {
@@ -53,8 +60,18 @@ nav div .boton__ {
 .container-1 {
     display: flex;
     justify-content: center;
-    max-width: calc(60% - 0%); /*  */
+    max-width: calc(100% - 0%); /*  */
     margin-top: 30px;
-    margin-left: 20%; /*  */
+    margin-left: 0%; /*  */
     flex-wrap: wrap;
+}
+
+.card:hover {
+    color: blue;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.363);
+}
+
+a {
+    text-decoration: none;
+    color: black;
 }

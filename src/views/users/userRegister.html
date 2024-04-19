@@ -1,9 +1,16 @@
 <title>Registro</title>
-<link rel="stylesheet" href="../CSS/forms.css">
+<link rel="stylesheet" href="/CSS/forms.css">
 
 <nav class="navbar navbar-expand-sm navbar-light nav1">
     <a class="navbar-brand" href="/">NutriPet Healthy</a>
 </nav>
+
+{{#each registerErrors}}
+<div class="alert alert-danger alert-dismissible fade show" role="alert" id="alerta">
+    <strong>{{text}}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{{/each}}
 
 <div class="contenedor">
     <div class="boxSlogan">
@@ -17,23 +24,17 @@
         <h6>Es facil y rapido</h6>
         <hr>
 
-        {{#each registerErrors}}
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <strong>{{text}}</strong>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-        {{/each}}
-
-        <form action="/register" method="POST">
+        <form action="/users/userRegister" method="POST">
             <div class="input-together">
-                <input name="name" type="text" placeholder="Nombre(s)" class="register-input" required>
-                <input name="surname" type="text" placeholder="Apellido(s)" class="register-input" required>
+                <input name="name" type="text" placeholder="Nombre(s)" class="register-input" value="{{name}}" required>
+                <input name="surname" type="text" placeholder="Apellido(s)" class="register-input" value="{{surname}}"
+                    required>
             </div>
-            <input name="email" type="email" placeholder="Tu correo" class="register-input" required>
+            <input name="email" type="email" placeholder="Tu correo" class="register-input" value="{{email}}" required>
             <input name="password" type="password" placeholder="Contraseña" class="register-input" required>
             <input name="password_2" type="password" placeholder="Confirmar contraseña" class="register-input" required>
             <input type="submit" value="Registrarse" class="registrar"><br><br>
-            <a href="/users/userLogin"><b>Ya tengo una cuenta!</b></a>
         </form>
+        <a href="/users/userLogin"><b>Ya tengo una cuenta!</b></a>
     </div>
 </div>

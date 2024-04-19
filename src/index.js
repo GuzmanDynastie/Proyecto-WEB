@@ -54,6 +54,7 @@ app.use(require('./routes/userLogin'));
 
 // Static files
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '../')));
 
 // Server is listening
 app.listen(app.get('port'), () => {

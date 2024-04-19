@@ -1,9 +1,8 @@
 const router = require('express').Router();
-const path = require('path');
 const productSchema = require('../models/product')
 
 router.get('/shopping/shop', async (req, res) => {
-    const products = await productSchema.find();
+    const products = await productSchema.find().lean();
     res.render('shopping/shop', { products });
 });
 

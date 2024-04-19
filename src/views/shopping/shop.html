@@ -19,17 +19,21 @@
     </div>
 </nav>
 
-<div class="container-1">
-    {{#each products}}
-    <div class="card">
-        <div class="product">
-            <img class="card-img-top" src="https://nupec.com/wp-content/uploads/2018/12/npc-empaque-cachorro-raza-pequena.png"
-                alt="Imagen producto"/>
-            <div class="card-body">
-                <h4 class="card-title"></h4>
-                <p class="card-text"></p>
+<a href="/">
+    <div class="container-1">
+        {{#each products}}
+        <div class="card">
+            <div class="product">
+                <img class="card-img-top" src="./../{{images.[0]}}" alt="Imagen producto" />
+                <div class="card-body">
+                    <h4 class="card-title"><strong>{{generalCharacteristics.[1]}}</strong><br>
+                        {{specifications.[0]}}
+                        <br> {{generalCharacteristics.[2]}}
+                    </h4>
+                    <p class="card-text">{{specifications.[1]}} (Paquete de {{piece}}) x ${{pricePerUnit}}</p>
+                </div>
             </div>
         </div>
+        {{/each}}
     </div>
-    {{/each}}
-</div>
+</a>
