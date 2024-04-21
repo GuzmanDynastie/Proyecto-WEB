@@ -1,0 +1,122 @@
+<title>Agregar Producto</title>
+<link rel="stylesheet" href="/CSS/addProduct.css">
+
+<nav class="navbar navbar-expand-sm navbar-light nav1">
+    <a class="navbar-brand" href="/admin/homeAdmin">NutriPet Healthy</a>
+</nav>
+
+{{#each registerErrors}}
+<div class="alert alert-danger alert-dismissible fade show" role="alert" id="alerta">
+    <strong><i class="fa-solid fa-triangle-exclamation"></i>&ensp;{{text}}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{{/each}}
+
+{{#each registerSussesful}}
+<div class="alert alert-danger alert-dismissible fade show" role="alert" id="alerta">
+    <strong><i class="fa-solid fa-triangle-exclamation"></i>&ensp;{{text}}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{{/each}}
+
+
+<div class="modal-dialog modal-dialog-centered modal-fullscreen" role="document">
+    <div class="modal-content">
+        <div class="info-together-addProduct">
+            <form action="/admin/addProduct" method="POST" enctype="multipart/form-data">
+                <div class="modal-body-producto">
+                    <hr>
+                    <h2>Informacion principal</h2>
+
+                    <label class="texto-prioridad">Primero seleccione la imagen de portada como
+                        prioridad</label>
+                    <input name="image_product" id="image_product" type="file" class="form-control"
+                        aria-describedby="fileHelpId" multiple required />
+                    <div class="mb-3">
+                        <select name="piece" id="combobox-piezas-producto" class="form-select form-select-md"
+                            placeholder="Pieza" required>
+                            <option value="" disabled selected hidden>Pieza</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </select>
+                        <input name="stock" id="" type="number" class="input-stock" placeholder="Stock" min="1"
+                            required>
+                        <input name="pricePerUnit" id="" type="number" class="input-precio" placeholder="P/Unidad"
+                            min="1" required>
+                        <input name="expiration" id="" type="date" class="input-caducidad" title="Caducidad" required>
+                    </div>
+
+                    <br>
+                    <hr>
+                    <h2>Características Principales</h2>
+                    <div class="box-caracteristicas-producto">
+                        <input class="input-caracteristicas-producto" type="text" id="peso_neto"
+                            name="principalCharacteristics" placeholder="Peso Neto (Producto)">
+                    </div>
+
+                    <br>
+                    <hr>
+                    <h2>Características de la Mascota</h2>
+                    <div class="box-caracteristicas-producto">
+                        <input class="input-caracteristicas-producto" type="text" id="mascota_recomendada"
+                            name="petCharacteristics[]" placeholder="Mascota Recomendada" required>
+                        <input class="input-caracteristicas-producto" type="text" id="etapa_vida_mascota"
+                            name="petCharacteristics[]" placeholder="Etapa de Vida de la Mascota" required>
+                        <input class="input-caracteristicas-producto" type="text" id="tamaño_raza"
+                            name="petCharacteristics[]" placeholder="Tamaño de la Raza">
+                    </div>
+
+                    <hr>
+                    <h2>Especificaciones</h2>
+                    <div class="box-caracteristicas-producto">
+                        <input class="input-caracteristicas-producto" type="text" id="sabor" name="specifications[]"
+                            placeholder="Sabor" required>
+                        <input class="input-caracteristicas-producto" type="text" id="peso_unidad"
+                            name="specifications[]" placeholder="Peso de la Unidad" required>
+                        <input class="input-caracteristicas-producto" type="text" id="tipo_envase"
+                            name="specifications[]" placeholder="Tipo de Envase" required>
+                        <input class="input-caracteristicas-producto" type="text" id="tipo_comida"
+                            name="specifications[]" placeholder="Tipo de Comida para Mascotas" required>
+                        <input class="input-caracteristicas-producto" type="text" id="ingredientes"
+                            name="specifications[]" placeholder="Ingredientes">
+                        <input class="input-caracteristicas-producto" type="text" id="proteina_bruta"
+                            name="specifications[]" placeholder="Proteína Bruta">
+                    </div>
+                </div>
+
+                <hr>
+                <div class="modal-body-producto-2">
+                    <h2>Características Generales</h2>
+                    <div class="box-caracteristicas-producto">
+                        <input class="input-caracteristicas-producto" type="text" id="fabricante"
+                            name="generalCharacteristics[]" placeholder="Fabricante" required>
+                        <input class="input-caracteristicas-producto" type="text" id="marca"
+                            name="generalCharacteristics[]" placeholder="Marca" required>
+                        <input class="input-caracteristicas-producto" type="text" id="linea"
+                            name="generalCharacteristics[]" placeholder="Línea" required>
+                        <input class="input-caracteristicas-producto" type="text" id="nombre"
+                            name="generalCharacteristics[]" placeholder="Nombre">
+                    </div>
+
+                    <hr>
+                    <h2>Otros</h2>
+                    <div class="box-caracteristicas-producto">
+                        <input class="input-caracteristicas-producto" type="text" id="aporte_nutrientes" name="others[]"
+                            placeholder="Aporte de nutrientes">
+                        <input class="input-caracteristicas-producto" type="text" id="necesidades_especiales"
+                            name="others[]" placeholder="Necesidades Especiales">
+                    </div>
+
+                    <hr>
+                    <h2>Descripción</h2>
+                    <div class="box-caracteristicas-producto">
+                        <textarea name="description" id="" class="form-control" rows="15" placeholder="Descripcion"
+                            required></textarea>
+                    </div>
+                    <input type="submit" value="Registrar" class="registrar" id="liveAlertBtn">
+                </div>
+        </div>
+        </form>
+    </div>
+</div>
