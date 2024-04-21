@@ -26,12 +26,10 @@ function saveImageProduct(file, brand, animalCategory, line, category) {
     return newPath;
 }
 
-// Envia el archivo HTML al administrador como respuesta
 router.get('/admin/homeAdmin', (req, res) => {
-    res.render('admin/homeAdmin');
+    res.render('admin/homeAdmin', { user: req.session.user });
 });
 
-// Maneja la solicitud POST para agregar un administrador y guarda la información en la base de datos
 router.post('/admin/adminRegister', imageAdmin.single('image'), async (req, res) => {
     const role = 'admin';
     const { name, surname, email, password, password_2 } = req.body;
@@ -54,7 +52,6 @@ router.post('/admin/adminRegister', imageAdmin.single('image'), async (req, res)
     }
 });
 
-// Maneja la solicitud POST para agregar un producto y guarda la información en la base de datos
 router.post('/admin/productRegister', imageProduct.array('image_product', 10), async (req, res) => {
     const { piece, stock, pricePerUnit, expiration, principalCharacteristics, petCharacteristics, specifications, generalCharacteristics, others, description } = req.body;
     const images = [];
@@ -64,7 +61,6 @@ router.post('/admin/productRegister', imageProduct.array('image_product', 10), a
     const line = generalCharacteristics[2];
     const category = petCharacteristics[1];
 
-    // Guarda todas las imagenes y recopila sus rutas
     req.files.forEach(file => {
         const imagePath = saveImageProduct(file, brand, animalCategory, line, category);
         images.push(imagePath);
