@@ -1,5 +1,5 @@
 <title>Inicio</title>
-<link rel="stylesheet" href="CSS/home.css">
+<link rel="stylesheet" href="/CSS/home.css">
 
 <nav class="navbar navbar-expand-sm navbar-light nav1">
     <a class="navbar-brand" href="/">NutriPet Healthy</a>
@@ -17,13 +17,12 @@
             </button>
         </form>
 
-        <button id="id-tienda" class="boton__ btn btn-outline-primary my-2 my-sm-0" type="submit"
-            window.location.href="/shopping/shop">
-            <i class="fa-solid fa-store"></i>&ensp;Tienda
-        </button>
+        <a href="/shopping/shop">
+            <button id="id-tienda" class="boton__ btn btn-outline-primary my-2 my-sm-0" type="submit">
+                <i class="fa-solid fa-store"></i>&ensp;Tienda
+            </button>
+        </a>
     </div>
-
-
 
     <div>
         <ul class="navbar-nav me-auto mt-2 mt-lg-0">
@@ -34,7 +33,7 @@
                     <a class="dropdown-item" href="/users/userLogin">Ingreso</a>
                     <a class="dropdown-item" href="/users/userRegister">Registro</a>
                     <hr>
-                    <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#modalDiscrepancia"><i
+                    <a class="dropdown-item" href="/users/addDiscrepance"><i
                             class="fa-regular fa-envelope"></i>&ensp;Discrepancias</a>
                 </div>
             </li>
@@ -78,80 +77,6 @@
         </button>
     </div>
 </div>
-
-<div class="container-1">
-    <div class="card">
-        <div class="product">
-            <img class="card-img-top" src="https://nupec.com/wp-content/uploads/2018/12/npc-empaque-cachorro.png"
-                alt="Title" />
-            <div class="card-body">
-                <h4 class="card-title">Nutrición canina cientifíca - Cachorro</h4>
-                <p class="card-text">2 kg (paquete de 1) x $249</p>
-            </div>
-        </div>
-    </div>
-    <div class="card">
-        <div class="product">
-            <img class="card-img-top" src="https://nupec.com/wp-content/uploads/2018/12/npc-empaque-adulto.png"
-                alt="Title" />
-            <div class="card-body">
-                <h4 class="card-title">Nutrición canina cientifíca - Adulto</h4>
-                <p class="card-text">2 kg (paquete de 1) x $224</p>
-            </div>
-        </div>
-    </div>
-    <div class="card">
-        <div class="product">
-            <img class="card-img-top" src="https://nupec.com/wp-content/uploads/2018/12/npc-empaque-senior.png"
-                alt="Title" />
-            <div class="card-body">
-                <h4 class="card-title">Nutrición canina cientifíca - Senior</h4>
-                <p class="card-text">2 kg (paquete de 1) x $399</p>
-            </div>
-        </div>
-    </div>
-    <div class="card">
-        <div class="product">
-            <img class="card-img-top"
-                src="https://nupec.com/wp-content/uploads/2018/12/npc-empaque-cachorro-raza-pequena.png" alt="Title" />
-            <div class="card-body">
-                <h4 class="card-title">Nutrición canina cientifíca - Cachorro raza pequeña</h4>
-                <p class="card-text">2 kg (paquete de 1) x $279</p>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal Body -->
-<!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
-<div class="modal fade" id="modalDiscrepancia" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
-    role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-md" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalTitleId">
-                    Reportar Discrepancia
-                </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form action="" method="post">
-                    <textarea class="modal-discrepancia" id="" cols="45" rows="10" placeholder="Ingrese su discrepancia"
-                        required></textarea>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Enviar</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script>
-    document.getElementById('id-tienda').addEventListener('click', function () {
-        window.location.href = '/shopping/shop';
-    });
-</script>
 
 <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
 <df-messenger intent="WELCOME" chat-title="Pet-AesthetiCare" agent-id="2e663f34-8a1d-4bbd-9f69-deeffb87c143"

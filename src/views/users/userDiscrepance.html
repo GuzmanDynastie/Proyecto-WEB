@@ -1,0 +1,32 @@
+<title>Discrepancias</title>
+<link rel="stylesheet" href="/CSS/forms.css">
+
+<nav class="navbar navbar-expand-sm navbar-light nav1">
+    <a class="navbar-brand" href="/">NutriPet Healthy</a>
+</nav>
+
+{{#each discErrors}}
+<div class="alert alert-danger alert-dismissible fade show" role="alert" id="alerta">
+    <strong><i class="fa-solid fa-triangle-exclamation"></i>&ensp;{{text}}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{{/each}}
+
+<div class="contenedor">
+    <div class="boxSlogan">
+        <h1>NutriPet Healty</h1>
+        <p>Platicanos acerca de tu inconformidad para mejorar nuestra pagina y con ello nuestros productos.</p>
+    </div>
+
+    <div class="boxRegister">
+        <h2>Discrepancias</h2>
+        <h6>Para nosostros, nuestros clientes y sus mascotas son lo mas valioso</h6>
+        <hr>
+
+        <form action="/users/userDiscrepance" method="POST">
+            <textarea name="discrepance" class="text-area" cols="65" rows="10"
+                placeholder="Describa aqui su discrepancia" maxlength="800" required></textarea>
+            <input type="submit" value="Enviar" class="registrar"><br>
+        </form>
+    </div>
+</div>
