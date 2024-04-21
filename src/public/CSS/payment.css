@@ -1,6 +1,6 @@
-nav {
+.nav1 {
+    justify-content: center;
     background-color: rgb(53, 58, 64);
-    position: fixed;
     width: 100%;
     z-index: 1000;
 }
@@ -17,18 +17,18 @@ nav .navbar-brand:hover {
     color: rgb(153, 156, 161);
 }
 
-nav div .form-control {
-    width: 500px;
+nav .navbar-brand {
+    font-weight: 700;
+    transition: transform 0.3s ease;
 }
 
-nav div .boton__ {
-    color: rgb(153, 156, 161);
-    border: 1px solid rgb(153, 156, 161);
-    margin-right: 10px;
+nav .navbar-brand:hover {
+    transform: scale(1.1);
 }
 
 .pasos-compra {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     background-color: rgb(234, 236, 238);
     padding: 30px;
@@ -266,4 +266,48 @@ p {
 .Paypal {
     margin-top: -115px;
     margin-left: 320px;
+}
+
+/* CREDIT CARD */
+@media (max-width: 600px) {
+    .box-radio-1, .box-radio-2 {
+        width: 480px;
+    }
+    .input-card {
+        width: 220px;
+    }
+    .input-xs-1 {
+        margin-left: 20px;
+        width: 80px;
+    }
+    .input-xs-2 {
+        margin-left: -20px;
+        width: 100px;
+    }
+    .input-titular {
+        width: 430px;
+    }
+
+}
+
+/* PAYPAL */
+@media (max-width: 600px) {
+    .informacion-envio {
+        width: 220px;
+    }
+    .Paypal {
+        margin-top: -95px;
+        margin-left: 270px;
+    }
+    img {
+        width: 115px;
+    }
+}
+
+/* TICKET */
+@media (max-width: 600px) {
+    .total-compra {
+        justify-content: center;
+        margin-left: -15px;
+    }
 }

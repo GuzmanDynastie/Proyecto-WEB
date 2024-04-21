@@ -67,11 +67,14 @@ nav div .boton__ {
 }
 
 .card:hover {
-    color: blue;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.363);
 }
 
 a {
     text-decoration: none;
     color: black;
+}
+
+a:hover {
+    color: blue;
 }

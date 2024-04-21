@@ -1,6 +1,6 @@
-nav {
+.nav1 {
+    justify-content: center;
     background-color: rgb(53, 58, 64);
-    position: fixed;
     width: 100%;
     z-index: 1000;
 }
@@ -17,18 +17,18 @@ nav .navbar-brand:hover {
     color: rgb(153, 156, 161);
 }
 
-nav div .form-control {
-    width: 500px;
+nav .navbar-brand {
+    font-weight: 700;
+    transition: transform 0.3s ease;
 }
 
-nav div .boton__ {
-    color: rgb(153, 156, 161);
-    border: 1px solid rgb(153, 156, 161);
-    margin-right: 10px;
+nav .navbar-brand:hover {
+    transform: scale(1.1);
 }
 
 .pasos-compra {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     background-color: rgb(234, 236, 238);
     padding: 30px;
@@ -173,7 +173,7 @@ input {
 
 .radios {
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .box-radio-1, .box-radio-2 {
@@ -204,4 +204,22 @@ input {
 
 p.envio {
     font-size: small;
+}
+
+@media (max-width: 600px) {
+    input {
+        width: 450px;
+        margin-left: 20px;
+    }
+    .input-1, .input-2 {
+        width: 450px;
+    }
+    .radios {
+        justify-content: center;
+        margin-left: 20px;
+    }
+    .box-radio-2 {
+        margin-top: 10px;
+        margin-left: -20px;
+    }
 }
