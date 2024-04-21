@@ -1,0 +1,136 @@
+
+.nav1 {
+    justify-content: center;
+    background-color: rgb(213, 216, 220);
+    width: 100%;
+    z-index: 1000;
+}
+
+nav .navbar-brand {
+    font-size: larger;
+    font-weight: bold;
+    text-align: left;
+    margin-left: 15px;
+}
+
+nav .navbar-brand {
+    font-weight: 700;
+    transition: transform 0.3s ease;
+}
+
+nav .navbar-brand:hover {
+    transform: scale(1.1);
+}
+
+.registrar {
+    background-color: rgb(39, 168, 68);
+    width: 445px;
+    margin-top: 50px;
+    color: white;
+    border: 1px;
+    border-radius: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-left: 10px;
+    margin-bottom: 30px;
+    font-weight: 700;
+    font-size: x-large;
+}
+
+.form-control {
+    margin-top: 20px;
+}
+
+.mb-3 {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+select#combobox-piezas-producto {
+    width: 100px;
+    margin-right: 20px;
+    margin-top: 20px;
+}
+
+.input-stock {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80px;
+    margin-right: 20px;
+    margin-top: 20px;
+    border-radius: 5px;
+    border: 1px solid rgb(213, 216, 220);
+}
+
+.input-precio {
+    width: 100px;
+    border-radius: 5px;
+    margin-right: 20px;
+    margin-top: 20px;
+    border: 1px solid rgb(213, 216, 220);
+}
+
+.input-caducidad {
+    margin-top: 20px;
+    border-radius: 5px;
+    margin-right: 20px;
+    border: 1px solid rgb(213, 216, 220);
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.input-presentacion-kg {
+    margin-top: 20px;
+    margin-right: 20px;
+    width: 80px;
+    border-radius: 5px;
+    border: 1px solid rgb(213, 216, 220);
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.hr-divisor {
+    border: 2px solid rgb(153, 156, 161);
+}
+
+.texto-prioridad {
+    margin-top: 30px;
+    font-size: large;
+    font-weight: 700;
+}
+
+.info-together-addProduct {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.modal-body-producto {
+    margin: 30px 0px;
+}
+
+.modal-body-producto:first-of-type {
+    border-right: 2px solid rgb(219, 220, 223);
+    padding-right: 20px;
+    margin-left: 20px;
+}
+
+.modal-body-producto-2 {
+    border-left: 2px solid rgb(219, 220, 223);
+    padding-left: 20px; 
+    margin-right: 20px;
+}
+
+.input-caracteristicas-producto {
+    width: 250px;
+    margin-right: 20px;
+    margin-top: 10px;
+    border: 1px solid rgb(219, 220, 223);
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+hr {
+    border: 1px solid;
+}
