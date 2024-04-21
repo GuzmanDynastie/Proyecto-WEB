@@ -1,6 +1,6 @@
-nav {
+.nav1 {
+    justify-content: center;
     background-color: rgb(53, 58, 64);
-    position: fixed;
     width: 100%;
     z-index: 1000;
 }
@@ -17,18 +17,18 @@ nav .navbar-brand:hover {
     color: rgb(153, 156, 161);
 }
 
-nav div .form-control {
-    width: 500px;
+nav .navbar-brand {
+    font-weight: 700;
+    transition: transform 0.3s ease;
 }
 
-nav div .boton__ {
-    color: rgb(153, 156, 161);
-    border: 1px solid rgb(153, 156, 161);
-    margin-right: 10px;
+nav .navbar-brand:hover {
+    transform: scale(1.1);
 }
 
 .pasos-compra {
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     background-color: rgb(234, 236, 238);
     padding: 30px;
@@ -120,6 +120,7 @@ span {
 
 img {
     width: 135px;
+    min-width: 100px;
     margin: 15px;
     padding: 10px;
     border: 2px solid rgb(153, 156, 161);
@@ -233,4 +234,48 @@ p.descripcion {
     font-size: 36px;
     margin-top: -20px;
     margin-left: 30px;
+}
+
+/* CONTENEDOR COMPRAS */
+@media (max-width: 600px) {
+    .contenedor-master {
+        width: 510px;
+    }
+    .contenedor-info {
+        width: 150px;
+    }
+    .contenedor-info-p {
+        width: 150px;
+    }
+    .description-brand {
+        font-size: 16px;
+    }
+    .title-brand {
+        font-size: 22px;
+    }
+    .descripcion {
+        font-size: 14px;
+    }
+    .trash {
+        margin-top: -220px;
+        margin-left: 460px;
+        background-color: red;
+        border-radius: 5px;
+        padding: 5px 8px;
+    }
+    .c-cantidad {
+        width: 80px;
+        height: 40px;
+        margin-left: -105px;
+        text-align: center;
+        font-size: larger;
+        font-weight: 700;
+        border: 2px solid rgb(153, 156, 161);
+        border-radius: 5px;
+    }
+    .texto-piezas {
+        margin-left: -105px;
+        font-size: larger;
+        font-weight: 700;
+    }
 }
