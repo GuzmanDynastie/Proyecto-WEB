@@ -31,6 +31,7 @@ nav .navbar-brand:hover {
     flex-wrap: wrap;
     justify-content: center;
     margin: 200px;
+    width: auto;
 }
 
 .boxRegister {
@@ -66,6 +67,18 @@ nav .navbar-brand:hover {
     border-radius: 5px;
     padding-top: 5px;
     padding-bottom: 5px;
+    transition: width 0.5s ease; 
+}
+
+.text-area {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    color: black;
+    margin-top: 10px;
+    border: 1px solid rgb(219, 220, 223);
+    border-radius: 5px;
+    padding-top: 5px;
 }
 
 .registrar {
@@ -79,6 +92,7 @@ nav .navbar-brand:hover {
     border-radius: 5px;
     padding-top: 10px;
     padding-bottom: 10px;
+    transition: width 0.5s ease; 
 }
 
 hr {
@@ -107,4 +121,13 @@ a {
     transform: translate(-50%, -50%);
     margin-top: 100px;
     width: 700px;
+}
+
+@media (max-width: 600px) {
+    .register-input {
+        width: 350px;
+    }
+    .registrar {
+        width: 320px;
+    }
 }
