@@ -42,16 +42,18 @@ app.use((req, res, next) => {
 })
 
 // Routes
-app.use(require('./routes/adminRegister'));
-app.use(require('./routes/homeAdmin'));
+app.use(require('./routes/addAdmin'));
+app.use(require('./routes/addDiscrepance'));
+app.use(require('./routes/addProduct'));
 app.use(require('./routes/home'));
+app.use(require('./routes/homeAdmin'));
 app.use(require('./routes/payment'));
 app.use(require('./routes/product'));
 app.use(require('./routes/shipping'));
 app.use(require('./routes/shop'));
 app.use(require('./routes/shopping_cart'));
-app.use(require('./routes/userRegister'));
 app.use(require('./routes/userLogin'));
+app.use(require('./routes/userRegister'));
 
 // Static files
 app.use(express.static(path.join(__dirname, 'public')));
