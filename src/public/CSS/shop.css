@@ -29,13 +29,8 @@ nav div .boton__ {
 
 .card {
     width: 260px;
-    margin-right: 20px;
+    margin-right: 10px;
     margin-top: 20px;
-}
-
-.card:first-child,
-.card::first-line {
-    margin-left: 20px;
 }
 
 .card-title {
