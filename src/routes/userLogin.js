@@ -23,8 +23,21 @@ router.post('/users/userLogin', async (req, res) => {
         res.render('users/userLogin', { loginErrors, email });
     } else {
         try {
+
+            if (!req.session.user) {
+                req.session.user = {
+                    name: userEmail.name,
+                    surname: userEmail.surname,
+                    image: userEmail.image
+                }
+            }
+
             if (userEmail.role === 'admin') {
-                return res.redirect(302, '/admin/homeAdmin');
+                if (!req.session.welcomeMessageShown) {
+                    req.session.welcomeMessageShown = true;
+                    return res.render('admin/homeAdmin', { user: req.session.user, showWelcomeMessage: true });
+                }
+                return res.render('admin/homeAdmin', { user: req.session.user, showWelcomeMessage: false });
             } else {
                 return res.redirect(302, '/');
             };
@@ -34,6 +47,5 @@ router.post('/users/userLogin', async (req, res) => {
         };
     };
 });
-
 
 module.exports = router;
