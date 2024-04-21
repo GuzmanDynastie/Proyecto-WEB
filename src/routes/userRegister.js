@@ -11,7 +11,7 @@ router.post('/users/userRegister', async (req, res) => {
     const role = 'user';
     const image = '';
     const { name, surname, email, password, password_2 } = req.body;
-    const passwordDB = await userSchema.findOne({ email: email })
+    const emailDB = await userSchema.findOne({ email: email })
     const registerErrors = [];
 
     if (password !== password_2) {
@@ -22,7 +22,7 @@ router.post('/users/userRegister', async (req, res) => {
         registerErrors.push({ text: 'El correo electrónico ingresado no es válido. Por favor, utiliza una dirección de correo electrónico válida.' });
     }
 
-    if (passwordDB) {
+    if (emailDB) {
         registerErrors.push({ text: 'El correo electrónico ya esta registrado.' });
     }
 
