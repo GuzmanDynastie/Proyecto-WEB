@@ -12,6 +12,7 @@
 ### Tabla de contenidos
 + [Modulos para el front-end y back-end](#modulos-para-front-end-y-back-end)
 + [¿Cómo ejecutar el programa?](#como-ejecutar-el-programa)
++ [¿Cómo mato un proceso de servidor?](#como-matar-proceso-servidor)
 + [Tecnologias](#tecnologias)
 
 ---
@@ -59,9 +60,16 @@
 
 ---
 
-### ¿Como ejecutar el programa?
+### ¿Cómo ejecutar el programa?
 <a name="como-ejecutar-el-programa"></a>
 - Para ejecutar el código, simplemente abre la terminal y utiliza el siguiente comando: `npm run dev`. Este comando ejecuta el código, y lo más interesante es que el servidor se reinicia automáticamente con cada modificación, eliminando la necesidad de reiniciarlo manualmente con `CTRL + C` y luego ejecutar `node src/index.js`.
+
+### ¿Cómo mato un proceso de servidor?
+<a name="como-matar-proceso-servidor"></a>
+- Si olvidaste cerrar (matar) el proceso del servidor, no te preocupes aqui tengo la solucion.
+- 1-. Consulta la informaion del proceso con el siguiente comando: `lsof -i :TU_PUERTO`.
+- 2-. Identifica el valor de la propiedad PID.
+- 3-. Ingresa el siguiente comando: `kill <VALOR_PID>`.
 
 ---
 
