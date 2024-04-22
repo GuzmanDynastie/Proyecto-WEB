@@ -23,6 +23,11 @@ nav .navbar-brand:hover {
     margin-left: 15px;
 }
 
+.image-configuration {
+    max-width: 200px;
+    border-radius: 5px;
+}
+
 .info-admin p {
     font-weight: 700;
     margin-left: 15px;
@@ -76,4 +81,41 @@ a {
     transform: translate(-50%, -50%);
     margin-top: 100px;
     width: 700px;
+}
+
+.register-input {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    color: black;
+    width: 465px;
+    margin-top: 10px;
+    border: 1px solid rgb(219, 220, 223);
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    transition: width 0.5s ease; 
+}
+
+.registrar {
+    background-color: rgb(39, 168, 68);
+    font-size: large;
+    font-weight: 700;
+    width: 445px;
+    margin-top: 50px;
+    color: white;
+    border: 1px;
+    border-radius: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    transition: width 0.5s ease; 
+}
+
+@media (max-width: 600px) {
+    .register-input {
+        width: 450px;
+    }
+    .registrar {
+        width: 450px;
+    }
 }
