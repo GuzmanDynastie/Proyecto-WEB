@@ -143,3 +143,7 @@ ol.carrusel__ {
 #name {
     margin-right: 30px;
 }
+
+.collapse {
+    justify-content: center;
+}
