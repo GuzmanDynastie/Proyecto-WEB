@@ -16,7 +16,12 @@ function saveImageProduct(file, brand, animalCategory, line, category) {
 }
 
 router.get('/admin/addProduct', (req, res) => {
-    res.render('admin/addProduct');
+    if (req.session.user) {
+        res.render('admin/addProduct', { user: req.session.user });
+    } else {
+        // status 403
+        res.redirect('/error/403');
+    }
 });
 
 router.post('/admin/addProduct', imageProduct.array('image_product', 10), async (req, res) => {

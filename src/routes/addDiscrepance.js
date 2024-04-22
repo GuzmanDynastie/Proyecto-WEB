@@ -2,7 +2,7 @@ const router = require('express').Router();
 const discrepanceSchema = require('../models/discrepance');
 
 router.get('/users/addDiscrepance', (req, res) => {
-    res.render('users/addDiscrepance');
+    res.render('admin/addDiscrepance');
 });
 
 router.post('/users/addDiscrepance', async (req, res) => {

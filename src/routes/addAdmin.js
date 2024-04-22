@@ -14,7 +14,12 @@ function saveImageAdmin(file) {
 }
 
 router.get('/admin/addAdmin', (req, res) => {
-    res.render('admin/addAdmin');
+    if (req.session.user) {
+        res.render('admin/addAdmin', { user: req.session.user });
+    } else {
+        // status 403
+        res.redirect('/error/403');
+    }
 });
 
 router.post('/admin/addAdmin', imageAdmin.single('image'), async (req, res) => {
@@ -29,12 +34,13 @@ router.post('/admin/addAdmin', imageAdmin.single('image'), async (req, res) => {
         if (password == password_2) {
             const emailDB = await userSchema.findOne({ email: email });
 
-            if (emailDB) {
+            if (!emailDB) {
                 try {
                     const newAdmin = new userSchema({ name, surname, email, password, image, role });
                     newAdmin.password = await newAdmin.encryptPassword(password);
                     await newAdmin.save();
                     res.render('admin/addAdmin', { registerSuccessful });
+                    return;
                 } catch (error) {
                     // status 500
                     registerErrors.push({ text: 'Ocurrió un error al guardar el usuario. Por favor, inténtalo de nuevo.' });

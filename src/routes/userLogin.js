@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const user = require('../models/user');
 const userSchema = require('../models/user');
 
 router.get('/users/userLogin', (req, res) => {
@@ -26,8 +27,10 @@ router.post('/users/userLogin', async (req, res) => {
 
             if (!req.session.user) {
                 req.session.user = {
+                    _id: userEmail._id,
                     name: userEmail.name,
                     surname: userEmail.surname,
+                    email: userEmail.email,
                     image: userEmail.image
                 }
             }

@@ -1,8 +1,8 @@
 const router = require('express').Router();
 const path = require('path');
 
-router.get('/product', (req, res) => {
-    res.render('product');
+router.get('/shopping/product', (req, res) => {
+    res.render('shopping/product');
 });
 
 module.exports = router;
