@@ -42,6 +42,7 @@ app.use((req, res, next) => {
 })
 
 // Routes
+app.use(require('./routes/403'));
 app.use(require('./routes/addAdmin'));
 app.use(require('./routes/addDiscrepance'));
 app.use(require('./routes/addProduct'));
