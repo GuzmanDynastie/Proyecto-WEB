@@ -1,0 +1,29 @@
+<style>
+    /* Estilos CSS para dar formato a la página */
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    .product-image {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 20px;
+    }
+    h1 {
+        margin-bottom: 10px;
+    }
+</style>
+
+<div class="container">
+    <!-- Imagen del producto -->
+    <img class="product-image" src="../../{{product.images.[0]}}" alt="Imagen producto">
+
+    <!-- Nombre de las croquetas -->
+    <h1>{{product.generalCharacteristics.[1]}}</h1>
+</div>

@@ -26,7 +26,7 @@
             </div>
 
             <div class="info-admin">
-                <img src="../{{user.image}}" class="img-fluid rounded-top" alt="" />
+                <img src="../../{{user.image}}" class="img-fluid rounded-top" alt="" />
                 <p>{{user.name}} {{user.surname}}</p>
             </div>
 
@@ -327,25 +327,27 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="modalTitleId">
-                    Configurar Administrador
+                    Configurar datos de Administrador
                 </h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <form action="">
+            <div class="modal-body" data-id="{{user._id}}">
+                <form action="/admin/homeAdmin/{{user._id}}?_method=PUT" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="_method" value="PUT">
                     <div class="input-together">
-                        <input id="name" "text" placeholder="Nombre(s)" class="register-input" autocomplete="name"
-                            required>
-                        <input id="input_apellidos" type="text" placeholder="Apellido(s)" class="register-input"
-                            required><br>
+                        <input name="name" id="name" type="text" placeholder="Nombre(s)" class="register-input" autocomplete="name"
+                            value="{{user.name}}" required>
+                        <input name="surname" id="input_apellidos" type="text" placeholder="Apellido(s)" class="register-input"
+                        value="{{user.surname}}" required>
                     </div>
-                    <input id="input_email_registro" type="email" class="register-input" readonly><br>
-                    <input id="input_password_registro" type="password" placeholder="Contraseña" class="register-input"
-                        required pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{6,}"><br>
-                    <input id="input_password2_registro" type="password" placeholder="Confirmar contraseña"
+                    <input name="email" id="input_email_registro" type="email" class="register-input" value="{{user.email}}" readonly>
+                    <input name="password" id="input_password_registro" type="password" placeholder="Contraseña" class="register-input"
+                        required>
+                    <input name="password_2" id="input_password2_registro" type="password" placeholder="Confirmar contraseña"
                         class="register-input" required><br>
 
-                    <input type="file" class="form-control" aria-describedby="fileHelpId" />
+                    <input name="image" type="file" class="form-control" aria-describedby="fileHelpId" onchange="previewImage(this)" required/><br>
+                    <img id="preview" class="image-configuration" src="../../{{user.image}}" alt="Imagen de perfil">
 
                     <input type="submit" value="Guardar" class="registrar">
                 </form>
@@ -353,3 +355,5 @@
         </div>
     </div>
 </div>
+
+<script src="/DOM/homeAdmin.js"></script>

@@ -10,8 +10,8 @@
     </button>
 
     <div class="collapse navbar-collapse" id="collapsibleNavId">
-        <form class="d-flex my-2 my-lg-0">
-            <input class="form-control me-sm-2" type="text" placeholder="Buscar productos" />
+        <form action="/shopping/shop" method="POST" class="d-flex my-2 my-lg-0">
+            <input class="form-control me-sm-2" type="text" name="search" placeholder="Buscar productos" />
             <button class="boton__ btn btn-outline-success my-2 my-sm-0" type="submit">
                 Buscar
             </button>
@@ -22,10 +22,10 @@
 
 <div class="container-1">
     {{#each products}}
-    <div class="card">
-        <a href="/">
+    <div class="card" data-id="{{_id}}">
+        <a href="/shopping/shop/{{_id}}">
             <div class="product">
-                <img class="card-img-top" src="./../{{images.[0]}}" alt="Imagen producto" />
+                <img class="card-img-top" src="../{{images.[0]}}" alt="Imagen producto"/>
                 <div class="card-body">
                     <h4 class="card-title"><strong>{{generalCharacteristics.[1]}}</strong><br>
                         {{specifications.[0]}}
