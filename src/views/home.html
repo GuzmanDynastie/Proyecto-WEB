@@ -28,11 +28,21 @@
                 <a class="dropdown__ nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">Mi cuenta</a>
                 <div class="dropdown-menu" aria-labelledby="dropdownId">
+                    {{#if showInterface}}
                     <a class="dropdown-item" href="/users/userLogin">Ingreso</a>
                     <a class="dropdown-item" href="/users/userRegister">Registro</a>
+                    {{/if}}
+
+                    {{#if showDiscrepance}}
+                    <form id="closeForm" action="/close/session" method="POST">
+                        <a class="dropdown-item" href="#" onclick="document.getElementById('closeForm').submit()"><i
+                                class="fa-solid fa-right-from-bracket"></i> Cerrar sesion</a>
+                    </form>
                     <hr>
-                    <a class="dropdown-item" href="/users/addDiscrepance"><i
-                            class="fa-regular fa-envelope"></i>&ensp;Discrepancias</a>
+                    <a class="dropdown-item" href="/users/addDiscrepance">
+                        <i class="fa-regular fa-envelope"></i>&ensp;Discrepancias</a>
+                    {{/if}}
+
                 </div>
             </li>
         </ul>
@@ -76,7 +86,16 @@
     </div>
 </div>
 
-<script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
-<df-messenger intent="WELCOME" chat-title="Pet-AesthetiCare" agent-id="2e663f34-8a1d-4bbd-9f69-deeffb87c143"
-    language-code="es">
-</df-messenger>
+<script>
+    window.watsonAssistantChatOptions = {
+        integrationID: "f13789d2-36a0-45e5-ae1e-3c04cc863b00", // The ID of this integration.
+        region: "us-south", // The region your integration is hosted in.
+        serviceInstanceID: "19a19308-1ba6-40b7-a066-bfedd697ef36", // The ID of your service instance.
+        onLoad: async (instance) => { await instance.render(); }
+    };
+    setTimeout(function () {
+        const t = document.createElement('script');
+        t.src = "https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+        document.head.appendChild(t);
+    });
+</script>

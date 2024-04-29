@@ -31,18 +31,21 @@ router.post('/users/userLogin', async (req, res) => {
                     name: userEmail.name,
                     surname: userEmail.surname,
                     email: userEmail.email,
+                    role: userEmail.role,
                     image: userEmail.image
                 }
             }
 
-            if (userEmail.role === 'admin') {
+            // if (userEmail.role === 'admin') {
+            if (req.session.user.role === 'admin') {
                 if (!req.session.welcomeMessageShown) {
                     req.session.welcomeMessageShown = true;
                     return res.render('admin/homeAdmin', { user: req.session.user, showWelcomeMessage: true });
                 }
                 return res.render('admin/homeAdmin', { user: req.session.user, showWelcomeMessage: false });
-            } else {
-                return res.redirect(302, '/');
+            } 
+            if (req.session.user.role === 'user') {
+                return res.render('home', { showDiscrepance: true });
             };
         } catch (error) {
             console.error('Error de autenticación:', error);

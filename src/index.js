@@ -46,6 +46,7 @@ app.use(require('./routes/403'));
 app.use(require('./routes/addAdmin'));
 app.use(require('./routes/addDiscrepance'));
 app.use(require('./routes/addProduct'));
+app.use(require('./routes/chatBot'));
 app.use(require('./routes/home'));
 app.use(require('./routes/homeAdmin'));
 app.use(require('./routes/payment'));

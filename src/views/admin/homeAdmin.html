@@ -10,10 +10,10 @@
         </button>
 
         {{#if showWelcomeMessage}}
-            <div class="alert alert-success alert-dismissible fade show" role="alert" id="alerta">
-                <strong>Bienvenido: {{user.name}}</strong>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
+        <div class="alert alert-success alert-dismissible fade show" role="alert" id="alerta">
+            <strong>Bienvenido: {{user.name}}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
         {{/if}}
 
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
@@ -40,8 +40,10 @@
                     </li>
                     <hr>
                     <li class="nav-item">
-                        <a class="nav-link" href="/"><i class="fa-solid fa-right-from-bracket"></i> Cerrar
-                            sesion</a>
+                        <form id="logoutForm" action="/admin/homeAdmin/close" method="POST">
+                            <a class="nav-link" href="#" onclick="document.getElementById('logoutForm').submit()"><i class="fa-solid fa-right-from-bracket"></i> Cerrar
+                                sesion</a>
+                        </form>
                     </li>
                 </ul>
             </div>
@@ -335,18 +337,20 @@
                 <form action="/admin/homeAdmin/{{user._id}}?_method=PUT" method="POST" enctype="multipart/form-data">
                     <input type="hidden" name="_method" value="PUT">
                     <div class="input-together">
-                        <input name="name" id="name" type="text" placeholder="Nombre(s)" class="register-input" autocomplete="name"
-                            value="{{user.name}}" required>
-                        <input name="surname" id="input_apellidos" type="text" placeholder="Apellido(s)" class="register-input"
-                        value="{{user.surname}}" required>
+                        <input name="name" id="name" type="text" placeholder="Nombre(s)" class="register-input"
+                            autocomplete="name" value="{{user.name}}" required>
+                        <input name="surname" id="input_apellidos" type="text" placeholder="Apellido(s)"
+                            class="register-input" value="{{user.surname}}" required>
                     </div>
-                    <input name="email" id="input_email_registro" type="email" class="register-input" value="{{user.email}}" readonly>
-                    <input name="password" id="input_password_registro" type="password" placeholder="Contraseña" class="register-input"
-                        required>
-                    <input name="password_2" id="input_password2_registro" type="password" placeholder="Confirmar contraseña"
-                        class="register-input" required><br>
+                    <input name="email" id="input_email_registro" type="email" class="register-input"
+                        value="{{user.email}}" readonly>
+                    <input name="password" id="input_password_registro" type="password" placeholder="Contraseña"
+                        class="register-input" required>
+                    <input name="password_2" id="input_password2_registro" type="password"
+                        placeholder="Confirmar contraseña" class="register-input" required><br>
 
-                    <input name="image" type="file" class="form-control" aria-describedby="fileHelpId" onchange="previewImage(this)" required/><br>
+                    <input name="image" type="file" class="form-control" aria-describedby="fileHelpId"
+                        onchange="previewImage(this)" required /><br>
                     <img id="preview" class="image-configuration" src="../../{{user.image}}" alt="Imagen de perfil">
 
                     <input type="submit" value="Guardar" class="registrar">

@@ -3,8 +3,6 @@ const userSchema = require('../models/user');
 const multer = require('multer');
 const fs = require('node:fs');
 
-const dataNew = {};
-
 const imageAdmin = multer({ dest: 'uploads/images_admin/' });
 
 function saveImageAdmin(file) {
@@ -19,7 +17,7 @@ router.get('/admin/homeAdmin', (req, res) => {
         if (req.session.dataNew) {
             user = req.session.dataNew;
         } else {
-            if (req.session.user) {
+            if (req.session.user && req.session.user.role === 'admin') {
                 user = req.session.user;
             } else {
                 // status 403
@@ -33,10 +31,16 @@ router.get('/admin/homeAdmin', (req, res) => {
     }
 });
 
+router.post('/admin/homeAdmin/close', (req, res) => {
+    req.session.destroy();
+    res.redirect('/');
+});
+
 router.put('/admin/homeAdmin/:id', imageAdmin.single('image'), async (req, res) => {
     const adminID = req.params.id;
     const { name, surname, email, password, password_2 } = req.body;
     const image = saveImageAdmin(req.file);
+    const role = 'admin';
 
     try {
         if (password !== password_2) {
@@ -50,6 +54,7 @@ router.put('/admin/homeAdmin/:id', imageAdmin.single('image'), async (req, res) 
         adminToUpdate.name = name;
         adminToUpdate.surname = surname;
         adminToUpdate.password = password;
+        adminToUpdate.role = role;
         adminToUpdate.image = image;
 
         if (password) {
@@ -66,6 +71,7 @@ router.put('/admin/homeAdmin/:id', imageAdmin.single('image'), async (req, res) 
             name: name,
             surname: surname,
             email: email,
+            role: role,
             image: image
         }
 
