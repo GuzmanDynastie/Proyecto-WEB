@@ -1,4 +1,6 @@
 uploads/
-src/config/
 src/public/Images
+src/public/DOM/chatBot_user.js
+src/public/DOM/chatBot_admin.js
 node_modules/
+*.env
