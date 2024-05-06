@@ -1,16 +1,16 @@
 const router = require('express').Router();
 const discrepanceSchema = require('../models/discrepance');
 
-router.get('/users/addDiscrepance', (req, res) => {
-    res.render('admin/addDiscrepance');
+router.get('/users/userDiscrepance', (req, res) => {
+    res.render('users/userDiscrepance');
 });
 
-router.post('/users/addDiscrepance', async (req, res) => {
+router.post('/users/userDiscrepance', async (req, res) => {
     const discErrors = [];
     const { discrepance } = req.body;
     try {
         if (discErrors.length > 0) {
-            res.render('/users/addDiscrepance', { discErrors });
+            res.render('/users/userDiscrepance', { discErrors });
         } else {
             const newDiscrepance = new discrepanceSchema({ discrepance });
             await newDiscrepance.save();
