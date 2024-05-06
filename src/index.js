@@ -5,6 +5,16 @@ const methodOverride = require('method-override');
 const session = require('express-session');
 const flash = require('connect-flash');
 const bodyParser = require('body-parser');
+const Handlebars = require('handlebars');
+const cors = require('cors');
+
+Handlebars.registerHelper('lt', function(a, b) {
+  return a < b;
+});
+
+Handlebars.registerHelper('eq', function(a, b) {
+  return a === b;
+});
 
 // Initilizations
 const app = express();
@@ -12,6 +22,9 @@ require('./config/database');
 
 // Settings
 app.set('port', process.env.PORT || 5000);
+// app.use(cors({
+//   origin: '*'
+// }));
 
 // Configuration of the Handlebars template engine
 app.set('views', path.join(__dirname, 'views'));
@@ -46,11 +59,13 @@ app.use(require('./routes/403'));
 app.use(require('./routes/addAdmin'));
 app.use(require('./routes/addDiscrepance'));
 app.use(require('./routes/addProduct'));
+app.use(require('./routes/adminDelete'));
 app.use(require('./routes/chatBot'));
 app.use(require('./routes/home'));
 app.use(require('./routes/homeAdmin'));
 app.use(require('./routes/payment'));
 app.use(require('./routes/product'));
+app.use(require('./routes/productOption'));
 app.use(require('./routes/shipping'));
 app.use(require('./routes/shop'));
 app.use(require('./routes/shopping_cart'));
