@@ -1,0 +1,63 @@
+<title>Eliminar Administrador</title>
+<link rel="stylesheet" href="/CSS/adminDelete.css">
+
+<nav class="navbar navbar-expand-sm navbar-light nav1">
+    <a class="navbar-brand" href="/admin/homeAdmin">NutriPet Healthy</a>
+</nav>
+
+{{#if registerErrors}}
+<div class="alert alert-danger alert-dismissible fade show" role="alert" id="alerta">
+    <strong><i class="fa-solid fa-triangle-exclamation"></i>&ensp;{{registerErrors.text}}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{{/if}}
+
+{{#if registerSuccessful}}
+<div class="alert alert-success alert-dismissible fade show" role="alert" id="alerta-2">
+    <strong><i class="fa-solid fa-circle-check"></i>&ensp;{{registerSuccessful.text}}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{{/if}}
+
+<div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title" id="modalTitleId">
+                Eliminar Administrador
+            </h4>
+        </div>
+        <hr>
+        <div class="modal-body">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover table-borderless table-primary align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Nombre(s)</th>
+                            <th>Apellidos(s)</th>
+                            <th>Correo</th>
+                            <th>Eliminar</th>
+                        </tr>
+                    </thead>
+
+                    <tbody class="table-group-divider">
+                        {{#each admin}}
+                        <tr class="table-primary">
+                            <td>{{name}}</td>
+                            <td>{{surname}}</td>
+                            <td>{{email}}</td>
+                            <td>
+                                <form action="/admin/adminDelete/{{_id}}" method="POST">
+                                    <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"
+                                            title="Eliminar producto"></i></button>
+                                </form>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+
+    </div>
+</div>

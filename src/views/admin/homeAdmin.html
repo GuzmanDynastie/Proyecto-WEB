@@ -71,14 +71,14 @@
         </div>
     </a>
 
-    <a href="">
+    <a href="/admin/adminDelete">
         <div class="herramienta">
             <img src="/Images/admin/del_user.jpg" alt="">
             <p>Eliminar administrador</p>
         </div>
     </a>
 
-    <a href="">
+    <a href="/admin/productOption">
         <div class="herramienta">
             <img src="/Images/admin/update.png" alt="">
             <p>Editar/Eliminar producto</p>
@@ -91,158 +91,6 @@
             <p>Discrepancias</p>
         </div>
     </a>
-</div>
-
-<!-- Modal Eliminar Administrador -->
-<div class="modal fade" id="id-modal-eliminar-administrador" tabindex="-1" data-bs-backdrop="static"
-    data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalTitleId">
-                    Eliminar Administrador
-                </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="table-responsive">
-                    <table class="table table-striped table-hover table-borderless table-primary align-middle">
-                        <thead class="table-light">
-                            <tr>
-                                <th>ID</th>
-                                <th>Nombre(s)</th>
-                                <th>Apellidos(s)</th>
-                                <th>Correo</th>
-                            </tr>
-                        </thead>
-
-                        <tbody class="table-group-divider">
-                            <tr class="table-primary">
-                                <td scope="row">1</td>
-                                <td>Mario Jesus Armando</td>
-                                <td>Solis Nieves</td>
-                                <td>bulnaro@support.com</td>
-                            </tr>
-                            <tr class="table-primary">
-                                <td scope="row">2</td>
-                                <td>Jesus Emmanuel</td>
-                                <td>Guzman Covarrubias</td>
-                                <td>guzman@support.com</td>
-                            </tr>
-                        </tbody>
-
-                        <tfoot>
-
-                        </tfoot>
-                    </table>
-                </div>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger">Eliminar</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<!-- Modal Editar/Eliminar Producto -->
-<div class="modal fade" id="id-modal-EE-producto" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
-    role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-fullscreen" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="modalTitleId">
-                    Editar/Eliminar Producto
-                </h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-
-            <div class="buscador">
-                <form class="d-flex my-2 my-lg-0">
-                    <input id="searchInput" class="form-control me-sm-2" type="text" placeholder="Buscar productos" />
-                    <button id="searchInput" class="btn btn-outline-success" type="submit">Buscar</button>
-                </form>
-            </div>
-
-            <div class="modal-body-tabla">
-                <div class="table-responsive">
-                    <table class="table table-striped table-hover table-borderless table-primary align-middle">
-                        <thead class="table-light">
-                            <tr>
-                                <th>ID</th>
-                                <th>Marca</th>
-                                <th>Titulo</th>
-                                <th>Categoria</th>
-                                <th>Descripcion</th>
-                                <th>Imagen</th>
-                                <th>Pieza</th>
-                                <th>Kilogramo</th>
-                                <th>Stock</th>
-                                <th>Precio</th>
-                                <th>Caducidad</th>
-                            </tr>
-                        </thead>
-
-                        <tbody class="table-group-divider">
-                            <tr class="table-primary">
-                                <td scope="row">1</td>
-                                <td>NUPEC</td>
-                                <td>Nutrición canina científica</td>
-                                <td>Adulto raza pequeña</td>
-                                <td>Contenido adecuado de energía para el metabolismo de las razas pequeñas</td>
-                                <td>https://nupec.com/wp-content/uploads/2018/12/npc-empaque-adulto-raza-pequena.png
-                                </td>
-                                <td>1</td>
-                                <td>2</td>
-                                <td>100</td>
-                                <td>499</td>
-                                <td>12/31/2029</td>
-                            </tr>
-                            <tr class="table-primary">
-                                <td scope="row">2</td>
-                                <td>Pedigree</td>
-                                <td>Alimento seco</td>
-                                <td>Adulto</td>
-                                <td>Balance natural Croquetas adulto con res y vegetales</td>
-                                <td>https://www.pedigree.com.mx/cdn-cgi/image/format=auto,q=90/sites/g/files/fnmzdf1501/files/2022-10/706460236538-product-image-1.png
-                                </td>
-                                <td>1</td>
-                                <td>4</td>
-                                <td>100</td>
-                                <td>299</td>
-                                <td>01/01/2031</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <hr class="hr-divisor">
-            <div class="modal-body-form">
-                <form action="" class="div-div">
-                    <input id="name" type="text" placeholder="Marca" class="act-producto" required>
-                    <input id="input_apellidos" type="text" placeholder="Titulo" class="act-producto" required>
-                    <input id="input_apellidos" type="text" placeholder="Categoria" class="act-producto" required>
-                    <textarea class="form-control" name="" id="" rows="3" placeholder="Descripcion" required></textarea>
-                    <input type="file" class="form-control" aria-describedby="fileHelpId" required /><br>
-                    <div class="mb-3">
-                        <select id="combobox-piezas-producto" class="form-select form-select-md" placeholder="Pieza"
-                            required>
-                            <option value="" disabled selected hidden>Pieza</option>
-                            <option value="">1</option>
-                            <option value="">2</option>
-                            <option value="">3</option>
-                        </select>
-                        <input type="number" class="input-stock" placeholder="Stock" min="1" required>
-                        <input type="number" class="input-precio" placeholder="P/Unidad" min="1" required>
-                        <input type="date" class="input-caducidad" title="Caducidad" required>
-                    </div>
-                    <input type="submit" value="Actualizar" class="actualizar">
-                    <input type="submit" value="Eliminar" class="eliminar">
-                </form>
-            </div>
-        </div>
-    </div>
 </div>
 
 
