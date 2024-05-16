@@ -67,4 +67,17 @@ router.post('/shopping/shop', async (req, res) => {
     }
 });
 
+
+router.get('/api/productos', async (req, res) => {
+    try {
+      const productos = await productSchema.find({});
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      res.json(productos);
+    // res.send('hola mundo');
+    } catch (error) {
+      console.error('Error al obtener la lista de productos:', error);
+      res.status(500).json({ error: 'Error interno del servidor' });
+    }
+  });
+
 module.exports = router;

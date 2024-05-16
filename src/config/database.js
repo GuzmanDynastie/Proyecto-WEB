@@ -12,11 +12,11 @@ db_url_local = db_url_local.replace('<target>', process.env.TARGET_DB);
 const connectToDatabase = async (uri) => {
     try {
         await mongoose.connect(uri);
-        console.log('Conexión exitosa a la base de datos:', uri);
+        console.log('Conexión exitosa a la base de datos en linea');
     } catch (error) {
         console.error('Error de conexión a la base de datos:', error.message);
         if (uri === db_url) {
-            console.log('Intentando conectar a la segunda base de datos...');
+            console.log('Intentando conectar a la segunda base de datos... localhost');
             await connectToDatabase(db_url_local);
         }
     }

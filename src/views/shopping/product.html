@@ -1,29 +1,172 @@
-<style>
-    /* Estilos CSS para dar formato a la página */
-    body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-    }
-    .container {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 20px;
-    }
-    .product-image {
-        max-width: 100%;
-        height: auto;
-        margin-bottom: 20px;
-    }
-    h1 {
-        margin-bottom: 10px;
-    }
-</style>
+<title>Producto</title>
+<link rel="stylesheet" href="/CSS/product.css">
 
-<div class="container">
-    <!-- Imagen del producto -->
-    <img class="product-image" src="../../{{product.images.[0]}}" alt="Imagen producto">
+<nav class="navbar navbar-expand-sm navbar-light nav1">
+    <a class="navbar-brand" href="/">NutriPet Healthy</a>
+</nav>
 
-    <!-- Nombre de las croquetas -->
-    <h1>{{product.generalCharacteristics.[1]}}</h1>
-</div>
+
+<div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 class="modal-title" id="modalTitleId">
+                Producto
+            </h3>
+        </div>
+        <hr>
+        <div class="modal-body">
+            <div class="table-responsive">
+                <div class="contenedor">
+                    <div class="contenedor-together">
+                        <div class="producto-carrusel">
+                            <div id="carouselId" class="carousel" data-bs-ride="carousel">
+                                <div class="carousel-inner" role="listbox">
+                                    {{#each product.images}}
+                                    <div class="carousel-item {{#if @first}}active{{/if}}">
+                                        <img src="../../../{{this}}"
+                                            alt="Imagen {{../product.generalCharacteristics.[1]}}"
+                                            class="d-block mx-auto">
+                                    </div>
+                                    {{/each}}
+                                </div>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#carouselId"
+                                    data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+                                <button class="carousel-control-next" type="button" data-bs-target="#carouselId"
+                                    data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="descripcion-breve">
+                            <div>
+                                <strong>
+                                    <p class="desc-breve">
+                                        Alimento {{product.generalCharacteristics.[1]}}
+                                        {{product.generalCharacteristics.[2]}} para {{product.petCharacteristics.[0]}}
+                                        {{product.petCharacteristics.[1]}} {{product.petCharacteristics.[2]}} sabor
+                                        {{product.specifications.[0]}} en {{product.specifications.[2]}}
+                                        de {{product.specifications.[1]}}
+                                    </p>
+                                    <br>
+                                    <strong>
+                                        <p class="desc-precio">
+                                            $ {{product.pricePerUnit}}.00 <span class="moneda-mxn">mxn</span>
+                                        </p>
+                                    </strong>
+                                    <br>
+
+                                    <strong>
+                                        <p>Lo que tienes que saber de este producto</p>
+                                    </strong>
+                                    <ul>
+                                        <li>Tipo de envase: {{product.specifications.[2]}}</li>
+                                        <li>Recomendado para {{product.petCharacteristics.[0]}}
+                                            {{product.petCharacteristics.[1]}}</li>
+                                        <li>Formulado especialmente para {{product.petCharacteristics.[2]}}</li>
+                                        <li>Comida {{product.specifications.[3]}}.</li>
+                                        <li>Sabor: {{product.specifications.[0]}}</li>
+                                        <li>Sabor y nutricion completa para tu mascota.</li>
+                                        <li>Imagenes ilustrativas. El paquete puede variar segun peso.</li>
+                                    </ul>
+                                </strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="descripcion-producto">
+                        <h3>Características del producto</h3>
+                        <br>
+
+                        <div class="caracteristicas-flex">
+                            <div>
+                                <p><span><i class="fa-regular fa-circle-check"></i></span> Mascota recomendada:
+                                    <strong>{{product.petCharacteristics.[0]}}.</strong>
+                                </p>
+                            </div>
+                            <div>
+                                <p><span><i class="fa-regular fa-circle-check"></i></span> Etapa de la vida de la
+                                    mascota:
+                                    <strong>{{product.petCharacteristics.[1]}}.</strong>
+                                </p>
+                            </div>
+                            <div>
+                                <p><span><i class="fa-regular fa-circle-check"></i></span> Tamaño de la raza:
+                                    <strong>{{product.petCharacteristics.[2]}}.</strong>
+                                </p>
+                            </div>
+                            <div>
+                                <p><span><i class="fa-regular fa-circle-check"></i></span> Tipo de comida:
+                                    <strong>{{product.specifications.[3]}}.</strong>
+                                </p>
+                            </div>
+                            <div>
+                                <p><span><i class="fa-regular fa-circle-check"></i></span> Sabor:
+                                    <strong>{{product.specifications.[0]}}.</strong>
+                                </p>
+                            </div>
+                        </div>
+
+                        <br>
+                        <a href="">&emsp; Ver todas las características <span><i
+                                    class="fa-solid fa-chevron-down"></i></span></a>
+
+
+
+                        <div class="tablas">
+                            <div class="contenedor-together">
+
+                                <div class="">
+                                    <div class="table-responsive">
+                                        <table class="table table-striped" style="border: 2px solid">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Column 1</th>
+                                                    <th scope="col">Column 2</th>
+                                                    <th scope="col">Column 3</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr class="">
+                                                    <td scope="row">R1C1</td>
+                                                    <td>R1C2</td>
+                                                    <td>R1C3</td>
+                                                </tr>
+                                                <tr class="">
+                                                    <td scope="row">Item</td>
+                                                    <td>Item</td>
+                                                    <td>Item</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+
+                    <hr>
+
+                    <div class="descripcion">
+                        <h3>Descripción</h3>
+                        <br>
+                        <div>
+                            <p class="description">{{product.description}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>

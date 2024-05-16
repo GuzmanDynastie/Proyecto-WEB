@@ -1,0 +1,138 @@
+.nav1 {
+    justify-content: center;
+    background-color: rgb(53, 58, 64);
+    width: 100%;
+    z-index: 1000;
+}
+
+nav .navbar-brand {
+    color: white;
+    font-size: larger;
+    font-weight: bold;
+    text-align: left;
+    margin-left: 15px;
+}
+
+nav .navbar-brand:hover {
+    color: rgb(153, 156, 161);
+}
+
+nav .navbar-brand {
+    font-weight: 700;
+    transition: transform 0.3s ease;
+}
+
+nav .navbar-brand:hover {
+    transform: scale(1.1);
+}
+
+.contenedor-together {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.descripcion-breve {
+    /* border: 4px solid rgb(213, 216, 220); */
+    margin-left: 20px;
+    border-radius: 10px;
+    width: 482px;
+}
+
+.modal-content {
+    margin-top: 40px;
+    margin-left: 30px;
+    margin-right: 30px;
+    margin-bottom: 30px;
+    padding: 10px;
+    border: 4px solid rgb(213, 216, 220);
+    border-radius: 10px;
+}
+
+hr {
+    border: 2px solid rgb(153, 156, 161);
+    width: auto;
+}
+
+img {
+    width: 360px;
+}
+
+p.desc-breve {
+    font-size: x-large;
+}
+
+p.desc-precio {
+    font-size: 50px;
+}
+
+span.moneda-mxn {
+    font-size: large;
+}
+
+.caracteristicas-flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.producto-carrusel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 550px;
+    height: 660px;
+    border: 4px solid rgb(213, 216, 220);
+    border-radius: 10px;
+}
+
+#alerta {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 70px;
+    width: 700px;
+}
+
+#alerta-2 {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 40px;
+    width: 700px;
+    z-index: 1000;
+}
+
+p.description {
+    font-size: large;
+}
+
+a {
+    font-weight: 700;
+    font-size: medium;
+    text-decoration: none;
+}
+
+.caracteristicas-flex > div {
+    flex-basis: calc(33.333% - 20px); /* Aproximadamente 1/3 del ancho del contenedor con un pequeño margen */
+    margin-right: 20px; /* Margen derecho para las columnas */
+    margin-bottom: 20px; /* Margen inferior para las filas */
+    box-sizing: border-box; /* Incluye el ancho del borde y el margen en el tamaño total */
+}
+
+/* Elimina el margen derecho de la última columna en cada fila */
+.caracteristicas-flex > div:nth-child(3n) {
+    margin-right: 0;
+}
+
+/* Ajusta los márgenes cuando hay menos de 3 elementos en la fila */
+.caracteristicas-flex > div:nth-last-child(-n+3) {
+    margin-bottom: 0;
+}
+
+@media (max-width: 600px) {
+    #alerta {
+        width: 440px;
+    }
+    #alerta-2 {
+        width: 440px;
+    }
+}

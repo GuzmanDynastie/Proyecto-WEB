@@ -22,9 +22,10 @@ require('./config/database');
 
 // Settings
 app.set('port', process.env.PORT || 5000);
-// app.use(cors({
-//   origin: '*'
-// }));
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+}));
 
 // Configuration of the Handlebars template engine
 app.set('views', path.join(__dirname, 'views'));
@@ -61,6 +62,7 @@ app.use(require('./routes/addDiscrepance'));
 app.use(require('./routes/addProduct'));
 app.use(require('./routes/adminDelete'));
 app.use(require('./routes/chatBot'));
+app.use(require('./routes/discrepance'));
 app.use(require('./routes/home'));
 app.use(require('./routes/homeAdmin'));
 app.use(require('./routes/payment'));

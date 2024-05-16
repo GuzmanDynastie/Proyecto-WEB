@@ -37,84 +37,82 @@
                         </tr>
                     </thead>
 
+                    <tbody class="table-group-divider"></tbody>
+                        {{#each product}}
+                            <tr class="table-primary">
+                                <td>{{petCharacteristics.[0]}}</td>
+                                <td>{{generalCharacteristics.[1]}}</td>
+                                <td>{{petCharacteristics.[1]}}</td>
+                                <td>{{specifications.[0]}}</td>
+                                <td>{{generalCharacteristics.[2]}}</td>
+                                <td>{{formattedExpiration}}</td>
 
-                    {{#each product}}
-                    <tbody class="table-group-divider">
-                        <tr class="table-primary">
-                            <td>{{petCharacteristics.[0]}}</td>
-                            <td>{{generalCharacteristics.[1]}}</td>
-                            <td>{{petCharacteristics.[1]}}</td>
-                            <td>{{specifications.[0]}}</td>
-                            <td>{{generalCharacteristics.[2]}}</td>
-                            <td>{{formattedExpiration}}</td>
-
-                            <td>
-                                <button onclick="mostrarInfo('info{{@index}}')" type="button" class="btn btn-primary"
-                                    title="Mostrar mas detalles del producto"><i
-                                        class="fa-regular fa-rectangle-list"></i></button>
-                                <button type="button" class="btn btn-success"><i class="fa-solid fa-pen-to-square"
-                                        title="Editar producto"></i></button>
-                                <button type="button" class="btn btn-danger"><i class="fa-solid fa-trash"
-                                        title="Eliminar producto"></i></button>
-                            </td>
-                        </tr>
-                        <tr id="info{{@index}}" style="display: none;">
-                            <td colspan="10">
-                                <div class="together">
-                                    <div class="description">
-                                        <strong>Descripcion:</strong>
-                                        <br>
-                                        <textarea cols="45" rows="7" disabled>{{description}}</textarea>
-                                    </div>
-                                    <div class="detalles">
-                                        <div class="table-responsive">
-                                            <table
-                                                class="table table-striped table-hover table-borderless table-primary align-middle">
-                                                <thead class="table-light">
-                                                    <th>Pieza</th>
-                                                    <th>Kilogramos</th>
-                                                    <th>Stock</th>
-                                                    <th>Precio</th>
-                                                </thead>
-
-                                                <tbody>
-                                                    <td>{{piece}} pzs</td>
-                                                    <td>{{specifications.[1]}}</td>
-                                                    <td>{{stock}}</td>
-                                                    <td>${{pricePerUnit}}</td>
-                                                </tbody>
-                                            </table>
+                                <td>
+                                    <button onclick="mostrarInfo('info{{@index}}')" type="button" class="btn btn-primary"
+                                        title="Mostrar mas detalles del producto"><i
+                                            class="fa-regular fa-rectangle-list"></i></button>
+                                    <button type="button" class="btn btn-success"><i class="fa-solid fa-pen-to-square"
+                                            title="Editar producto"></i></button>
+                                    <button type="button" class="btn btn-danger"><i class="fa-solid fa-trash"
+                                            title="Eliminar producto"></i></button>
+                                </td>
+                            </tr>
+                            <tr id="info{{@index}}" style="display: none;">
+                                <td colspan="10">
+                                    <div class="together">
+                                        <div class="description">
+                                            <strong>Descripcion:</strong>
+                                            <br>
+                                            <textarea cols="45" rows="7" disabled>{{description}}</textarea>
                                         </div>
-                                    </div>
+                                        <div class="detalles">
+                                            <div class="table-responsive">
+                                                <table
+                                                    class="table table-striped table-hover table-borderless table-primary align-middle">
+                                                    <thead class="table-light">
+                                                        <th>Pieza</th>
+                                                        <th>Kilogramos</th>
+                                                        <th>Stock</th>
+                                                        <th>Precio</th>
+                                                    </thead>
 
-                                    <div class="imagen-producto">
-                                        <div id="carouselId{{@index}}" class="carousel" data-bs-ride="carousel">
-                                            <div class="carousel-inner" role="listbox">
-                                                {{#each images}}
-                                                <div class="carousel-item {{#if @first}}active{{/if}}">
-                                                    <img src="../{{this}}"
-                                                        alt="Imagen {{../generalCharacteristics.[1]}}"
-                                                        class="d-block mx-auto" width="100">
-                                                </div>
-                                                {{/each}}
+                                                    <tbody>
+                                                        <td>{{piece}} pzs</td>
+                                                        <td>{{specifications.[1]}}</td>
+                                                        <td>{{stock}}</td>
+                                                        <td>${{pricePerUnit}}</td>
+                                                    </tbody>
+                                                </table>
                                             </div>
-                                            <button class="carousel-control-prev" type="button"
-                                                data-bs-target="#carouselId{{@index}}" data-bs-slide="prev">
-                                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                                <span class="visually-hidden">Previous</span>
-                                            </button>
-                                            <button class="carousel-control-next" type="button"
-                                                data-bs-target="#carouselId{{@index}}" data-bs-slide="next">
-                                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                                <span class="visually-hidden">Next</span>
-                                            </button>
+                                        </div>
+
+                                        <div class="imagen-producto">
+                                            <div id="carouselId{{@index}}" class="carousel" data-bs-ride="carousel">
+                                                <div class="carousel-inner" role="listbox">
+                                                    {{#each images}}
+                                                    <div class="carousel-item {{#if @first}}active{{/if}}">
+                                                        <img src="../{{this}}" alt="Imagen {{../generalCharacteristics.[1]}}"
+                                                            class="d-block mx-auto" width="100">
+                                                    </div>
+                                                    {{/each}}
+                                                </div>
+                                                <button class="carousel-control-prev" type="button"
+                                                    data-bs-target="#carouselId{{@index}}" data-bs-slide="prev">
+                                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                    <span class="visually-hidden">Previous</span>
+                                                </button>
+                                                <button class="carousel-control-next" type="button"
+                                                    data-bs-target="#carouselId{{@index}}" data-bs-slide="next">
+                                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                    <span class="visually-hidden">Next</span>
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </td>
-                        </tr>
+                                </td>
+                            </tr>
+                        {{/each}}
                     </tbody>
-                    {{/each}}
                 </table>
             </div>
         </div>
