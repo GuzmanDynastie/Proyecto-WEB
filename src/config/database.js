@@ -20,6 +20,6 @@ const connectToDatabase = async (uri) => {
             await connectToDatabase(db_url_local);
         }
     }
-}; 
+};
 
 connectToDatabase(db_url);

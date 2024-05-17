@@ -29,6 +29,57 @@ nav .navbar-brand:hover {
 .contenedor-together {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+}
+
+.contenedor-together-info {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.form-outline {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.form-control {
+    width: 200px;
+    margin-right: 10px;
+}
+
+table {
+    border: 2px solid;
+    display: none;
+}
+
+.contenedor-together-info table:nth-child(odd) {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.table-striped {
+    width: 400px;
+}
+
+.table tbody tr:first-child {
+    background-color: #f2f2f2;
+}
+
+caption {
+    caption-side: top;
+    margin-top: 20px;
+    text-align: center;
+    font-weight: bold;
+    font-size: large;
+}
+
+td {
+    font-size: medium;
+}
+
+tr td:first-of-type {
+    font-weight: bold;
 }
 
 .descripcion-breve {

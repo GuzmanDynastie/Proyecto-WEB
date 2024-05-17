@@ -5,7 +5,6 @@
     <a class="navbar-brand" href="/">NutriPet Healthy</a>
 </nav>
 
-
 <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl" role="document">
     <div class="modal-content">
         <div class="modal-header">
@@ -74,6 +73,17 @@
                                         <li>Imagenes ilustrativas. El paquete puede variar segun peso.</li>
                                     </ul>
                                 </strong>
+
+                                <br>
+
+                                <div>
+                                    <div data-mdb-input-init class="form-outline">
+                                        <input type="number" id="typeNumber" class="form-control" min="1" value="1" />
+                                        <button type=" button" class="btn btn-outline-success">
+                                            Agregar
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -114,46 +124,127 @@
                         </div>
 
                         <br>
-                        <a href="">&emsp; Ver todas las características <span><i
-                                    class="fa-solid fa-chevron-down"></i></span></a>
-
-
+                        <a href="#" id="toggleTable" style="text-decoration: none;">&emsp; Ver todas las características
+                            <span><i class="fa-solid fa-chevron-down"></i></span></a>
 
                         <div class="tablas">
-                            <div class="contenedor-together">
+                            <div class="contenedor-together-info">
 
-                                <div class="">
-                                    <div class="table-responsive">
-                                        <table class="table table-striped" style="border: 2px solid">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col">Column 1</th>
-                                                    <th scope="col">Column 2</th>
-                                                    <th scope="col">Column 3</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr class="">
-                                                    <td scope="row">R1C1</td>
-                                                    <td>R1C2</td>
-                                                    <td>R1C3</td>
-                                                </tr>
-                                                <tr class="">
-                                                    <td scope="row">Item</td>
-                                                    <td>Item</td>
-                                                    <td>Item</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                <div class="tablas-izq">
+                                    <div class="caracteristicas-principales">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped">
+                                                <caption>Características principales</caption>
+                                                <tbody>
+                                                    <tr class="">
+                                                        <td>Peso neto</td>
+                                                        <td>{{product.specifications.[1]}}</td>
+                                                    </tr>
+                                                    <tr class="">
+                                                        <td>Formato de venta</td>
+                                                        <td>Unidad</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div class="caracteristicas-mascota">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped">
+                                                <caption>Características de la mascota</caption>
+                                                <tbody>
+                                                    <tr class="">
+                                                        <td>Mascota recomendada</td>
+                                                        <td>{{product.petCharacteristics.[0]}}</td>
+                                                    </tr>
+                                                    <tr class="">
+                                                        <td>Etapa de vida de la mascota</td>
+                                                        <td>{{product.petCharacteristics.[1]}}</td>
+                                                    </tr>
+                                                    <tr class="">
+                                                        <td>Tamaño de la raza</td>
+                                                        <td>{{product.petCharacteristics.[2]}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div class="otros">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped">
+                                                <caption>Otros</caption>
+                                                <tbody>
+                                                    <tr class="">
+                                                        <td>Aporte de nutrientes</td>
+                                                        <td>{{product.others.[0]}}</td>
+                                                    </tr>
+                                                    <tr class="">
+                                                        <td>Necesidades especiales</td>
+                                                        <td>{{product.others.[1]}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
 
+                                <div class="tablas-der">
+                                    <div class="caracteristicas-generales">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped">
+                                                <caption>Características generales</caption>
+                                                <tbody>
+                                                    <tr class="">
+                                                        <td>Fabricante</td>
+                                                        <td>{{product.generalCharacteristics.[0]}}</td>
+                                                    </tr>
+                                                    <tr class="">
+                                                        <td>Marca</td>
+                                                        <td>{{product.generalCharacteristics.[1]}}</td>
+                                                    </tr>
+                                                    <tr class="">
+                                                        <td>Línea</td>
+                                                        <td>{{product.generalCharacteristics.[2]}}</td>
+                                                    </tr>
+                                                    <tr class="">
+                                                        <td>Nombre</td>
+                                                        <td>{{product.generalCharacteristics.[3]}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div class="especificaciones">
+                                        <div class="table-responsive">
+                                            <table class="table table-striped">
+                                                <caption>Especificaciones</caption>
+                                                <tbody>
+                                                    <tr class="">
+                                                        <td>Sabor</td>
+                                                        <td>{{product.specifications.[0]}}</td>
+                                                    </tr>
+                                                    <tr class="">
+                                                        <td>Tipo de envase</td>
+                                                        <td>{{product.specifications.[2]}}</td>
+                                                    </tr>
+                                                    <tr class="">
+                                                        <td>Tipo de comida para mascotas</td>
+                                                        <td>{{product.specifications.[3]}}</td>
+                                                    </tr>
+                                                    <tr class="">
+                                                        <td>Proteína bruta</td>
+                                                        <td>{{product.specifications.[5]}}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
-
-
-
                     </div>
 
                     <hr>
@@ -169,4 +260,6 @@
             </div>
         </div>
     </div>
-    <div>
+</div>
+
+<script src="/DOM/product.js"></script>
