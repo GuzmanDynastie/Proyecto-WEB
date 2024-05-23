@@ -1,5 +1,18 @@
 // Muestra las tablas para sus caracteristicas
 document.addEventListener('DOMContentLoaded', function () {
+    let cartCountElement = document.getElementById('cartCount');
+    let cartCount = parseInt(cartCountElement.textContent) || 0;
+
+    function updateCartCount() {
+        cartCount++;
+        cartCountElement.textContent = cartCount;
+    }
+
+    document.querySelectorAll('.btn-add-product').forEach(button => {
+        button.addEventListener('click', function () {
+            updateCartCount();
+        });
+    });
 
     let tablesVisibles = false;
 

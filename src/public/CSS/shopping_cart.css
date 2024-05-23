@@ -120,6 +120,7 @@ span {
 
 img {
     width: 135px;
+    height: 210px;
     min-width: 100px;
     margin: 15px;
     padding: 10px;
@@ -168,7 +169,8 @@ div[class="inp-2"] input {
 .contenedor-compras { 
     margin-right: 50px;
     width: 620px;
-    height: 250px;
+    /* height: 250px; */
+    height: auto;
 }
 
 .hr-divisor {

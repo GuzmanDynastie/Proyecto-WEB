@@ -158,3 +158,12 @@ hr {
     right: 10px;
     z-index: 1100;
 }
+
+.existing-images {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+img {
+    margin-right: 20px;
+}

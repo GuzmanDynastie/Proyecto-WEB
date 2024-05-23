@@ -8,6 +8,23 @@ const bodyParser = require('body-parser');
 const Handlebars = require('handlebars');
 const cors = require('cors');
 
+const os = require('os');
+const networkInterfaces = os.networkInterfaces();
+let ipAddresses = [];
+
+for (let interface in networkInterfaces) {
+  for (let alias of networkInterfaces[interface]) {
+    if (alias.family === 'IPv4' && !alias.internal) {
+      ipAddresses.push(alias.address);
+    }
+  }
+}
+
+const whiteList = ipAddresses.flatMap(ip => [
+  `http://${ip}:3000`,
+  `http://${ip}:3001`
+]);
+
 Handlebars.registerHelper('lt', function(a, b) {
   return a < b;
 });
@@ -23,8 +40,8 @@ require('./config/database');
 // Settings
 app.set('port', process.env.PORT || 5000);
 app.use(cors({
-  origin: '*',
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  origin: whiteList,
+  methods: ['GET', 'POST', 'PUT', 'DELETE']
 }));
 
 // Configuration of the Handlebars template engine
@@ -61,7 +78,6 @@ app.use(require('./routes/addAdmin'));
 app.use(require('./routes/addDiscrepance'));
 app.use(require('./routes/addProduct'));
 app.use(require('./routes/adminDelete'));
-app.use(require('./routes/chatBot'));
 app.use(require('./routes/discrepance'));
 app.use(require('./routes/home'));
 app.use(require('./routes/homeAdmin'));
@@ -80,5 +96,8 @@ app.use(express.static(path.join(__dirname, '../')));
 
 // Server is listening
 app.listen(app.get('port'), () => {
-    console.log('Server on port', app.get('port'));
+  console.log(`Servidor en el puerto ${app.get('port')}`);
+  ipAddresses.forEach(ip => {
+    console.log(`Accede a la API desde ---> http://${ip}:${app.get('port')}`);
+  });
 });

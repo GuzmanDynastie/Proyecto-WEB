@@ -87,6 +87,15 @@ hr {
     z-index: 1000;
 }
 
+.btn-together {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.btn-primary, .btn-success {
+    margin-right: 5px;
+}
+
 @media (max-width: 550px) {
     textarea {
         width: 420px;
