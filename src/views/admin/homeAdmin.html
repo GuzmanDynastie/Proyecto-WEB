@@ -9,6 +9,13 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
+        {{#if infoUpdate}}
+        <div class="alert alert-success alert-dismissible fade show" role="alert" id="alerta">
+            <strong>{{infoUpdate.text}}</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {{/if}}
+
         {{#if showWelcomeMessage}}
         <div class="alert alert-success alert-dismissible fade show" role="alert" id="alerta">
             <strong>Bienvenido: {{user.name}}</strong>
@@ -133,4 +140,3 @@
 </div>
 
 <script src="/DOM/homeAdmin.js"></script>
-<!-- <script src="/DOM/chatBot_admin.js"></script> -->

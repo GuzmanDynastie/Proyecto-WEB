@@ -42,7 +42,6 @@
                     <a class="dropdown-item" href="/users/userDiscrepance">
                         <i class="fa-regular fa-envelope"></i>&ensp;Discrepancias</a>
                     {{/if}}
-
                 </div>
             </li>
         </ul>
@@ -51,7 +50,7 @@
     <a href="/shopping/shopping_cart">
         <button type="button" class="btn">
             <i class="fas fa-shopping-cart" style="color: rgb(153, 156, 161); font-size: 25px;"></i>
-            <span class="text-white">2</span>
+            <span class="text-white" id="cartCount"></span>
         </button>
     </a>
 </nav>
@@ -86,27 +85,4 @@
     </div>
 </div>
 
-<!-- <script src="https://cdn.botpress.cloud/webchat/v2/inject.js"></script>
-<script src="https://mediafiles.botpress.cloud/11c6f95d-cc54-4a73-b83e-86c39f65a629/webchat/v2/config.js"></script> -->
-
-
-<script>
-    (function () {
-        var cors_api_host = 'cors-anywhere.herokuapp.com';
-        var cors_api_url = 'https://' + cors_api_host + '/';
-        var slice = [].slice;
-        var origin = window.location.protocol + '//' + window.location.host;
-        var open = XMLHttpRequest.prototype.open;
-        XMLHttpRequest.prototype.open = function () {
-            var args = slice.call(arguments);
-            var targetOrigin = /^https?:\/\/([^\/]+)/i.exec(args[1]);
-            if (targetOrigin && targetOrigin[0].toLowerCase() !== origin &&
-                targetOrigin[1] !== cors_api_host) {
-                args[1] = cors_api_url + args[1];
-            }
-            return open.apply(this, args);
-        };
-    })();
-</script>
-
-<script src="/DOM/chatBot_user.js"></script>/
+<script src="/DOM/product.js"></script>

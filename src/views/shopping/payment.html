@@ -68,23 +68,20 @@
 
     <div class="total-compra">
         <div class="media media-2">
-            <div class="media-rigth">
-                <h4 class="h4-ticket">Total de compra</h4>
+            <div class="media-left">
+                <h4 class="mt-0 mb-1 h4-ticket">Total de compra</h4>
                 <div class="horizontal">
                     <hr class="hr-divisor-ticket">
                 </div>
-                <p class="t-compra">Nutrición canina cientifíca - Senior: 1 x $1099.00</p>
-                <p class="t-compra">Nutrición canina cientifíca - Adulto: 1 x $999.00</p>
-                <p class="t-compra">Costo del envio: $100.00</p>
-                <p class="t-compra">IVA: $335.68</p>
+                <div>
+                    <p id="detalle-compra" class="t-compra"></p>
+                </div>
                 <div class="horizontal">
                     <hr class="hr-divisor-ticket">
                 </div>
-                <!-- <p class="t-compra">Monto a pagar: 2128.00</p> -->
-                <p class="t-compra">Total: $2533.68</p>
+                <p id="monto-total" class="t-compra"></p>
                 <div class="inp-1">
-                    <button onclick="window.location.href = '/shopping/payment';">Pagar</button>
-                    <!-- <input type="submit" value="Pagar"> -->
+                    <button onclick="window.location.href = '/shopping/payment';">Siguiente</button>
                 </div>
                 <div class="inp-2">
                     <input onclick="window.location.href = '/shopping/shipping';" type="submit" value="Cancelar">
@@ -93,3 +90,5 @@
         </div>
     </div>
 </div>
+
+<script src="/DOM/payment.js"></script>

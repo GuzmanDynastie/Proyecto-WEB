@@ -10,13 +10,13 @@ router.get('/shopping/category/:category', (req, res) => {
 
 router.get('/shopping/shop', async (req, res) => {
     try {
-        let query = {};
+        let query = { status: true };
         if (selectedCategory === 'todo') {
             selectedCategory = null;
-            const products = await productSchema.find().lean();
+            const products = await productSchema.find({ status: true }).lean();
             return res.render('shopping/shop', { products });
         } else if (selectedCategory) {
-            query = { petCharacteristics: selectedCategory };
+            query.petCharacteristics = selectedCategory;
         }
         const products = await productSchema.find(query).lean();
         res.render('shopping/shop', { products });
@@ -29,8 +29,8 @@ router.get('/shopping/shop', async (req, res) => {
 router.get('/shopping/shop/:id', async (req, res) => {
     try {
         const productByID = req.params.id;
-        const product = await productSchema.findById(productByID).lean()
-        if (!product) {
+        const product = await productSchema.findById(productByID).lean();
+        if (!product || !product.status) {
             return res.status(404).send('Producto no encontrado.');
         }
         res.render('shopping/product', { product });
@@ -42,7 +42,7 @@ router.get('/shopping/shop/:id', async (req, res) => {
 
 router.post('/shopping/shop', async (req, res) => {
     try {
-        let query = {};
+        let query = { status: true };
         if (req.body.search) {
             const searchTerms = req.body.search.trim().split(/\s+/);
             const orConditions = searchTerms.map(term => ({
@@ -54,7 +54,7 @@ router.post('/shopping/shop', async (req, res) => {
                     { 'generalCharacteristics.2': { $regex: new RegExp(term, 'i') } }
                 ]
             }));
-            query = { $and: orConditions };
+            query.$and = orConditions;
         }
         if (selectedCategory) {
             query.petCharacteristics = selectedCategory;
@@ -66,18 +66,5 @@ router.post('/shopping/shop', async (req, res) => {
         res.status(500).send('Error interno del servidor');
     }
 });
-
-
-router.get('/api/productos', async (req, res) => {
-    try {
-      const productos = await productSchema.find({});
-      res.setHeader('Access-Control-Allow-Origin', '*');
-      res.json(productos);
-    // res.send('hola mundo');
-    } catch (error) {
-      console.error('Error al obtener la lista de productos:', error);
-      res.status(500).json({ error: 'Error interno del servidor' });
-    }
-  });
 
 module.exports = router;

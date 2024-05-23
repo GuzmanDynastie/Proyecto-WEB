@@ -78,8 +78,19 @@
 
                                 <div>
                                     <div data-mdb-input-init class="form-outline">
-                                        <input type="number" id="typeNumber" class="form-control" min="1" value="1" />
-                                        <button type=" button" class="btn btn-outline-success">
+                                        <input type="number" id="cantidadInput" class="form-control" min="1"
+                                            value="1" />
+                                        <button type="button" class="btn btn-outline-success btn-add-product"
+                                            data-product-id="{{product._id}}" data-product-url="{{product.images.[0]}}"
+                                            data-product-name="{{product.generalCharacteristics.[1]}}"
+                                            data-product-brand="{{product.generalCharacteristics.[2]}}"
+                                            data-product-category="{{product.petCharacteristics.[1]}}"
+                                            data-product-info="Alimento {{product.generalCharacteristics.[1]}}
+                                            {{product.generalCharacteristics.[2]}} para {{product.petCharacteristics.[0]}}
+                                            {{product.petCharacteristics.[1]}} {{product.petCharacteristics.[2]}} sabor
+                                            {{product.specifications.[0]}} en {{product.specifications.[2]}}
+                                            de {{product.specifications.[1]}}"
+                                            data-product-price="{{product.pricePerUnit}}">
                                             Agregar
                                         </button>
                                     </div>
@@ -263,3 +274,4 @@
 </div>
 
 <script src="/DOM/product.js"></script>
+<script src="/DOM/shopping_cart.js"></script>

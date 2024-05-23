@@ -21,71 +21,9 @@
 <div class="resumen-together">
     <div class="contenedor-master">
         <hr class="hr-divisor">
-        <div class="contenedor-compras">
-            <div class="contenedor-imagen">
-                <img src="https://nupec.com/wp-content/uploads/2018/12/npc-empaque-senior.png" alt="">
-            </div>
-
-            <div class="icon-trash">
-                <span class="trash">
-                    <i class="fa-solid fa-trash icon-trash"></i>
-                </span>
-            </div>
-
-            <div class="alineador">
-                <div class="contenedor-cantidad">
-                    <label class="texto-piezas">Piezas</label><br>
-                    <input type="number" name="" class="c-cantidad" min="1" placeholder="1">
-                </div>
-            </div>
-
-            <div class="contenedor-info">
-                <h5 class="title-brand">NUPEC</h5>
-                <h5 class="description-brand">Nutrición canina cientifíca - Senior</h5>
-            </div>
-
-            <div class="contenedor-info-p">
-                <p class="descripcion">
-                    Nutrición especializada para mejorar la vitalidad y calidad de vida de nuestras mascotas de edad
-                    avanzada.
-                </p>
-                <label class="precio-label">$ 1099</label>
-            </div>
-        </div>
-
-        <div class="contenedor-compras">
-            <div class="contenedor-imagen">
-                <img src="https://nupec.com/wp-content/uploads/2018/12/npc-empaque-adulto.png" alt="">
-            </div>
-
-            <div class="icon-trash">
-                <span class="trash">
-                    <i class="fa-solid fa-trash icon-trash"></i>
-                </span>
-            </div>
-
-            <div class="alineador">
-                <div class="contenedor-cantidad">
-                    <label class="texto-piezas">Piezas</label><br>
-                    <input type="number" name="" class="c-cantidad" min="1" placeholder="1">
-                </div>
-            </div>
-
-            <div class="contenedor-info">
-                <h5 class="title-brand">NUPEC</h5>
-                <h5 class="description-brand">Nutrición canina cientifíca - Adulto</h5>
-            </div>
-
-            <div class="contenedor-info-p">
-                <p class="descripcion">
-                    Máximo aprovechamiento nutricional para una mejor salud y calidad de vida.
-                </p>
-                <label class="precio-label">$ 999</label>
-            </div>
-        </div>
-        <hr class="hr-divisor">
+        <div id="contenedor-compras"></div>
     </div>
-
+    
     <div class="total-compra">
         <div class="media media-2">
             <div class="media-left">
@@ -93,22 +31,23 @@
                 <div class="horizontal">
                     <hr class="hr-divisor-ticket">
                 </div>
-                <p class="t-compra">Nutrición canina cientifíca - Senior: 1 x $1099.00</p>
-                <p class="t-compra">Nutrición canina cientifíca - Adulto: 1 x $999.00</p>
-                <p class="t-compra">Costo del envio: $0.00</p>
+                <div>
+                    <p id="detalle-compra" class="t-compra"></p>
+                </div>
+                <p id="costo-envio" class="t-compra">Costo del envio: $0.00</p>
                 <div class="horizontal">
                     <hr class="hr-divisor-ticket">
                 </div>
-                <!-- <p class="t-compra">Monto a pagar: 2128.00</p> -->
-                <p class="t-compra">Subtotal: $2098.00</p>
+                <p id="monto-total" class="t-compra"></p>
                 <div class="inp-1">
-                    <button onclick="window.location.href = '/shopping/shipping';">Siguiente</button>
-                    <!-- <input type="submit" value="Pagar"> -->
+                    <button id="next-button">Siguiente</button>
                 </div>
                 <div class="inp-2">
-                    <input onclick="window.location.href = '/';" type="submit" value="Cancelar">
+                    <input id="cancel-button" type="submit" value="Cancelar">
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script src="/DOM/shopping_cart.js"></script>

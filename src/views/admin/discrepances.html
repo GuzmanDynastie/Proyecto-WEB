@@ -5,6 +5,20 @@
     <a class="navbar-brand" href="/admin/homeAdmin">NutriPet Healthy</a>
 </nav>
 
+{{#if registerErrors}}
+<div class="alert alert-danger alert-dismissible fade show" role="alert" id="alerta">
+    <strong><i class="fa-solid fa-triangle-exclamation"></i>&ensp;{{registerErrors.text}}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{{/if}}
+
+{{#if registerSuccessful}}
+<div class="alert alert-success alert-dismissible fade show" role="alert" id="alerta-2">
+    <strong><i class="fa-solid fa-circle-check"></i>&ensp;{{registerSuccessful.text}}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{{/if}}
+
 <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xxl" role="document">
     <div class="modal-content">
         <div class="modal-header">

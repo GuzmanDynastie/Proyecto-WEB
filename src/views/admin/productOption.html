@@ -5,6 +5,20 @@
     <a class="navbar-brand" href="/admin/homeAdmin">NutriPet Healthy</a>
 </nav>
 
+{{#if registerErrors}}
+<div class="alert alert-danger alert-dismissible fade show" role="alert" id="alerta">
+    <strong><i class="fa-solid fa-triangle-exclamation"></i>&ensp;{{registerErrors.text}}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{{/if}}
+
+{{#if registerSuccessful}}
+<div class="alert alert-success alert-dismissible fade show" role="alert" id="alerta-2">
+    <strong><i class="fa-solid fa-circle-check"></i>&ensp;{{registerSuccessful.text}}</strong>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{{/if}}
+
 <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
     <div class="modal-content">
         <div class="modal-header">
@@ -48,13 +62,21 @@
                                 <td>{{formattedExpiration}}</td>
 
                                 <td>
-                                    <button onclick="mostrarInfo('info{{@index}}')" type="button" class="btn btn-primary"
+                                    <div class="btn-together">
+                                        <button onclick="mostrarInfo('info{{@index}}')" type="button" class="btn btn-primary"
                                         title="Mostrar mas detalles del producto"><i
                                             class="fa-regular fa-rectangle-list"></i></button>
-                                    <button type="button" class="btn btn-success"><i class="fa-solid fa-pen-to-square"
+
+                                    <form action="/admin/update/product/{{_id}}" method="POST">
+                                        <button type="submit" class="btn btn-success"><i class="fa-solid fa-pen-to-square"
                                             title="Editar producto"></i></button>
-                                    <button type="button" class="btn btn-danger"><i class="fa-solid fa-trash"
+                                    </form>
+
+                                    <form action="/admin/delete/product/{{_id}}" method="POST">
+                                        <button type="submit" class="btn btn-danger"><i class="fa-solid fa-trash"
                                             title="Eliminar producto"></i></button>
+                                    </form>
+                                    </div>
                                 </td>
                             </tr>
                             <tr id="info{{@index}}" style="display: none;">
