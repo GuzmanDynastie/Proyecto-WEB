@@ -3,10 +3,12 @@ const exphbs = require('express-handlebars');
 const path = require('path');
 const methodOverride = require('method-override');
 const session = require('express-session');
+const MemoryStore = require('memorystore')(session);
 const flash = require('connect-flash');
 const bodyParser = require('body-parser');
 const Handlebars = require('handlebars');
 const cors = require('cors');
+
 
 const os = require('os');
 const networkInterfaces = os.networkInterfaces();
@@ -60,7 +62,10 @@ app.use(methodOverride('_method'));
 app.use(session({
     secret: 'mysecretapp',
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
+    store: new MemoryStore({
+      checkPeriod: 86400000
+    })
 }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(flash());
