@@ -3,7 +3,6 @@ const exphbs = require('express-handlebars');
 const path = require('path');
 const methodOverride = require('method-override');
 const session = require('express-session');
-const MongoStore = require('connect-mongo');
 const flash = require('connect-flash');
 const bodyParser = require('body-parser');
 const Handlebars = require('handlebars');
@@ -26,11 +25,11 @@ const whiteList = ipAddresses.flatMap(ip => [
   `http://${ip}:3001`
 ]);
 
-Handlebars.registerHelper('lt', function (a, b) {
+Handlebars.registerHelper('lt', function(a, b) {
   return a < b;
 });
 
-Handlebars.registerHelper('eq', function (a, b) {
+Handlebars.registerHelper('eq', function(a, b) {
   return a === b;
 });
 
@@ -48,10 +47,10 @@ app.use(cors({
 // Configuration of the Handlebars template engine
 app.set('views', path.join(__dirname, 'views'));
 app.engine('.html', exphbs({
-  defaultLayout: 'main',
-  layoutsDir: path.join(app.get('views'), 'layouts'),
-  partialsDir: path.join(app.get('views'), 'partials'),
-  extname: '.html'
+    defaultLayout: 'main',
+    layoutsDir: path.join(app.get('views'), 'layouts'),
+    partialsDir: path.join(app.get('views'), 'partials'),
+    extname: '.html'
 }));
 app.set('view engine', '.html');
 
@@ -59,22 +58,18 @@ app.set('view engine', '.html');
 app.use(express.urlencoded({ extended: false }));
 app.use(methodOverride('_method'));
 app.use(session({
-  secret: 'mysecretapp',
-  resave: true,
-  saveUninitialized: true,
-  store: MongoStore.create({
-    mongoUrl: process.env.DB_URL, // URL de conexión a MongoDB
-    dbName: process.env.TARGET_DB // Nombre de la base de datos
-  })
+    secret: 'mysecretapp',
+    resave: true,
+    saveUninitialized: true
 }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(flash());
 
 // Global variables
 app.use((req, res, next) => {
-  res.locals.success_msg = req.flash('success_msg');
-  res.locals.error_msg = req.flash('error_msg');
-  next();
+    res.locals.success_msg = req.flash('success_msg');
+    res.locals.error_msg = req.flash('error_msg');
+    next();
 })
 
 // Routes
