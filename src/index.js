@@ -46,6 +46,9 @@ app.use(cors({
   methods: ['GET', 'POST', 'PUT', 'DELETE']
 }));
 
+// Middleware para parsear JSON
+app.use(express.json());
+
 // Configuration of the Handlebars template engine
 app.set('views', path.join(__dirname, 'views'));
 app.engine('.html', exphbs({
