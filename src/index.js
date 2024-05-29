@@ -83,6 +83,7 @@ app.use(require('./routes/addAdmin'));
 app.use(require('./routes/addDiscrepance'));
 app.use(require('./routes/addProduct'));
 app.use(require('./routes/adminDelete'));
+app.use(require('./routes/chatbotUser'));
 app.use(require('./routes/discrepance'));
 app.use(require('./routes/home'));
 app.use(require('./routes/homeAdmin'));
