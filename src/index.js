@@ -86,7 +86,6 @@ app.use(require('./routes/addAdmin'));
 app.use(require('./routes/addDiscrepance'));
 app.use(require('./routes/addProduct'));
 app.use(require('./routes/adminDelete'));
-app.use(require('./routes/chatbotUser'));
 app.use(require('./routes/discrepance'));
 app.use(require('./routes/home'));
 app.use(require('./routes/homeAdmin'));
@@ -98,6 +97,7 @@ app.use(require('./routes/shop'));
 app.use(require('./routes/shopping_cart'));
 app.use(require('./routes/userLogin'));
 app.use(require('./routes/userRegister'));
+app.use(require('./routes/webhook'));
 
 // Static files
 app.use(express.static(path.join(__dirname, 'public')));

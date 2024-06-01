@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const productSchema = require('../models/product');
 
-router.get('/brands', async (req, res) => {
+router.get('/webhook', async (req, res) => {
     try {
         const productsInDB = await productSchema.find();
         const nameBrandSolicited = req.query.marca;
