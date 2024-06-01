@@ -1,11 +1,12 @@
-const router = require('express').Router();
+const express = require('express');
+const router = express.Router();
 const productSchema = require('../models/product');
 
-router.get('/webhook', async (req, res) => {
+router.post('/webhook', async (req, res) => {
     try {
-        const productsInDB = await productSchema.find();
-        const nameBrandSolicited = req.query.marca;
+        const nameBrandSolicited = req.body.marca;
 
+        const productsInDB = await productSchema.find();
         const brandExists = productsInDB.some(product => {
             return product.generalCharacteristics.includes(nameBrandSolicited);
         });
