@@ -4,7 +4,7 @@ const productSchema = require('../models/product');
 
 router.post('/webhook', async (req, res) => {
     try {
-        const nameBrandSolicited = req.query.marca;
+        const nameBrandSolicited = req.body.marca;
         console.log(nameBrandSolicited)
 
         const productsInDB = await productSchema.find();
