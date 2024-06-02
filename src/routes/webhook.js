@@ -74,7 +74,10 @@ async function handleDetailsProduct(req, res) {
                 }       
             });
 
-            res.json({ mensaje: 'Los productos que coinciden son:', productos: formattedProducts });
+            res.json({ mensaje: `Los productos que coinciden son: 
+                <Strong>Marca:</Strong> ${formattedProducts.Marca}` 
+        
+            });
             
         } else {
             res.json({ mensaje: 'No existen productos que coincidan con los criterios de búsqueda.' });
