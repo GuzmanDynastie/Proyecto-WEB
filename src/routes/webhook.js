@@ -42,46 +42,6 @@ async function handleCheckBrand(req, res) {
     }
 }
 
-// async function handleDetailsProduct(req, res) {
-//     try {
-//         const nameBrandSolicited = req.body.marca;
-//         const breedSolicited = req.body.raza;
-//         const petStage = req.body.etapa;
-
-//         let query = { status: true };
-//         if (nameBrandSolicited && breedSolicited && petStage) {
-//             const searchTerms = [nameBrandSolicited.trim(), breedSolicited.trim()];
-//             const orConditions = searchTerms.map(term => ({
-//                 $or: [
-//                     { 'petCharacteristics.0': { $regex: new RegExp(term, 'i') } },
-//                     { 'petCharacteristics.1': { $regex: new RegExp(term, 'i') } },
-//                     { 'generalCharacteristics.1': { $regex: new RegExp(term, 'i') } }
-//                 ]
-//             }));
-//             query.$and = orConditions;
-//         }
-
-//         const products = await productSchema.find(query).lean();
-//         if (products.length > 0) {
-//             const formattedProducts = products.map(product => {
-//                 return {
-//                     name: `${product.petCharacteristics[0]} ${product.petCharacteristics[1]}`,
-//                     images: product.images
-//                 };
-//             });
-
-//             res.json({ mensaje: 'Los productos que coinciden son:', productos: formattedProducts });
-            
-//         } else {
-//             res.json({ mensaje: 'No existen productos que coincidan con los criterios de búsqueda.' });
-//         }
-        
-//     } catch (error) {
-//         console.error('Error al procesar la acción:', error);
-//         res.status(500).json({ error: 'Error al procesar la acción.' });
-//     }
-// }
-
 async function handleDetailsProduct(req, res) {
     try {
         const nameBrandSolicited = req.body.marca;
@@ -103,20 +63,22 @@ async function handleDetailsProduct(req, res) {
 
         const products = await productSchema.find(query).lean();
         if (products.length > 0) {
-            const items = products.map(product => ({
-                title: `${product.petCharacteristics[0]} ${product.petCharacteristics[1]}`,
-            }));
+            const formattedProducts = products.map(product => {
+                return {
+                    name: `${product.petCharacteristics[0]} ${product.petCharacteristics[1]}`,
+                    images: product.images[0]
+                };
+            });
 
-            const response = {items: items};
-
-            res.json(response);
+            res.json({ mensaje: 'Los productos que coinciden son:', productos: formattedProducts });
+            
         } else {
-            res.json({ output: { text: 'No existen productos que coincidan con los criterios de búsqueda.' } });
+            res.json({ mensaje: 'No existen productos que coincidan con los criterios de búsqueda.' });
         }
         
     } catch (error) {
         console.error('Error al procesar la acción:', error);
-        res.status(500).json({ output: { text: 'Error al procesar la acción.' } });
+        res.status(500).json({ error: 'Error al procesar la acción.' });
     }
 }
 
