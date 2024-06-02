@@ -74,13 +74,13 @@ async function handleDetailsProduct(req, res) {
                 }       
             });
 
-            res.json({ mensaje: `Los productos que coinciden son: 
+            res.json({ mensaje: `Los productos que coinciden son:<br><hr> 
                 <Strong>Marca:</Strong> ${formattedProducts[0].Marca},
                 <Strong>Raza:</Strong> ${formattedProducts[0].Raza},
                 <Strong>Categoria:</Strong> ${formattedProducts[0].Categoria},
                 <Strong>Sabor:</Strong> ${formattedProducts[0].Sabor},
                 <Strong>Peso:</Strong> ${formattedProducts[0].Peso},
-                <Strong>Imagen:</Strong> ${formattedProducts[0].Imagen}
+                <Strong>Imagen:</Strong> ${formattedProducts[0].Imagen}<hr>
                 `
             });
             
