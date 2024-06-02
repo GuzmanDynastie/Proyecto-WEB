@@ -70,7 +70,7 @@ async function handleDetailsProduct(req, res) {
                     Categoria: `${product.petCharacteristics[1]}`,
                     Sabor: `${product.specifications[0]}`,
                     Peso: `${product.specifications[1]}`,
-                    Imagen: `../../.${product.images[0]}`
+                    Imagen: `${product.images[0]}`
                 }       
             });
 
@@ -80,7 +80,8 @@ async function handleDetailsProduct(req, res) {
                 <Strong>Categoria:</Strong> ${formattedProducts[0].Categoria},
                 <Strong>Sabor:</Strong> ${formattedProducts[0].Sabor},
                 <Strong>Peso:</Strong> ${formattedProducts[0].Peso},
-                `
+                `,
+                image: `https://nutripet-healthy.up.railway.app/${formattedProducts[0].Imagen}`
             });
             
         } else {
