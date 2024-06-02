@@ -13,9 +13,9 @@ router.post('/webhook', async (req, res) => {
         });
 
         if (brandExists) {
-            res.json({ existe: true, mensaje: `La marca ${nameBrandSolicited} existe en la base de datos.` });
+            res.json({ existe: true, mensaje: `La marca <strong>${nameBrandSolicited}</strong> existe en la base de datos.` });
         } else {
-            res.json({ existe: false, mensaje: `La marca ${nameBrandSolicited} no existe en la base de datos.` });
+            res.json({ existe: false, mensaje: `La marca <strong>${nameBrandSolicited}</strong> no existe en la base de datos.` });
         }
     } catch (error) {
         console.error('Error al consultar la base de datos:', error);
