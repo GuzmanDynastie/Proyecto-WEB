@@ -33,7 +33,7 @@ router.get('/admin/productOption', async (req, res) => {
 
 router.post('/admin/productOption', async (req, res) => {
     try {
-        let query = {};
+        let query = { status: true };
         if (req.body.search) {
             const searchTerms = req.body.search.trim().split(/\s+/);
             const orConditions = searchTerms.map(term => ({
@@ -110,7 +110,7 @@ router.post('/admin/update/:id', imageProduct.array('image_product', 10), async 
 
         let imagePaths;
         if (uploadedImages && uploadedImages.length > 0) {
-            imagePaths = saveImageProduct(req.files); 
+            imagePaths = saveImageProduct(req.files);
         }
 
         if (!(imagePaths && imagePaths.length > 0)) {

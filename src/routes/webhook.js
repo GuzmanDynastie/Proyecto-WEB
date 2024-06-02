@@ -44,13 +44,12 @@ async function handleCheckBrand(req, res) {
 
 async function handleDetailsProduct(req, res) {
     try {
-        const nameBrandSolicited = req.body.marca;
-        const breedSolicited = req.body.raza;
-        const petStage = req.body.etapa;
+        const { marca: nameBrandSolicited, raza: breedSolicited, etapa: petStage } = req.body;
 
         let query = { status: true };
+
         if (nameBrandSolicited && breedSolicited && petStage) {
-            const searchTerms = [nameBrandSolicited.trim(), breedSolicited.trim()];
+            const searchTerms = [nameBrandSolicited.trim(), breedSolicited.trim(), petStage.trim()];
             const orConditions = searchTerms.map(term => ({
                 $or: [
                     { 'petCharacteristics.0': { $regex: new RegExp(term, 'i') } },
@@ -62,32 +61,29 @@ async function handleDetailsProduct(req, res) {
         }
 
         const products = await productSchema.find(query).lean();
-        if (products.length > 0) {
-            const formattedProducts = products.map(product => {
-                return {
-                    Marca: `${product.generalCharacteristics[1]}`,
-                    Raza: `${product.petCharacteristics[0]}`,
-                    Categoria: `${product.petCharacteristics[1]}`,
-                    Sabor: `${product.specifications[0]}`,
-                    Peso: `${product.specifications[1]}`,
-                    Imagen: `${product.images[0]}`
-                }       
-            });
 
-            res.json({ mensaje: `Los productos que coinciden son:<br><hr> 
-                <Strong>Marca:</Strong> ${formattedProducts[0].Marca}
-                <Strong>Raza:</Strong> ${formattedProducts[0].Raza}
-                <Strong>Categoria:</Strong> ${formattedProducts[0].Categoria}
-                <Strong>Sabor:</Strong> ${formattedProducts[0].Sabor}
-                <Strong>Peso:</Strong> ${formattedProducts[0].Peso}
-                `,
+        if (products.length > 0) {
+            const formattedProducts = products.map(product => ({
+                Marca: product.generalCharacteristics[1],
+                Raza: product.petCharacteristics[0],
+                Categoria: product.petCharacteristics[1],
+                Sabor: product.specifications[0],
+                Peso: product.specifications[1],
+                Imagen: product.images[0]
+            }));
+
+            res.json({
+                mensaje: `Los productos que coinciden son:<br><hr>
+                    <strong>Marca:</strong> ${formattedProducts[0].Marca}<br>
+                    <strong>Raza:</strong> ${formattedProducts[0].Raza}<br>
+                    <strong>Categoria:</strong> ${formattedProducts[0].Categoria}<br>
+                    <strong>Sabor:</strong> ${formattedProducts[0].Sabor}<br>
+                    <strong>Peso:</strong> ${formattedProducts[0].Peso}`,
                 image: `https://nutripet-healthy.up.railway.app/${formattedProducts[0].Imagen}`
             });
-            
         } else {
             res.json({ mensaje: 'No existen productos que coincidan con los criterios de búsqueda.' });
         }
-        
     } catch (error) {
         console.error('Error al procesar la acción:', error);
         res.status(500).json({ error: 'Error al procesar la acción.' });
