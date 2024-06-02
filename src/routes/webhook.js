@@ -49,36 +49,40 @@ async function handleDetailsProduct(req, res) {
         const petStage = req.body.etapa;
 
         let query = { status: true };
-
         if (nameBrandSolicited && breedSolicited && petStage) {
-            const searchTerms = [nameBrandSolicited.trim(), breedSolicited.trim(), petStage.trim()];
+            const searchTerms = [nameBrandSolicited.trim(), breedSolicited.trim()];
             const orConditions = searchTerms.map(term => ({
                 $or: [
                     { 'petCharacteristics.0': { $regex: new RegExp(term, 'i') } },
                     { 'petCharacteristics.1': { $regex: new RegExp(term, 'i') } },
-                    { 'generalCharacteristics.1': { $regex: new RegExp(term, 'i') } },
-                    { 'specifications': { $regex: new RegExp(term, 'i') } }
+                    { 'generalCharacteristics.1': { $regex: new RegExp(term, 'i') } }
                 ]
             }));
             query.$and = orConditions;
         }
 
-        const filteredProducts = await Product.find(query);
+        const products = await productSchema.find(query).lean();
+        if (products.length > 0) {
+            const formattedProducts = products.map(product => {
+                return `
+                    ---
+                    
+                    '*Marca*': ${product.generalCharacteristics[0]},
+                    '*Raza*': ${product.petCharacteristics[0]},
+                    '*Categoria*': ${product.petCharacteristics[1]},
+                    '*Sabor*': ${product.specifications[0]},
+                    '*Peso*': ${product.specifications[1]},
+                    '*Imagen*': ../../.${product.images[0]}
 
-        if (filteredProducts.length > 0) {
-            const formattedProducts = filteredProducts.map(product => ({
-                Marca: product.generalCharacteristics[0],
-                Raza: product.petCharacteristics[0],
-                Categoria: product.petCharacteristics[1],
-                Sabor: product.specifications[0],
-                Peso: product.specifications[1],
-                Imagen: `../../${product.images[0]}`
-            }));
-            
+                    ---
+                `});
+
             res.json({ mensaje: 'Los productos que coinciden son:', productos: formattedProducts });
+            
         } else {
             res.json({ mensaje: 'No existen productos que coincidan con los criterios de búsqueda.' });
         }
+        
     } catch (error) {
         console.error('Error al procesar la acción:', error);
         res.status(500).json({ error: 'Error al procesar la acción.' });
