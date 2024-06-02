@@ -75,8 +75,7 @@ async function handleDetailsProduct(req, res) {
             });
 
             res.json({ mensaje: `Los productos que coinciden son: 
-                <Strong>Marca:</Strong> ${formattedProducts.Marca}` 
-        
+                <Strong>Marca:</Strong> ${formattedProducts[0].Marca}` 
             });
             
         } else {
