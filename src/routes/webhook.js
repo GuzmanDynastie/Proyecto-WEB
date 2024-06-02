@@ -10,8 +10,8 @@ router.post('/webhook', async (req, res) => {
             case 'checkBrand':
                 await handleCheckBrand(req, res);
                 break;
-            case 'anotherAction':
-                await handleAnotherAccion(req, res);
+            case 'detailsProduct':
+                await handleDetailsProduct(req, res);
                 break;
             default:
                 res.status(400).json({ error: 'Accion no reconocida.' });
@@ -42,12 +42,98 @@ async function handleCheckBrand(req, res) {
     }
 }
 
-async function handleAnotherAccion(req, res) {
+// async function handleDetailsProduct(req, res) {
+//     try {
+//         const nameBrandSolicited = req.body.marca;
+//         const breedSolicited = req.body.raza;
+//         const petStage = req.body.etapa;
+
+//         let query = { status: true };
+//         if (nameBrandSolicited && breedSolicited && petStage) {
+//             const searchTerms = [nameBrandSolicited.trim(), breedSolicited.trim()];
+//             const orConditions = searchTerms.map(term => ({
+//                 $or: [
+//                     { 'petCharacteristics.0': { $regex: new RegExp(term, 'i') } },
+//                     { 'petCharacteristics.1': { $regex: new RegExp(term, 'i') } },
+//                     { 'generalCharacteristics.1': { $regex: new RegExp(term, 'i') } }
+//                 ]
+//             }));
+//             query.$and = orConditions;
+//         }
+
+//         const products = await productSchema.find(query).lean();
+//         if (products.length > 0) {
+//             const formattedProducts = products.map(product => {
+//                 return {
+//                     name: `${product.petCharacteristics[0]} ${product.petCharacteristics[1]}`,
+//                     images: product.images
+//                 };
+//             });
+
+//             res.json({ mensaje: 'Los productos que coinciden son:', productos: formattedProducts });
+            
+//         } else {
+//             res.json({ mensaje: 'No existen productos que coincidan con los criterios de búsqueda.' });
+//         }
+        
+//     } catch (error) {
+//         console.error('Error al procesar la acción:', error);
+//         res.status(500).json({ error: 'Error al procesar la acción.' });
+//     }
+// }
+
+async function handleDetailsProduct(req, res) {
     try {
-        res.json({ mensaje: 'Accion procesada con exito' });
+        const nameBrandSolicited = req.body.marca;
+        const breedSolicited = req.body.raza;
+        const petStage = req.body.etapa;
+
+        let query = { status: true };
+        if (nameBrandSolicited && breedSolicited && petStage) {
+            const searchTerms = [nameBrandSolicited.trim(), breedSolicited.trim()];
+            const orConditions = searchTerms.map(term => ({
+                $or: [
+                    { 'petCharacteristics.0': { $regex: new RegExp(term, 'i') } },
+                    { 'petCharacteristics.1': { $regex: new RegExp(term, 'i') } },
+                    { 'generalCharacteristics.1': { $regex: new RegExp(term, 'i') } }
+                ]
+            }));
+            query.$and = orConditions;
+        }
+
+        const products = await productSchema.find(query).lean();
+        if (products.length > 0) {
+            const items = products.map(product => ({
+                title: `${product.petCharacteristics[0]} ${product.petCharacteristics[1]}`,
+                image_url: product.images[0], 
+                buttons: [
+                    {
+                        type: "web_url",
+                        url: "[Link del producto](http://example.com)",  // URL de más información o compra
+                        title: "Ver más"
+                    }
+                ]
+            }));
+
+            const response = {
+                output: {
+                    generic: [
+                        {
+                            response_type: "carousel",
+                            items: items
+                        }
+                    ]
+                }
+            };
+
+            res.json(response);
+        } else {
+            res.json({ output: { text: 'No existen productos que coincidan con los criterios de búsqueda.' } });
+        }
+        
     } catch (error) {
         console.error('Error al procesar la acción:', error);
-        res.status(500).json({ error: 'Error al procesar la acción.' });
+        res.status(500).json({ output: { text: 'Error al procesar la acción.' } });
     }
 }
 
