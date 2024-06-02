@@ -65,8 +65,12 @@ async function handleDetailsProduct(req, res) {
         if (products.length > 0) {
             const formattedProducts = products.map(product => {
                 return {
-                    name: `${product.petCharacteristics[0]} ${product.petCharacteristics[1]}`,
-                    images: `${product.images[0]}`
+                    '*Marca*': `${product.generalCharacteristics[0]}`,
+                    '*Raza*': `${product.petCharacteristics[0]}`,
+                    '*Categoria*': `${product.petCharacteristics[1]}`,
+                    '*Sabor*': `${product.specifications[0]}`,
+                    '*Peso*': `${product.specifications[1]}`,
+                    '*Imagen*': `../../../${product.images[0]}`
                 };
             });
 
