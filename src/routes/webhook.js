@@ -105,26 +105,9 @@ async function handleDetailsProduct(req, res) {
         if (products.length > 0) {
             const items = products.map(product => ({
                 title: `${product.petCharacteristics[0]} ${product.petCharacteristics[1]}`,
-                image_url: product.images[0], 
-                buttons: [
-                    {
-                        type: "web_url",
-                        url: "[Link del producto](http://example.com)",  // URL de más información o compra
-                        title: "Ver más"
-                    }
-                ]
             }));
 
-            const response = {
-                output: {
-                    generic: [
-                        {
-                            response_type: "carousel",
-                            items: items
-                        }
-                    ]
-                }
-            };
+            const response = {items: items};
 
             res.json(response);
         } else {
