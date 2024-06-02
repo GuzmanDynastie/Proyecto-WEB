@@ -67,7 +67,7 @@ async function handleDetailsProduct(req, res) {
                 return `
                     ---
                     
-                    '*Marca*': ${product.generalCharacteristics[0]},
+                    '*Marca*': ${product.generalCharacteristics[1]},
                     '*Raza*': ${product.petCharacteristics[0]},
                     '*Categoria*': ${product.petCharacteristics[1]},
                     '*Sabor*': ${product.specifications[0]},
@@ -77,7 +77,7 @@ async function handleDetailsProduct(req, res) {
                     ---
                 `});
 
-            res.json({ mensaje: 'Los productos que coinciden son:', productos: formattedProducts });
+            res.json({ mensaje: 'Los productos que coinciden son:', productos: formattedProducts.join('\n') });
             
         } else {
             res.json({ mensaje: 'No existen productos que coincidan con los criterios de búsqueda.' });
