@@ -80,7 +80,9 @@ async function handleDetailsProduct(req, res) {
                 <Strong>Categoria:</Strong> ${formattedProducts[0].Categoria},
                 <Strong>Sabor:</Strong> ${formattedProducts[0].Sabor},
                 <Strong>Peso:</Strong> ${formattedProducts[0].Peso},
-                <Strong>Imagen:</Strong> ${formattedProducts[0].Imagen}<hr>
+                <Strong>Imagen:</Strong> ${formattedProducts[0].Imagen}<br>
+                <button>Producto<button>
+                <hr>
                 `
             });
             
