@@ -56,7 +56,7 @@ async function handleDetailsProduct(req, res) {
                 $or: [
                     { 'petCharacteristics.0': { $regex: new RegExp(term, 'i') } },
                     { 'petCharacteristics.1': { $regex: new RegExp(term, 'i') } },
-                    { 'generalCharacteristics.0': { $regex: new RegExp(term, 'i') } },
+                    { 'generalCharacteristics.1': { $regex: new RegExp(term, 'i') } },
                     { 'specifications': { $regex: new RegExp(term, 'i') } }
                 ]
             }));
