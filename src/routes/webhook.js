@@ -63,20 +63,15 @@ async function handleDetailsProduct(req, res) {
 
         const products = await productSchema.find(query).lean();
         if (products.length > 0) {
-            const formattedProducts = products.map(product => {
-                return `
-                    ---
-                    
-                    '*Marca*': ${product.generalCharacteristics[0]},
-                    '*Raza*': ${product.petCharacteristics[0]},
-                    '*Categoria*': ${product.petCharacteristics[1]},
-                    '*Sabor*': ${product.specifications[0]},
-                    '*Peso*': ${product.specifications[1]},
-                    '*Imagen*': ../../.${product.images[0]}
-
-                    ---
-                `});
-
+            const formattedProducts = products.map(product => ({
+                Marca: product.generalCharacteristics[0],
+                Raza: product.petCharacteristics[0],
+                Categoria: product.petCharacteristics[1],
+                Sabor: product.specifications[0],
+                Peso: product.specifications[1],
+                Imagen: `../../../${product.images[0]}`
+            }));
+            
             res.json({ mensaje: 'Los productos que coinciden son:', productos: formattedProducts });
             
         } else {
