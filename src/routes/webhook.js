@@ -76,10 +76,10 @@ async function handleDetailsProduct(req, res) {
                 mensaje: `Los productos que coinciden son:<br><hr>
                     <ol>
                     <li><strong>Marca:</strong> ${formattedProducts[0].Marca}</li>
-                    </li><strong>Raza:</strong> ${formattedProducts[0].Raza}</li>
-                    </li><strong>Categoria:</strong> ${formattedProducts[0].Categoria}</li>
-                    </li><strong>Sabor:</strong> ${formattedProducts[0].Sabor}</li>
-                    </li><strong>Peso:</strong> ${formattedProducts[0].Peso}</li>
+                    <li><strong>Raza:</strong> ${formattedProducts[0].Raza}</li>
+                    <li><strong>Categoria:</strong> ${formattedProducts[0].Categoria}</li>
+                    <li><strong>Sabor:</strong> ${formattedProducts[0].Sabor}</li>
+                    <li><strong>Peso:</strong> ${formattedProducts[0].Peso}</li>
                     </ol>`,
                 image: `https://nutripet-healthy.up.railway.app/${formattedProducts[0].Imagen}`
             });
