@@ -65,10 +65,10 @@ async function handleDetailsProduct(req, res) {
             mensaje = 'Los productos que coinciden son:<br><hr>';
             formattedProducts.forEach(product => {
                 mensaje += `
-                    - <strong>Marca:</strong> ${product.Marca}<br>
-                    - <strong>Raza:</strong> ${product.Raza}<br>
-                    - <strong>Categoria:</strong> ${product.Categoria}<br>
-                    - <strong>Sabor:</strong> ${product.Sabor}<br>
+                    - <strong>Marca:</strong> ${product.Marca}
+                    - <strong>Raza:</strong> ${product.Raza}
+                    - <strong>Categoria:</strong> ${product.Categoria}
+                    - <strong>Sabor:</strong> ${product.Sabor}
                     - <strong>Peso:</strong> ${product.Peso}<br><hr>
                 `;
             });
@@ -101,10 +101,10 @@ async function handleDetailsProduct(req, res) {
                 mensaje = 'No se encontraron productos de la marca solicitada, pero estos productos coinciden con la raza y etapa:<br><hr>';
                 formattedAlternativeProducts.forEach(product => {
                     mensaje += `
-                        - <strong>Marca:</strong> ${product.Marca}<br>
-                        - <strong>Raza:</strong> ${product.Raza}<br>
-                        - <strong>Categoria:</strong> ${product.Categoria}<br>
-                        - <strong>Sabor:</strong> ${product.Sabor}<br>
+                        - <strong>Marca:</strong> ${product.Marca}
+                        - <strong>Raza:</strong> ${product.Raza}
+                        - <strong>Categoria:</strong> ${product.Categoria}
+                        - <strong>Sabor:</strong> ${product.Sabor}
                         - <strong>Peso:</strong> ${product.Peso}<br><hr>
                     `;
                 });
