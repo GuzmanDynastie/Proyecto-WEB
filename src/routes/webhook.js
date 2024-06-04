@@ -62,18 +62,18 @@ async function handleDetailsProduct(req, res) {
                 Imagen: product.images[0]
             }));
 
-            mensaje = 'Los productos que coinciden son:<hr>';
+            mensaje = 'Los productos que coinciden son:<br><hr>';
+            let images = [];
             formattedProducts.forEach(product => {
                 mensaje += `
-                    - <strong>Marca:</strong> ${product.Marca}
-                    - <strong>Raza:</strong> ${product.Raza}
-                    - <strong>Categoria:</strong> ${product.Categoria}
-                    - <strong>Sabor:</strong> ${product.Sabor}
-                    - <strong>Peso:</strong> ${product.Peso}<hr>
+                    - <strong>Marca:</strong> ${product.Marca}<br>
+                    - <strong>Raza:</strong> ${product.Raza}<br>
+                    - <strong>Categoria:</strong> ${product.Categoria}<br>
+                    - <strong>Sabor:</strong> ${product.Sabor}<br>
+                    - <strong>Peso:</strong> ${product.Peso}<br><hr>
                 `;
+                images.push(`https://nutripet-healthy.up.railway.app/${product.Imagen}`);
             });
-
-            const images = formattedProducts.map(product => `https://nutripet-healthy.up.railway.app/${product.Imagen[0]}`);
 
             res.json({
                 mensaje,
@@ -98,18 +98,18 @@ async function handleDetailsProduct(req, res) {
                     Imagen: product.images[0]
                 }));
 
-                mensaje = 'No se encontraron productos de la marca solicitada, pero estos productos coinciden con la raza y etapa:<hr>';
+                mensaje = 'No se encontraron productos de la marca solicitada, pero estos productos coinciden con la raza y etapa:<br><hr>';
+                let images = [];
                 formattedAlternativeProducts.forEach(product => {
-                    mensaje += 
-                    `- <strong>Marca:</strong> ${product.Marca}
-                        - <strong>Raza:</strong> ${product.Raza}
-                        - <strong>Categoria:</strong> ${product.Categoria}
-                        - <strong>Sabor:</strong> ${product.Sabor}
-                        - <strong>Peso:</strong> ${product.Peso}<hr>
+                    mensaje += `
+                        - <strong>Marca:</strong> ${product.Marca}<br>
+                        - <strong>Raza:</strong> ${product.Raza}<br>
+                        - <strong>Categoria:</strong> ${product.Categoria}<br>
+                        - <strong>Sabor:</strong> ${product.Sabor}<br>
+                        - <strong>Peso:</strong> ${product.Peso}<br><hr>
                     `;
+                    images.push(`https://nutripet-healthy.up.railway.app/${product.Imagen}`);
                 });
-
-                const images = formattedAlternativeProducts.map(product => `https://nutripet-healthy.up.railway.app/${product.Imagen[0]}`);
 
                 res.json({
                     mensaje,
