@@ -23,25 +23,6 @@ router.post('/webhook', async (req, res) => {
     }
 });
 
-async function handleCheckBrand(req, res) {
-    try {
-        const nameBrandSolicited = req.body.marca;
-        const productsInBD = await productSchema.find();
-        const brandExists = productsInBD.some(product => {
-            return product.generalCharacteristics.includes(nameBrandSolicited);
-        });
-
-        if (brandExists) {
-            res.json({ existe: true, mensaje: `¡Claro! contamos con la marca <strong>${nameBrandSolicited}</strong>.` });
-        } else {
-            res.json({ existe: false, mensaje: `Actualmente no tenemos la marca <strong>${nameBrandSolicited}</strong> en nuestra tienda.` });
-        }
-    } catch (error) {
-        console.error('Error al consultar la base de datos:', error);
-        res.status(500).json({ error: 'Error al consultar la base de datos.' });
-    }
-}
-
 async function handleDetailsProduct(req, res) {
     try {
         const { marca: nameBrandSolicited, raza: breedSolicited, etapa: petStage } = req.body;
@@ -69,6 +50,8 @@ async function handleDetailsProduct(req, res) {
             products = await productSchema.find(query).lean();
         }
 
+        let mensaje = '';
+
         if (products.length > 0) {
             const formattedProducts = products.map(product => ({
                 Marca: product.generalCharacteristics[1],
@@ -79,7 +62,7 @@ async function handleDetailsProduct(req, res) {
                 Imagen: product.images[0]
             }));
 
-            let mensaje = 'Los productos que coinciden son:<br><hr>';
+            mensaje = 'Los productos que coinciden son:<br><hr>';
             formattedProducts.forEach(product => {
                 mensaje += `
                     - <strong>Marca:</strong> ${product.Marca}<br>
@@ -90,9 +73,11 @@ async function handleDetailsProduct(req, res) {
                 `;
             });
 
+            const images = formattedProducts.map(product => `https://nutripet-healthy.up.railway.app/${product.Imagen}`);
+
             res.json({
-                mensaje: mensaje,
-                image: `https://nutripet-healthy.up.railway.app/${formattedProducts[0].Imagen}`
+                mensaje,
+                images
             });
         } else {
             const alternativeQuery = {
@@ -113,7 +98,7 @@ async function handleDetailsProduct(req, res) {
                     Imagen: product.images[0]
                 }));
 
-                let mensaje = 'No se encontraron productos de la marca solicitada, pero estos productos coinciden con la raza y etapa:<br><hr>';
+                mensaje = 'No se encontraron productos de la marca solicitada, pero estos productos coinciden con la raza y etapa:<br><hr>';
                 formattedAlternativeProducts.forEach(product => {
                     mensaje += `
                         - <strong>Marca:</strong> ${product.Marca}<br>
@@ -124,9 +109,11 @@ async function handleDetailsProduct(req, res) {
                     `;
                 });
 
+                const images = formattedAlternativeProducts.map(product => `https://nutripet-healthy.up.railway.app/${product.Imagen}`);
+
                 res.json({
-                    mensaje: mensaje,
-                    image: `https://nutripet-healthy.up.railway.app/${formattedAlternativeProducts[0].Imagen}`
+                    mensaje,
+                    images
                 });
             } else {
                 res.json({ mensaje: 'No existen productos que coincidan con los criterios de búsqueda.' });
