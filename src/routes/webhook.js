@@ -100,8 +100,8 @@ async function handleDetailsProduct(req, res) {
 
                 mensaje = 'No se encontraron productos de la marca solicitada, pero estos productos coinciden con la raza y etapa:<hr>';
                 formattedAlternativeProducts.forEach(product => {
-                    mensaje += `
-                        - <strong>Marca:</strong> ${product.Marca}
+                    mensaje += 
+                    `- <strong>Marca:</strong> ${product.Marca}
                         - <strong>Raza:</strong> ${product.Raza}
                         - <strong>Categoria:</strong> ${product.Categoria}
                         - <strong>Sabor:</strong> ${product.Sabor}
