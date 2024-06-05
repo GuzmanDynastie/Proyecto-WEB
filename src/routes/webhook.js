@@ -23,6 +23,28 @@ router.post('/webhook', async (req, res) => {
     }
 });
 
+// Funcion para consultar si una marca existe o no en la BD
+async function handleCheckBrand(req, res) {
+    try {
+        const { marca: nameBrandSolicited } = req.body;
+        const productsInBD = await productSchema.find({ status: true });
+        const brandExists = productsInBD.some(product => {
+            return product.generalCharacteristics.includes(nameBrandSolicited);
+        });
+
+        if (brandExists) {
+            res.json({ mensaje: `Actualmente contamos con la marca ${nameBrandSolicited}.` });
+        } else {
+            res.json({ mensaje: `Lo sentimos, actualmente no disponemos de la marca ${nameBrandSolicited}.` });
+        }
+
+    } catch (error) {
+        console.error('Error al consultar la base de datos:', error);
+        res.status(500).json({ error: 'Error al consultar la base de datos.' });
+    }
+}
+
+// Funcion para hacer un filtro de busqueda con los parametros: MARCA, RAZA y ETAPA
 async function handleDetailsProduct(req, res) {
     try {
         const { marca: nameBrandSolicited, raza: breedSolicited, etapa: petStage } = req.body;
