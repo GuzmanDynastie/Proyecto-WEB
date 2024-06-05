@@ -33,9 +33,9 @@ async function handleCheckBrand(req, res) {
         });
 
         if (brandExists) {
-            res.json({ mensaje: `Actualmente contamos con la marca ${nameBrandSolicited}.` });
+            res.json({ mensaje: `¡Por supuesto! Actualmente contamos con la marca <Strong>${nameBrandSolicited}</Strong>.` });
         } else {
-            res.json({ mensaje: `Lo sentimos, actualmente no disponemos de la marca ${nameBrandSolicited}.` });
+            res.json({ mensaje: `Lo sentimos, actualmente no disponemos de la marca <Strong>${nameBrandSolicited}</Strong>.` });
         }
 
     } catch (error) {
