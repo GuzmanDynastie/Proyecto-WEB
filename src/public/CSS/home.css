@@ -1,6 +1,6 @@
 .nav1 {
     background-color: rgb(53, 58, 64);
-    position: fixed !important;
+    /* position: fixed !important; */
     width: 100%;
     z-index: 1000;
 }
@@ -11,10 +11,12 @@ nav .navbar-brand {
     font-weight: bold;
     text-align: left;
     margin-left: 15px;
+    transition: transform 0.3s ease;
 }
 
 nav .navbar-brand:hover {
-    color: rgb(153, 156, 161);
+    color: white;
+    transform: scale(1.1);
 }
 
 nav div .form-control {
@@ -146,4 +148,96 @@ ol.carrusel__ {
 
 .collapse {
     justify-content: center;
+}
+
+.navbar-light-2 {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: rgb(34, 36, 36);
+}
+
+a.nav-2 {
+    transition: transform 0.3s ease;
+}
+
+a.nav-2:hover {
+    color: rgb(52, 168, 235);
+    transform: scale(1.1);
+}
+
+hr {
+    border: 2px solid;
+}
+
+.about-us {
+    margin-top: 20px;
+}
+
+.about-together {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.text-about {
+    margin-top: 20px;
+    width: 980px;
+}
+
+.image-about {
+    width: 650px;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.determine-age {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.determine-age-info {
+    padding-top: 20px;
+    border: 5px solid rgb(92, 92, 92);
+    width: 1800px;
+    margin-left: 50px;
+    margin-top: 40px;
+    border-radius: 10px;
+}
+
+.title-determine-age-info {
+    color: green;
+    font-weight: bold;
+}
+
+h3 {
+    font-weight: bold;
+}
+
+p {
+    font-size: larger;
+}
+
+.p2 {
+    margin-left: 80px;
+    width: 900px;
+    text-align: start;
+}
+
+.image-determine-age {
+    width: 600px;
+}
+
+.info-determine {
+    width: 950px;
+}
+
+.image-determine {
+    text-align: center;
+    margin-left: 180px;
+}
+
+.together-determine-age-info {
+    display: flex;
+    flex-wrap: wrap;
 }

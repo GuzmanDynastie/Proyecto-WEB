@@ -14,6 +14,7 @@
 + [¿Cómo ejecutar el programa?](#como-ejecutar-el-programa)
 + [¿Cómo mato un proceso de servidor?](#como-matar-proceso-servidor)
 + [Tecnologias](#tecnologias)
++ [Imagenes](#imagenes)
 
 ---
 
@@ -86,6 +87,13 @@ ____
 ____
 > ###### Base de datos
 - [x] MongoDB
+
+---
+
+### Imagenes
+<a name="imagenes"></a>
+> ###### Fotografías y gráficos gratuitos para uso personal y comercial
+- [x] FreeImages.com
 
 ---
 
