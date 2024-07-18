@@ -108,34 +108,55 @@ async function handleDetailsProduct(req, res) {
 
 async function handleRecomendationProduct(req, res) {
     try {
-        const { etapa: petStage, mascota: petCategory, raza: petBreed } = req.body;
-        let query = { status: true };
-        if (req.body.search) {
-            const searchTerms = req.body.search.trim().split(/\s+/);
-            const orConditions = searchTerms.map(term => ({
-                $or: [
-                    { 'petCharacteristics.0': { $regex: new RegExp(term, 'i') } },
-                    { 'petCharacteristics.1': { $regex: new RegExp(term, 'i') } },
-                    { 'petCharacteristics.2': { $regex: new RegExp(term, 'i') } }
-                ]
-            }));
-            query.$and = orConditions;
+        const { etapa: petStage, mascota: petType, raza: petRace } = req.body;
+
+        let query = {
+            status: true,
+            petCharacteristics: {
+                $all: [petStage, petType, petRace]
+            }
+        };
+
+        let products = await productSchema.find(query).lean();
+
+        if (products.length === 0) {
+            query.petCharacteristics = {
+                $all: [petStage, petType, "Todos los tamaños"]
+            }
+            products = await productSchema.find(query).lean();
         }
-        const products = await productSchema.find(query).lean();
 
-        const baseURL = 'https://nutripet-healthy.up.railway.app/shopping/shop';
-        const queryParams = new URLSearchParams({
-            petStage, petCategory, petBreed,
-            products: JSON.stringify(products) // Convierte los productos a JSON para poderlos pasar como parametro
-        });
-        const filteredURL = `${baseURL}?${queryParams.toString()}`;
+        if (products.length > 0) {
+            const formattedProducts = products.map(product => ({
+                Marca: product.generalCharacteristics[1],
+                Raza: product.petCharacteristics[0],
+                Categoria: product.petCharacteristics[1],
+                Sabor: product.specifications[0],
+                Peso: product.specifications[1],
+                Imagen: product.images[0],
+                ID_product: product._id
+            }));
 
-        // Devuelve el URL como respuesta
-        res.status(200).json({ url: filteredURL });
+            const productDetails = formattedProducts.map(product => `
+                <hr>
+                - <strong>Marca:</strong> ${product.Marca} <br>
+                - <strong>Raza:</strong> ${product.Raza} <br>
+                - <strong>Categoria:</strong> ${product.Categoria} <br>
+                - <strong>Sabor:</strong> ${product.Sabor} <br>
+                - <strong>Peso:</strong> ${product.Peso} <br>
+            `).join('');
 
+            res.json({
+                mensaje: `Los productos que coinciden son:<br>${productDetails}`,
+                image: `https://nutripet-healthy.up.railway.app/${formattedProducts[0].Imagen}`,
+                url: `https://nutripet-healthy.up.railway.app/shopping/shop/${formattedProducts[0].ID_product}`
+            });
+        } else {
+            res.json({ mensaje: 'No existen productos que coincidan con los criterios de búsqueda.' });
+        }
     } catch (error) {
         console.error('Error al procesar la acción:', error);
-        res.status(500).json({ error: 'Error al procesar la acción.' })
+        res.status(500).json({ error: 'Error al procesar la acción.' });
     }
 }
 
