@@ -106,6 +106,7 @@ async function handleDetailsProduct(req, res) {
     }
 }
 
+// Funcion quer muestra la recomendacion de productos con ETAPA, MASCOTA y RAZA
 async function handleRecomendationProduct(req, res) {
     try {
         const { etapa: petStage, mascota: petType, raza: petRace } = req.body;
@@ -149,7 +150,7 @@ async function handleRecomendationProduct(req, res) {
             res.json({
                 mensaje: `Los productos que coinciden son:<br>${productDetails}`,
                 image: `https://nutripet-healthy.up.railway.app/${formattedProducts[0].Imagen}`,
-                url: `https://nutripet-healthy.up.railway.app/shopping/shop/${formattedProducts[0].ID_product}`
+                url: `https://nutripet-healthy.up.railway.app/shopping/shop/${formattedProducts[0]}`
             });
         } else {
             res.json({ mensaje: 'No existen productos que coincidan con los criterios de búsqueda.' });
