@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const productSchema = require('../models/product');
+const axios = require('axios');
 
 router.post('/webhook', async (req, res) => {
     try {
@@ -12,6 +13,9 @@ router.post('/webhook', async (req, res) => {
                 break;
             case 'detailsProduct':
                 await handleDetailsProduct(req, res);
+                break;
+            case 'recomendationProduct':
+                await handleRecomendationProduct(req, res);
                 break;
             default:
                 res.status(400).json({ error: 'Accion no reconocida.' });
@@ -51,13 +55,13 @@ async function handleDetailsProduct(req, res) {
 
         const productsInBD = await productSchema.find();
         const brandExists = productsInBD.some(product => {
-            return product.generalCharacteristics.includes(nameBrandSolicited);
+            return product.generalCharacteristics[1].toLowerCase().includes(nameBrandSolicited.toLowerCase());
         });
 
         let query = { status: true };
 
         if (nameBrandSolicited && breedSolicited && petStage) {
-            const searchTerms = [nameBrandSolicited.trim().toLowerCase(), breedSolicited.trim().toLowerCase(), petStage.trim().toLowerCase()];
+            const searchTerms = [nameBrandSolicited, breedSolicited, petStage];
             const orConditions = searchTerms.map(term => ({
                 $or: [
                     { 'petCharacteristics.0': { $regex: new RegExp(term, 'i') } },
@@ -99,6 +103,39 @@ async function handleDetailsProduct(req, res) {
     } catch (error) {
         console.error('Error al procesar la acción:', error);
         res.status(500).json({ error: 'Error al procesar la acción.' });
+    }
+}
+
+async function handleRecomendationProduct(req, res) {
+    try {
+        const { etapa: petStage, mascota: petCategory, raza: petBreed } = req.body;
+        let query = { status: true };
+        if (req.body.search) {
+            const searchTerms = req.body.search.trim().split(/\s+/);
+            const orConditions = searchTerms.map(term => ({
+                $or: [
+                    { 'petCharacteristics.0': { $regex: new RegExp(term, 'i') } },
+                    { 'petCharacteristics.1': { $regex: new RegExp(term, 'i') } },
+                    { 'petCharacteristics.2': { $regex: new RegExp(term, 'i') } }
+                ]
+            }));
+            query.$and = orConditions;
+        }
+        const products = await productSchema.find(query).lean();
+
+        const baseURL = 'https://nutripet-healthy.up.railway.app/shopping/shop';
+        const queryParams = new URLSearchParams({
+            petStage, petCategory, petBreed,
+            products: JSON.stringify(products) // Convierte los productos a JSON para poderlos pasar como parametro
+        });
+        const filteredURL = `${baseURL}?${queryParams.toString()}`;
+
+        // Devuelve el URL como respuesta
+        res.status(200).json({ url: filteredURL });
+
+    } catch (error) {
+        console.error('Error al procesar la acción:', error);
+        res.status(500).json({ error: 'Error al procesar la acción.' })
     }
 }
 
