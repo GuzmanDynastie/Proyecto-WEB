@@ -150,14 +150,14 @@ async function handleRecomendationProduct(req, res) {
 - <strong>Raza:</strong> ${product.Raza} <br>
 - <strong>Categoria:</strong> ${product.Categoria} <br>
 - <strong>Sabor:</strong> ${product.Sabor} <br>
-- <strong>Peso:</strong> ${product.Peso} <br>
-<a href="https://nutripet-healthy.up.railway.app/shopping/shop/${product.ID_product}" target="_blank" style="display: inline-block; border: 2px solid #ddd; padding: 2px; text-decoration: none; color: black;">
+- <strong>Peso:</strong> ${product.Peso} <br><br>
+<a href="https://nutripet-healthy.up.railway.app/shopping/shop/${product.ID_product}" target="_blank" style="display: inline-block; border: 3px solid #ddd; padding: 2px; text-decoration: none; color: black;">
     <img src="https://nutripet-healthy.up.railway.app/${product.Imagen}" alt="${product.Marca}" style="width: 170px; object-fit: cover; border: 2px solid #ddd;">
 </a><br>
             `).join('');
 
             res.json({
-                mensaje: `<h3>Los productos que coinciden son:</h3><br>${productDetails}`
+                mensaje: `<h4>Los productos que coinciden son:</h4><br>${productDetails}`
             });
         } else {
             res.json({ mensaje: 'No existen productos que coincidan con los criterios de búsqueda.' });
