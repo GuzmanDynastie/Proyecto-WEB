@@ -107,64 +107,6 @@ async function handleDetailsProduct(req, res) {
 }
 
 // Funcion quer muestra la recomendacion de productos con ETAPA, MASCOTA y RAZA
-// async function handleRecomendationProduct(req, res) {
-//     try {
-//         const { etapa: petStage, mascota: petType, raza: petRace } = req.body;
-
-//         let query = {
-//             status: true,
-//             petCharacteristics: {
-//                 $all: [petStage, petType, petRace]
-//             }
-//         };
-
-//         let products = await productSchema.find(query).lean();
-
-//         if (products.length === 0) {
-//             query.petCharacteristics = {
-//                 $all: [petStage, petType, "Todos los tamaños"]
-//             }
-//             products = await productSchema.find(query).lean();
-//         }
-
-//         if (products.length > 0) {
-//             const formattedProducts = products.map(product => ({
-//                 Marca: product.generalCharacteristics[1],
-//                 Raza: product.petCharacteristics[0],
-//                 Categoria: product.petCharacteristics[1],
-//                 Sabor: product.specifications[0],
-//                 Peso: product.specifications[1],
-//                 Imagen: product.images[0],
-//                 ID_product: product._id
-//             }));
-
-//             const productDetails = formattedProducts.map(product => `
-//                 <hr>
-//                 - <strong>Marca:</strong> ${product.Marca} <br>
-//                 - <strong>Raza:</strong> ${product.Raza} <br>
-//                 - <strong>Categoria:</strong> ${product.Categoria} <br>
-//                 - <strong>Sabor:</strong> ${product.Sabor} <br>
-//                 - <strong>Peso:</strong> ${product.Peso} <br>
-//             `).join('');
-
-//             res.json({
-//                 mensaje: `Los productos que coinciden son:<br>${productDetails}`,
-//                 image: `https://nutripet-healthy.up.railway.app/${formattedProducts[0].Imagen}`,
-//                 url: `https://nutripet-healthy.up.railway.app/shopping/shop/${formattedProducts[0].ID_product}`
-//             });
-//         } else {
-//             res.json({ mensaje: 'No existen productos que coincidan con los criterios de búsqueda.' });
-//         }
-//     } catch (error) {
-//         console.error('Error al procesar la acción:', error);
-//         res.status(500).json({ error: 'Error al procesar la acción.' });
-//     }
-// }
-
-
-
-
-
 async function handleRecomendationProduct(req, res) {
     try {
         const { etapa: petStage, mascota: petType, raza: petRace } = req.body;
@@ -200,16 +142,16 @@ async function handleRecomendationProduct(req, res) {
                 ID_product: product._id
             }));
 
-            // Construye los detalles de los productos
+            // Construye los detalles de los productos incluyendo imagen y URL
             const productDetails = formattedProducts.map(product => `
-<hr>
-- <strong>Marca:</strong> ${product.Marca} <br>
-- <strong>Raza:</strong> ${product.Raza} <br>
-- <strong>Categoria:</strong> ${product.Categoria} <br>
-- <strong>Sabor:</strong> ${product.Sabor} <br>
-- <strong>Peso:</strong> ${product.Peso} <br>
-- <strong>Imagen:</strong> <img src="https://nutripet-healthy.up.railway.app/${product.Imagen}" alt="${product.Marca}" width="50" height="50"><br>
-- <strong>URL del producto:</strong> <a href="https://nutripet-healthy.up.railway.app/shopping/shop/${product.ID_product}">Ver producto</a><br>
+                <hr>
+                - <strong>Marca:</strong> ${product.Marca} <br>
+                - <strong>Raza:</strong> ${product.Raza} <br>
+                - <strong>Categoria:</strong> ${product.Categoria} <br>
+                - <strong>Sabor:</strong> ${product.Sabor} <br>
+                - <strong>Peso:</strong> ${product.Peso} <br>
+                <img src="https://nutripet-healthy.up.railway.app/${product.Imagen}" alt="${product.Marca}" width="50" height="50"><br>
+                <strong>URL del producto:</strong> <a href="https://nutripet-healthy.up.railway.app/shopping/shop/${product.ID_product}">Ver producto</a><br>
             `).join('');
 
             res.json({
@@ -223,6 +165,5 @@ async function handleRecomendationProduct(req, res) {
         res.status(500).json({ error: 'Error al procesar la acción.' });
     }
 }
-
 
 module.exports = router;
