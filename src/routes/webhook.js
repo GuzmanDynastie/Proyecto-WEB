@@ -145,7 +145,7 @@ async function handleRecomendationProduct(req, res) {
             // Construye los detalles de los productos incluyendo imagen y URL
             const productDetails = formattedProducts.map(product =>
                 `
-<hr style="border: 2px solid #ddd; border-radius: 5px; width: 100%; margin: 10px 0;">
+<hr style="border: 2px solid #ddd; width: 100%; margin: 10px 0;">
 - <strong>Marca:</strong> ${product.Marca} <br>
 - <strong>Raza:</strong> ${product.Raza} <br>
 - <strong>Categoria:</strong> ${product.Categoria} <br>
