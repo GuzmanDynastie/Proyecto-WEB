@@ -143,15 +143,16 @@ async function handleRecomendationProduct(req, res) {
             }));
 
             // Construye los detalles de los productos incluyendo imagen y URL
-            const productDetails = formattedProducts.map(product => `
-                <hr>
-                - <strong>Marca:</strong> ${product.Marca} <br>
-                - <strong>Raza:</strong> ${product.Raza} <br>
-                - <strong>Categoria:</strong> ${product.Categoria} <br>
-                - <strong>Sabor:</strong> ${product.Sabor} <br>
-                - <strong>Peso:</strong> ${product.Peso} <br>
-                <img src="https://nutripet-healthy.up.railway.app/${product.Imagen}" alt="${product.Marca}" width="50" height="50"><br>
-                <strong>URL del producto:</strong> <a href="https://nutripet-healthy.up.railway.app/shopping/shop/${product.ID_product}">Ver producto</a><br>
+            const productDetails = formattedProducts.map(product =>
+                `
+<hr>
+- <strong>Marca:</strong> ${product.Marca} <br>
+- <strong>Raza:</strong> ${product.Raza} <br>
+- <strong>Categoria:</strong> ${product.Categoria} <br>
+- <strong>Sabor:</strong> ${product.Sabor} <br>
+- <strong>Peso:</strong> ${product.Peso} <br>
+<img src="https://nutripet-healthy.up.railway.app/${product.Imagen}" alt="${product.Marca}" width="50" height="50"><br>
+<strong>URL del producto:</strong> <a href="https://nutripet-healthy.up.railway.app/shopping/shop/${product.ID_product}">Ver producto</a><br>
             `).join('');
 
             res.json({
