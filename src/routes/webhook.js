@@ -146,13 +146,14 @@ async function handleRecomendationProduct(req, res) {
             const productDetails = formattedProducts.map(product =>
                 `
 <hr>
+<hr>
 - <strong>Marca:</strong> ${product.Marca} <br>
 - <strong>Raza:</strong> ${product.Raza} <br>
 - <strong>Categoria:</strong> ${product.Categoria} <br>
 - <strong>Sabor:</strong> ${product.Sabor} <br>
 - <strong>Peso:</strong> ${product.Peso} <br><br>
-<a href="https://nutripet-healthy.up.railway.app/shopping/shop/${product.ID_product}" target="_blank" style="display: inline-block; border: 3px solid #ddd; padding: 2px; text-decoration: none; color: black;">
-    <img src="https://nutripet-healthy.up.railway.app/${product.Imagen}" alt="${product.Marca}" style="width: 170px; object-fit: cover; border: 2px solid #ddd;">
+<a href="https://nutripet-healthy.up.railway.app/shopping/shop/${product.ID_product}" target="_blank" title="Click para ver el producto" style="display: inline-block; border: 3px solid #ddd; border-radius: 5px; padding: 2px; text-decoration: none; color: black;">
+    <img src="https://nutripet-healthy.up.railway.app/${product.Imagen}" alt="${product.Marca}" style="width: 170px; object-fit: cover; border: 2px solid #ddd; border-radius: 5px;">
 </a><br>
             `).join('');
 
