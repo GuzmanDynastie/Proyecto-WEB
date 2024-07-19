@@ -151,7 +151,7 @@ async function handleRecomendationProduct(req, res) {
 - <strong>Categoria:</strong> ${product.Categoria} <br>
 - <strong>Sabor:</strong> ${product.Sabor} <br>
 - <strong>Peso:</strong> ${product.Peso} <br>
-<img src="https://nutripet-healthy.up.railway.app/${product.Imagen}" alt="${product.Marca}" style="width: 200px; object-fit: cover;"><br>
+<img src="https://nutripet-healthy.up.railway.app/${product.Imagen}" alt="${product.Marca}" style="width: 170px; object-fit: cover;"><br>
 <strong>URL del producto:</strong> <a href="https://nutripet-healthy.up.railway.app/shopping/shop/${product.ID_product}" target="_blank">Ver producto</a><br>
             `).join('');
 
