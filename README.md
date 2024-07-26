@@ -82,12 +82,17 @@
 - [x] Bootstrap
 ____
 > ###### Back-end
-- [x] JS
+- [x] JavaScript
 - [x] Node.js
+- [x] Express
 ____
 > ###### Base de datos
 - [x] MongoDB
-
+- [x] MongoAtlas
+____
+> ###### Despliegue
+- [x] Railway
+      
 ---
 
 ### Imagenes
