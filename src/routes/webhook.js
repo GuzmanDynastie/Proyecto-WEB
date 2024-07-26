@@ -20,7 +20,7 @@ router.post('/webhook', async (req, res) => {
                 await handleRecomendationProduct(req, res);
                 break;
             case 'orderInformation':
-                await handleTokenValidation(req, res);
+                await handleOrderInformation(req, res);
                 break;
             default:
                 res.status(400).json({ error: 'Accion no reconocida.' });
@@ -180,10 +180,13 @@ async function handleOrderInformation(req, res) {
 
         const { id_user } = order;
 
-        const user = await userSchema.findOne({ _id: id_user, email, password });
+        const user = await userSchema.findOne({ _id: id_user, email: email });
+        if (!user) {
+            return res.json({ mensaje: "Email o contraseña incorrectos" });
+        }
+
         const isValidPassword = await user.matchPassword(password);
-        
-        if (!user || !isValidPassword) {
+        if (!isValidPassword) {
             return res.json({ mensaje: "Email o contraseña incorrectos" });
         }
 
