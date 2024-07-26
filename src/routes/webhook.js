@@ -190,7 +190,7 @@ async function handleOrderInformation(req, res) {
             return res.json({ mensaje: "Email o contraseña incorrectos" });
         }
 
-        return res.json({ mensaje: order });
+        return res.json({ mensaje: order.status_order });
 
     } catch (error) {
         console.log("Error al validar la informacion.", error);
