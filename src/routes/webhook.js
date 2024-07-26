@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const productSchema = require('../models/product');
-const axios = require('axios');
+const orderSchema = require('../models/order');
+const userSchema = require('../models/user');
+const { json } = require('body-parser');
 
 router.post('/webhook', async (req, res) => {
     try {
@@ -16,6 +18,9 @@ router.post('/webhook', async (req, res) => {
                 break;
             case 'recomendationProduct':
                 await handleRecomendationProduct(req, res);
+                break;
+            case 'orderInformation':
+                await handleTokenValidation(req, res);
                 break;
             default:
                 res.status(400).json({ error: 'Accion no reconocida.' });
@@ -111,7 +116,6 @@ async function handleRecomendationProduct(req, res) {
     try {
         const { etapa: petStage, mascota: petType, raza: petRace } = req.body;
 
-        // Inicializa la consulta con los parámetros proporcionados
         let query = {
             status: true,
             petCharacteristics: {
@@ -119,10 +123,8 @@ async function handleRecomendationProduct(req, res) {
             }
         };
 
-        // Busca los productos que coinciden con la consulta
         let products = await productSchema.find(query).lean();
 
-        // Si no se encuentran productos, ajusta la consulta y vuelve a buscar
         if (products.length === 0) {
             query.petCharacteristics = {
                 $all: [petStage, petType, "Todos los tamaños"]
@@ -130,7 +132,6 @@ async function handleRecomendationProduct(req, res) {
             products = await productSchema.find(query).lean();
         }
 
-        // Si se encuentran productos, formatea los detalles para la respuesta
         if (products.length > 0) {
             const formattedProducts = products.map(product => ({
                 Marca: product.generalCharacteristics[1] || 'Desconocida',
@@ -142,7 +143,6 @@ async function handleRecomendationProduct(req, res) {
                 ID_product: product._id
             }));
 
-            // Construye los detalles de los productos incluyendo imagen y URL
             const productDetails = formattedProducts.map(product =>
                 `
 <hr style="border: 2px solid #ddd; width: 100%; margin: 10px 0;">
@@ -165,6 +165,31 @@ async function handleRecomendationProduct(req, res) {
     } catch (error) {
         console.error('Error al procesar la acción:', error);
         res.status(500).json({ error: 'Error al procesar la acción.' });
+    }
+}
+
+// Funcion para devolver la informacion del pedido si el TOKEN existe y si EMAIL y PASSWORD coinciden
+async function handleOrderInformation(req, res) {
+    const { token, email, password } = req.body;
+
+    try {
+        const order = await orderSchema.findOne({ token });
+        if (!order) {
+            return res.json({ mensaje: "Orden no encontrada." });
+        }
+
+        const { id_user } = order;
+
+        const user = await userSchema.findOne({ _id: id_user, email, password });
+        if (!user) {
+            return res.json({ mensaje: "Email o contraseña incorrectos" });
+        }
+
+        return res.json({ mensaje: order });
+
+    } catch (error) {
+        console.log("Error al validar la informacion.", error);
+        return res.status(500).json({ mensaje: "Error al validar la informacion." });
     }
 }
 
