@@ -18,7 +18,7 @@ Esta plataforma ofrece una experiencia de usuario intuitiva y eficiente para sat
 + [Modulos para el front-end y back-end](#modulos-para-front-end-y-back-end)
 + [¿Cómo ejecutar el programa?](#como-ejecutar-el-programa)
 + [¿Cómo mato un proceso de servidor?](#como-matar-proceso-servidor)
-+ [Tecnologias](#tecnologias)
++ [Tecnologías utilizadas](#tecnologias)
 + [Imagenes](#imagenes)
 
 ---
@@ -97,7 +97,9 @@ ____
 ____
 > ###### Despliegue
 - [x] Railway
-      
+
+> ###### Chatbot
+- [x] IBM Watson Assistant
 ---
 
 ### Imagenes
