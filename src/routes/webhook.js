@@ -181,7 +181,9 @@ async function handleOrderInformation(req, res) {
         const { id_user } = order;
 
         const user = await userSchema.findOne({ _id: id_user, email, password });
-        if (!user) {
+        const isValidPassword = await user.matchPassword(password);
+        
+        if (!user || !isValidPassword) {
             return res.json({ mensaje: "Email o contraseña incorrectos" });
         }
 
