@@ -79,7 +79,7 @@ Esta plataforma ofrece una experiencia de usuario intuitiva y eficiente para sat
 
 ---
 
-### Tecnologias
+### Tecnologías utilizadas
 <a name="tecnologias"></a>
 > ###### Front-end
 - [x] HTML
