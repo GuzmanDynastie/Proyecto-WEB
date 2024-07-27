@@ -1,11 +1,16 @@
 # Proyecto WEB
 ## Documentacion
 
-> Aplicacion WEB enfocada a la venta de alimentos secos para perros y gatos en la cual el cliente puede elegir entre la variedad de productos agregados.
+> Esta aplicación web está diseñada para la venta de alimentos secos para perros y gatos, permitiendo a los clientes elegir entre una variedad de productos disponibles.
 
-> En esta aplicacion existen dos roles fundamentales:
-+ [administrador](#administrador)
-+ [cliente](#cliente)
+> Funcionalidades
+En la aplicación existen dos roles fundamentales:
++ [Administrador](#administrador): Gestiona los productos, usuarios y pedidos.
++ [Cliente](#cliente): Puede navegar por el catálogo de productos, agregar artículos al carrito y realizar compras.
+  
+> Características Adicionales.
++ [ChatBot](#chatbot): La aplicación cuenta con un chatbot desarrollado con IBM Watson, proporcionando asistencia automática y respuestas a las consultas de los usuarios en tiempo real.
+Esta plataforma ofrece una experiencia de usuario intuitiva y eficiente para satisfacer las necesidades nutricionales de las mascotas.
 
 ---
 
@@ -14,7 +19,7 @@
 + [¿Cómo ejecutar el programa?](#como-ejecutar-el-programa)
 + [¿Cómo mato un proceso de servidor?](#como-matar-proceso-servidor)
 + [Tecnologias](#tecnologias)
-+ [Imagenes e Iconos](#imagenes)
++ [Imagenes](#imagenes)
 
 ---
 
@@ -74,7 +79,7 @@
 
 ---
 
-### Tecnologias
+### Tecnologías utilizadas
 <a name="tecnologias"></a>
 > ###### Front-end
 - [x] HTML
@@ -82,11 +87,19 @@
 - [x] Bootstrap
 ____
 > ###### Back-end
-- [x] JS
+- [x] JavaScript
 - [x] Node.js
+- [x] Express
 ____
 > ###### Base de datos
 - [x] MongoDB
+- [x] MongoAtlas
+____
+> ###### Despliegue
+- [x] Railway
+____
+> ###### Chatbot
+- [x] IBM Watson Assistant
 
 ---
 
