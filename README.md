@@ -19,7 +19,7 @@ Esta plataforma ofrece una experiencia de usuario intuitiva y eficiente para sat
 + [¿Cómo ejecutar el programa?](#como-ejecutar-el-programa)
 + [¿Cómo mato un proceso de servidor?](#como-matar-proceso-servidor)
 + [Tecnologias](#tecnologias)
-+ [Imagenes](#imagenes)
++ [Imagenes e Iconos](#imagenes)
 
 ---
 
