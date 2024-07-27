@@ -19,6 +19,9 @@ router.post('/webhook', async (req, res) => {
             case 'recomendationProduct':
                 await handleRecomendationProduct(req, res);
                 break;
+            case 'tokenValidation':
+                await handleTokenValidation(req, res);
+                break;
             case 'orderInformation':
                 await handleOrderInformation(req, res);
                 break;
@@ -165,6 +168,29 @@ async function handleRecomendationProduct(req, res) {
     } catch (error) {
         console.error('Error al procesar la acción:', error);
         res.status(500).json({ error: 'Error al procesar la acción.' });
+    }
+}
+
+// Funcion para validar el TOKEN del pedido
+async function handleTokenValidation(req, res) {
+    const { token } = req.body;
+    try {
+        const order = await orderSchema.findOne({ token });
+        if (!order) {
+            return res.status(500).json({ 
+                mensaje: 'Orden no encontrada.',
+                boolean: false
+            });
+        }
+
+        res.json({
+            mensaje: "<span><i class='fa-solid fa-circle-check' style='color: #00a372;'></i></span> Orden validada.",
+            boolean: true
+        })
+
+    } catch (error) {
+        console.log('Error al procesar la acción:', error);
+        return res.status(500).json({ error: 'Error al procesar la acción:' })
     }
 }
 
