@@ -240,13 +240,13 @@ async function handleSendEmail(req, res) {
         const user = await userSchema.findOne({ _id: order.id_user, email: email });
         if (!user) {
             return res.json({
-                mensaje: "El email no corresponde a la orden ingresada",
+                mensaje: "El email no corresponde a la orden ingresada.",
                 flag: "false"
             });
         }
 
-        const randomCode = generateRandomString(6);
-        const emailResponse = await sendEmail(email, randomCode);
+        const randomCode = `NH-${generateRandomString(6)}`;
+        const emailResponse = await sendEmail(email, randomCode, res);
         if (emailResponse.flag === "false") {
             return res.status(500).json(emailResponse);
         }
@@ -265,7 +265,7 @@ function generateRandomString(length) {
 
 
 // Funcion para enviar el codigo al email ingresado
-async function sendEmail(email, randomCode) {
+async function sendEmail(email, randomCode, res) {
     let transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
