@@ -23,6 +23,9 @@ router.post('/webhook', async (req, res) => {
             case 'orderInformation':
                 await handleOrderInformation(req, res);
                 break;
+            case 'validateToken':
+                await handleValidateToken(req, res);
+                break;
             case 'sendEmail':
                 await handleSendEmail(req, res);
                 break;
@@ -35,6 +38,7 @@ router.post('/webhook', async (req, res) => {
         res.status(500).json({ error: 'Error al consultar la base de datos.' });
     }
 });
+
 
 // Funcion para consultar si una marca existe o no en la BD
 async function handleCheckBrand(req, res) {
@@ -56,6 +60,7 @@ async function handleCheckBrand(req, res) {
         res.status(500).json({ error: 'Error al consultar la base de datos.' });
     }
 }
+
 
 // Funcion para hacer un filtro de busqueda con los parametros: MARCA, RAZA y ETAPA
 async function handleDetailsProduct(req, res) {
@@ -115,6 +120,7 @@ async function handleDetailsProduct(req, res) {
     }
 }
 
+
 // Funcion quer muestra la recomendacion de productos con ETAPA, MASCOTA y RAZA
 async function handleRecomendationProduct(req, res) {
     try {
@@ -172,37 +178,68 @@ async function handleRecomendationProduct(req, res) {
     }
 }
 
-// Funcion para devolver la informacion del pedido si el TOKEN existe y si EMAIL y PASSWORD coinciden
-async function handleOrderInformation(req, res) {
-    const { token, email, password } = req.body;
 
+// Funcion para validar si el token ingresado es valido
+async function handleValidateToken(req, res) {
+    const { token } = req.body;
     try {
         const order = await orderSchema.findOne({ token });
         if (!order) {
             return res.json({
                 mensaje: "Orden no encontrada.",
-                flag: "false"
+                flag: "false",
+                order: null
             });
         } else {
             return res.json({
                 mensaje: "Orden confirmada.",
-                flag: "true"
+                flag: "true",
+                order: order
+            });
+        }
+    } catch (error) {
+        console.log("Error al validar la informacion.", error);
+        return res.json({
+            mensaje: "Error al validar la informacion.",
+            flag: "false",
+            order: null
+        });
+    }
+}
+
+
+// Funcion para devolver la informacion del pedido si el TOKEN existe y si EMAIL y PASSWORD coinciden
+async function handleOrderInformation(req, res) {
+    const { email, code } = req.body;
+
+    try {
+        const order = await handleValidateToken(req, res);
+        const { id_user } = order;
+        const user = await userSchema.findOne({ _id: id_user, email: email });
+        if (!user) {
+            return res.json({
+                mensaje: "El email no corresponde a la orden ingresada",
+                flag: "false"
             });
         }
 
-        const { id_user } = order;
-
-        const user = await userSchema.findOne({ _id: id_user, email: email });
-        if (!user) {
-            return res.json({ mensaje: "Email o contraseña incorrectos" });
+        const randomCode = generateRandomString(6);
+        const emailResponse = await handleSendEmail(email, randomCode);
+        if (emailResponse.flag === "false") {
+            return res.status(500).json(emailResponse);
         }
 
-        const isValidPassword = await user.matchPassword(password);
-        if (!isValidPassword) {
-            return res.json({ mensaje: "Email o contraseña incorrectos" });
+        if (code !== `NH-${randomCode}`) {
+            return res.json({
+                mensaje: "No ingresaste bien el código.",
+                flag: "false"
+            });
         }
 
-        return res.json({ mensaje: order.status_order });
+        return res.json({
+            mensaje: order.status_order,
+            flag: "true"
+        })
 
     } catch (error) {
         console.log("Error al validar la informacion.", error);
@@ -210,13 +247,15 @@ async function handleOrderInformation(req, res) {
     }
 }
 
+
+// Funcion para crear un codigo random de 6 caracteres
 function generateRandomString(length) {
     return Math.random().toString(36).substring(2, 2 + length).toUpperCase();
 }
 
-async function handleSendEmail(req, res) {
-    const { email } = req.body;
 
+// Funcion para enviar el codigo al email ingresado
+async function handleSendEmail(email, randomCode) {
     let transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
@@ -225,22 +264,21 @@ async function handleSendEmail(req, res) {
         }
     });
 
-    const random = `NH-${generateRandomString(6)}`;
-
     let mailOptions = {
         from: `NutriPet Healthy <${process.env.EMAIL_USER}>`,
         to: email,
         subject: 'Codigo para validar TOKEN',
-        html: `Ingresa este codigo en el chatbot: <strong><h3>${random}</h3></strong>`
+        html: `Ingresa este codigo en el chatbot: <strong><h3>${randomCode}</h3></strong>`
     }
 
     try {
-        await transporter.sendMail(mailOptions);
-        return res.json({ mensaje: `Correo enviado: ${random}` });
+        let info = await transporter.sendMail(mailOptions);
+        console.log({ mensaje: `Correo enviado a: ${info.accepted}, con el codigo: ${randomCode}` });
+        return res.json({ flag: "true" });
 
     } catch (error) {
         console.log('Ha ocurrido un error al tratar de enviar el correo', error);
-        return res.status(500).json({ mensaje: 'Ha ocurrido un error al tratar de enviar el correo.' })
+        return res.status(500).json({ flag: "false" });
     }
 }
 

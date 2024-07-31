@@ -42,3 +42,93 @@ router.post('/users/userRegister', async (req, res) => {
 });
 
 module.exports = router;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+async function handleOrderInformation(req, res) {
+    const { token, email, code } = req.body;
+
+    try {
+        const order = await orderSchema.findOne({ token });
+        if (!order) {
+            return res.json({
+                mensaje: "Orden no encontrada.",
+                flag: "false"
+            });
+        } else {
+            res.json({
+                mensaje: "Orden confirmada.",
+                flag: "true"
+            });
+
+            const { id_user } = order;
+
+            const user = await userSchema.findOne({ _id: id_user, email: email });
+            if (!user) {
+                return res.json({ 
+                    mensaje: "El email no corresponde a la orden ingresada",
+                    flag: "false"
+                });
+            } else {
+                let value = handleSendEmail(req, res);
+                res.json({
+                    mensaje: "Ingresa el codigo que te envie al email (ejemplo: NH-XXXXXX)",
+                    flag: "true"
+                });
+
+                if (!value === code) {
+                    return res.json({
+                        mensaje: "No ingresaste bien el codigo.",
+                        flag: "false"
+                    });
+                } else {
+                    return res.json({
+                        mensaje: "",
+                        flag: "true"
+                    });
+                }
+
+                
+            }
+
+            return res.json({ mensaje: order.status_order });
+        }
+
+    } catch (error) {
+        console.log("Error al validar la informacion.", error);
+        return res.status(500).json({ mensaje: "Error al validar la informacion." });
+    }
+}
