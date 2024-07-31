@@ -181,12 +181,12 @@ async function handleOrderInformation(req, res) {
         if (!order) {
             return res.json({ 
                 mensaje: "Orden no encontrada.",
-                boolean: false
+                flag: "false"
             });
         } else {
             return res.json({ 
                 mensaje: "Si esta.",
-                boolean: true
+                flag: "true"
             });
         }
 
