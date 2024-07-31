@@ -214,13 +214,15 @@ async function handleOrderInformation(req, res) {
 
     try {
         const order = await handleValidateToken(req, res);
-        const { id_user } = order;
-        const user = await userSchema.findOne({ _id: id_user, email: email });
-        if (!user) {
-            return res.json({
-                mensaje: "El email no corresponde a la orden ingresada",
-                flag: "false"
-            });
+        if (order.flag === "true") {
+            const { id_user } = order;
+            const user = await userSchema.findOne({ _id: id_user, email: email });
+            if (!user) {
+                return res.json({
+                    mensaje: "El email no corresponde a la orden ingresada",
+                    flag: "false"
+                });
+            }
         }
 
         const randomCode = generateRandomString(6);
