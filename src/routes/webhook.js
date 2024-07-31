@@ -1,9 +1,10 @@
 const express = require('express');
+require('dotenv').config({ path: __dirname + '../config/.env' });
 const router = express.Router();
 const productSchema = require('../models/product');
 const orderSchema = require('../models/order');
 const userSchema = require('../models/user');
-const { json } = require('body-parser');
+const nodemailer = require('nodemailer');
 
 router.post('/webhook', async (req, res) => {
     try {
@@ -19,11 +20,11 @@ router.post('/webhook', async (req, res) => {
             case 'recomendationProduct':
                 await handleRecomendationProduct(req, res);
                 break;
-            case 'tokenValidation':
-                await handleTokenValidation(req, res);
-                break;
             case 'orderInformation':
                 await handleOrderInformation(req, res);
+                break;
+            case 'sendEmail':
+                await handleSendEmail(req, res);
                 break;
             default:
                 res.status(400).json({ error: 'Accion no reconocida.' });
@@ -171,29 +172,6 @@ async function handleRecomendationProduct(req, res) {
     }
 }
 
-// Funcion para validar el TOKEN del pedido
-async function handleTokenValidation(req, res) {
-    const { token } = req.body;
-    try {
-        const order = await orderSchema.findOne({ token });
-        if (!order) {
-            return res.status(500).json({ 
-                mensaje: 'Orden no encontrada.',
-                boolean: false
-            });
-        }
-
-        res.json({
-            mensaje: "<span><i class='fa-solid fa-circle-check' style='color: #00a372;'></i></span> Orden validada.",
-            boolean: true
-        })
-
-    } catch (error) {
-        console.log('Error al procesar la acción:', error);
-        return res.status(500).json({ error: 'Error al procesar la acción:' })
-    }
-}
-
 // Funcion para devolver la informacion del pedido si el TOKEN existe y si EMAIL y PASSWORD coinciden
 async function handleOrderInformation(req, res) {
     const { token, email, password } = req.body;
@@ -201,7 +179,15 @@ async function handleOrderInformation(req, res) {
     try {
         const order = await orderSchema.findOne({ token });
         if (!order) {
-            return res.json({ mensaje: "Orden no encontrada." });
+            return res.json({ 
+                mensaje: "Orden no encontrada.",
+                boolean: false
+            });
+        } else {
+            return res.json({ 
+                mensaje: "Si esta.",
+                boolean: true
+            });
         }
 
         const { id_user } = order;
@@ -221,6 +207,40 @@ async function handleOrderInformation(req, res) {
     } catch (error) {
         console.log("Error al validar la informacion.", error);
         return res.status(500).json({ mensaje: "Error al validar la informacion." });
+    }
+}
+
+function generateRandomString(length) {
+    return Math.random().toString(36).substring(2, 2 + length).toUpperCase();
+}
+
+async function handleSendEmail(req, res) {
+    const { email } = req.body;
+
+    let transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: process.env.EMAIL_USER,
+            pass: process.env.APP_PASSWORD_GMAIL
+        }
+    });
+
+    const random = `NH-${generateRandomString(6)}`;
+
+    let mailOptions = {
+        from: `NutriPet Healthy <${process.env.EMAIL_USER}>`,
+        to: email,
+        subject: 'Codigo para validar TOKEN',
+        html: `Ingresa este codigo en el chatbot: <strong><h3>${random}</h3></strong>`
+    }
+
+    try {
+        await transporter.sendMail(mailOptions);
+        return res.json({ mensaje: `Correo enviado: ${random}` });
+
+    } catch (error) {
+        console.log('Ha ocurrido un error al tratar de enviar el correo', error);
+        return res.status(500).json({ mensaje: 'Ha ocurrido un error al tratar de enviar el correo.' })
     }
 }
 
