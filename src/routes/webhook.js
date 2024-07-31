@@ -180,30 +180,29 @@ async function handleRecomendationProduct(req, res) {
 
 
 // Funcion para validar si el token ingresado es valido
-async function handleValidateToken(req, res) {
+async function handleValidateToken(req) {
     const { token } = req.body;
     try {
         const order = await orderSchema.findOne({ token });
         if (!order) {
-            return res.json({
+            return {
                 mensaje: "Orden no encontrada.",
                 flag: "false",
                 order: null
-            });
-        } else {
-            return res.json({
-                mensaje: "Orden confirmada.",
-                flag: "true",
-                order: order
-            });
+            };
         }
+        return {
+            mensaje: "Orden confirmada.",
+            flag: "true",
+            order: order
+        };
     } catch (error) {
         console.log("Error al validar la informacion.", error);
-        return res.json({
+        return {
             mensaje: "Error al validar la informacion.",
             flag: "false",
             order: null
-        });
+        };
     }
 }
 
@@ -213,16 +212,18 @@ async function handleOrderInformation(req, res) {
     const { email, code } = req.body;
 
     try {
-        const order = await handleValidateToken(req, res);
-        if (order.flag === "true") {
-            const { id_user } = order;
-            const user = await userSchema.findOne({ _id: id_user, email: email });
-            if (!user) {
-                return res.json({
-                    mensaje: "El email no corresponde a la orden ingresada",
-                    flag: "false"
-                });
-            }
+        const validateTokenResponse = await handleValidateToken(req);
+        if (validateTokenResponse.flag === "false") {
+            return res.json(validateTokenResponse);
+        }
+
+        const order = validateTokenResponse.order;
+        const user = await userSchema.findOne({ _id: order.id_user, email: email });
+        if (!user) {
+            return res.json({
+                mensaje: "El email no corresponde a la orden ingresada",
+                flag: "false"
+            });
         }
 
         const randomCode = generateRandomString(6);
@@ -241,7 +242,7 @@ async function handleOrderInformation(req, res) {
         return res.json({
             mensaje: order.status_order,
             flag: "true"
-        })
+        });
 
     } catch (error) {
         console.log("Error al validar la informacion.", error);
