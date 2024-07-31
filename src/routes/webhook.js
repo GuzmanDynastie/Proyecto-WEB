@@ -180,59 +180,39 @@ async function handleRecomendationProduct(req, res) {
 
 
 // Funcion para validar si el token ingresado es valido
-async function handleValidateToken(req) {
+async function handleValidateToken(req, res) {
     const { token } = req.body;
     try {
         const order = await orderSchema.findOne({ token });
         if (!order) {
-            return {
+            return res.json({
                 mensaje: "Orden no encontrada.",
                 flag: "false",
                 order: null
-            };
+            });
         }
-        return {
+        return res.json({
             mensaje: "Orden confirmada.",
             flag: "true",
             order: order
-        };
+        });
     } catch (error) {
         console.log("Error al validar la informacion.", error);
-        return {
+        return res.json({
             mensaje: "Error al validar la informacion.",
             flag: "false",
             order: null
-        };
+        });
     }
 }
 
 
-// Funcion para devolver la informacion del pedido si el TOKEN existe y si EMAIL y PASSWORD coinciden
+// Funcion para devolver la informacion si coincide el CODIGO
 async function handleOrderInformation(req, res) {
-    const { email, code } = req.body;
+    const { code } = req.body;
 
     try {
-        const validateTokenResponse = await handleValidateToken(req);
-        if (validateTokenResponse.flag === "false") {
-            return res.json(validateTokenResponse);
-        }
-
-        const order = validateTokenResponse.order;
-        const user = await userSchema.findOne({ _id: order.id_user, email: email });
-        if (!user) {
-            return res.json({
-                mensaje: "El email no corresponde a la orden ingresada",
-                flag: "false"
-            });
-        }
-
-        const randomCode = generateRandomString(6);
-        const emailResponse = await handleSendEmail(email, randomCode);
-        if (emailResponse.flag === "false") {
-            return res.status(500).json(emailResponse);
-        }
-
-        if (code !== `NH-${randomCode}`) {
+        if (code !== `NH-`) {
             return res.json({
                 mensaje: "No ingresaste bien el código.",
                 flag: "false"
@@ -251,6 +231,33 @@ async function handleOrderInformation(req, res) {
 }
 
 
+// Funcion para validar TOKEN y EMAIL
+async function handleSendEmail(req, res) {
+    const { token, email } = req.body;
+
+    try {
+        const order = await orderSchema.findOne({ token });;
+        const user = await userSchema.findOne({ _id: order.id_user, email: email });
+        if (!user) {
+            return res.json({
+                mensaje: "El email no corresponde a la orden ingresada",
+                flag: "false"
+            });
+        }
+
+        const randomCode = generateRandomString(6);
+        const emailResponse = await sendEmail(email, randomCode);
+        if (emailResponse.flag === "false") {
+            return res.status(500).json(emailResponse);
+        }
+
+    } catch (error) {
+        console.log("Error al validar la informacion.", error);
+        return res.status(500).json({ mensaje: "Error al validar la informacion." });
+    }
+}
+
+
 // Funcion para crear un codigo random de 6 caracteres
 function generateRandomString(length) {
     return Math.random().toString(36).substring(2, 2 + length).toUpperCase();
@@ -258,7 +265,7 @@ function generateRandomString(length) {
 
 
 // Funcion para enviar el codigo al email ingresado
-async function handleSendEmail(email, randomCode) {
+async function sendEmail(email, randomCode) {
     let transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
@@ -277,11 +284,17 @@ async function handleSendEmail(email, randomCode) {
     try {
         let info = await transporter.sendMail(mailOptions);
         console.log({ mensaje: `Correo enviado a: ${info.accepted}, con el codigo: ${randomCode}` });
-        return res.json({ flag: "true" });
+        return res.json({
+            mensaje: "Se ha enviado el correo exitosamente.",
+            flag: "true"
+        });
 
     } catch (error) {
         console.log('Ha ocurrido un error al tratar de enviar el correo', error);
-        return res.status(500).json({ flag: "false" });
+        return res.status(500).json({
+            mensaje: "Ha ocurrido un error al tratar de enviar el correo.",
+            flag: "false"
+        });
     }
 }
 
