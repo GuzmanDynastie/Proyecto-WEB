@@ -180,12 +180,12 @@ async function handleOrderInformation(req, res) {
         const order = await orderSchema.findOne({ token });
         if (!order) {
             return res.json({
-                mensaje: "<i class=\"fa-solid fa-circle-exclamation\" style=\"color: #d41111;\"></i> Orden no encontrada.",
+                mensaje: "&#10060; Orden no encontrada.",
                 flag: "false"
             });
         } else {
             return res.json({
-                mensaje: "<i class=\"fa-solid fa-circle-check\" style=\"color: #08b56a;\"></i> Orden confirmada.",
+                mensaje: "&#9989; Orden confirmada.",
                 flag: "true"
             });
         }
