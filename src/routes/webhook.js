@@ -301,27 +301,27 @@ async function handleOrderInformation(req, res) {
 
 
 async function handleSendEmail(req, res) {
-    const { token } = req.body;
+    // const { token } = req.body;
     const email = 'guzmanjrpro@gmail.com';
 
     try {
-        // Buscar la orden por token
-        const order = await orderSchema.findOne({ token });
-        if (!order) {
-            return res.json({
-                mensaje: "Orden no encontrada.",
-                flag: "false"
-            });
-        }
+        // // Buscar la orden por token
+        // const order = await orderSchema.findOne({ token });
+        // if (!order) {
+        //     return res.json({
+        //         mensaje: "Orden no encontrada.",
+        //         flag: "false"
+        //     });
+        // }
 
-        // Buscar el usuario por id y email
-        const user = await userSchema.findOne({ _id: order.id_user, email: email });
-        if (!user) {
-            return res.json({
-                mensaje: "El email no corresponde a la orden ingresada.",
-                flag: "false"
-            });
-        }
+        // // Buscar el usuario por id y email
+        // const user = await userSchema.findOne({ _id: order.id_user, email: email });
+        // if (!user) {
+        //     return res.json({
+        //         mensaje: "El email no corresponde a la orden ingresada.",
+        //         flag: "false"
+        //     });
+        // }
 
         const randomCode = `NH-${generateRandomString(6)}`;
 
