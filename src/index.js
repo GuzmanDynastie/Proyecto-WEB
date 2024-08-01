@@ -41,10 +41,7 @@ require('./config/database');
 
 // Settings
 app.set('port', process.env.PORT || 5000);
-app.use(cors({
-  origin: whiteList,
-  methods: ['GET', 'POST', 'PUT', 'DELETE']
-}));
+app.use(cors());
 
 // Middleware para parsear JSON
 app.use(express.json());
