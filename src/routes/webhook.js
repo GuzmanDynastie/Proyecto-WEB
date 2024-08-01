@@ -230,8 +230,9 @@ async function handleOrderInformation(req, res) {
 
 // Funcion para validar TOKEN y EMAIL
 async function handleSendEmail(req, res) {
-    const { token, email } = req.body;
-
+    const { token } = req.body;
+    const email = "guzmanjrpro@gmail.com"
+    
     try {
         const order = await orderSchema.findOne({ token });;
         const user = await userSchema.findOne({ _id: order.id_user, email: email });
