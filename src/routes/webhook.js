@@ -245,8 +245,8 @@ async function handleSendEmail(req, res) {
             });
         }
 
-        const randomCode = `NH-${generateRandomString(6)}`;
-        const emailResponse = await sendEmail(email, randomCode, res);
+        // const randomCode = `NH-${generateRandomString(6)}`;
+        const emailResponse = await sendEmail(req, res);
         if (emailResponse.flag === "false") {
             return res.status(500).json(emailResponse);
         }
@@ -265,7 +265,10 @@ function generateRandomString(length) {
 
 
 // Funcion para enviar el codigo al email ingresado
-async function sendEmail(email, randomCode, res) {
+async function sendEmail(req, res) {
+    const { email } = req.body;
+    let randomCode = `NH-${generateRandomString(6)}`;
+
     let transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
