@@ -188,20 +188,17 @@ async function handleValidateToken(req, res) {
             return res.json({
                 mensaje: "Orden no encontrada.",
                 flag: "false",
-                order: null
             });
         }
         return res.json({
             mensaje: "Orden confirmada.",
             flag: "true",
-            order: order
         });
     } catch (error) {
         console.log("Error al validar la informacion.", error);
         return res.json({
             mensaje: "Error al validar la informacion.",
-            flag: "false",
-            order: null
+            flag: "false"
         });
     }
 }
@@ -240,7 +237,7 @@ async function handleSendEmail(req, res) {
         const user = await userSchema.findOne({ _id: order.id_user, email: email });
         if (!user) {
             return res.json({
-                mensaje: "El email no corresponde a la orden ingresada.",
+                mensaje: "El email no corresponde a la orden ingresada. " + user.email,
                 flag: "false"
             });
         }
