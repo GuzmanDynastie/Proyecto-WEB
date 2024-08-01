@@ -204,58 +204,50 @@ async function handleValidateToken(req, res) {
 }
 
 
-// Funcion para devolver la informacion si coincide el CODIGO
+// Funcion para validar TOKEN y EMAIL
 async function handleOrderInformation(req, res) {
-    const { code } = req.body;
+    const { token, email } = req.body;
 
     try {
-        if (code !== `NH-`) {
+        const order = await orderSchema.findOne({ token });;
+        const user = await userSchema.findOne({ _id: order.id_user, email: email });
+        if (!user) {
             return res.json({
-                mensaje: "No ingresaste bien el código.",
+                mensaje: "El email no corresponde a la orden ingresada.",
                 flag: "false"
             });
         }
 
+        let statusInformation = '';
+
+        switch (order.status_order) {
+            case 'Cancelado':
+                statusInformation = `El producto esta actualmente en estado: <strong style='color: red;'>${order.status_order}</strong>.
+                                    Esto quiere decir que el usuario lo cancelo.`
+                break;
+            case 'Enviado':
+                statusInformation = `El producto esta actualmente en estado: <strong style='color: green;'>${order.status_order}</strong>.
+                                    Esto quiere decir que ya se ha enviado para posteriormente iniciar su reparto.`
+                break;
+            case 'En proceso':
+                statusInformation = `El producto esta actualmente en estado: <strong style='color: blue;'>${order.status_order}</strong>.
+                                    Esto quiere decir que el producto aun esta siendo empacado para posteriormente iniciar su reparto.`
+                break;
+            default:
+                statusInformation = 'Accion no reconocida.';
+                break;
+        }
+
         return res.json({
-            mensaje: order.status_order,
+            mensaje: statusInformation,
             flag: "true"
-        });
+        })
 
     } catch (error) {
         console.log("Error al validar la informacion.", error);
         return res.status(500).json({ mensaje: "Error al validar la informacion." });
     }
 }
-
-
-// Funcion para validar TOKEN y EMAIL
-// async function handleSendEmail(req, res) {
-//     const { token } = req.body;
-//     const email = 'guzmanjrpro@gmail.com';
-
-//     try {
-//         const order = await orderSchema.findOne({ token });;
-//         const user = await userSchema.findOne({ _id: order.id_user, email: email });
-//         console.log(order.id_user);
-//         console.log(user._id);
-//         if (!user) {
-//             return res.json({
-//                 mensaje: "El email no corresponde a la orden ingresada.",
-//                 flag: "false"
-//             });
-//         }
-
-//         const randomCode = `NH-${generateRandomString(6)}`;
-//         const emailResponse = await sendEmail(email, randomCode, res);
-//         if (emailResponse.flag === "false") {
-//             return res.status(500).json(emailResponse);
-//         }
-
-//     } catch (error) {
-//         console.log("Error al validar la informacion.", error);
-//         return res.status(500).json({ mensaje: "Error al validar la informacion." });
-//     }
-// }
 
 
 // // Funcion para crear un codigo random de 6 caracteres
@@ -297,82 +289,5 @@ async function handleOrderInformation(req, res) {
 //         });
 //     }
 // }
-
-
-
-async function handleSendEmail(req, res) {
-    const email = 'guzmanjrpro@gmail.com';
-
-    try {
-        const randomCode = `NH-${generateRandomString(6)}`;
-
-        let transporter = nodemailer.createTransport({
-            service: 'gmail',
-            auth: {
-                user: process.env.EMAIL_USER,
-                pass: process.env.APP_PASSWORD_GMAIL
-            }
-        });
-
-        let mailOptions = {
-            from: `NutriPet Healthy <${process.env.EMAIL_USER}>`,
-            to: email,
-            subject: 'Código para validar TOKEN',
-            html: `Ingresa este código en el chatbot: <strong><h3>${randomCode}</h3></strong>`
-        };
-
-        let info = await transporter.sendMail(mailOptions);
-        console.log({ mensaje: `Correo enviado a: ${info.accepted}, con el código: ${randomCode}` });
-        return res.json({
-            mensaje: "Se ha enviado el correo exitosamente.",
-            flag: "true"
-        });
-    } catch (error) {
-        console.log('Ha ocurrido un error al tratar de enviar el correo o validar la información', error);
-        return res.status(500).json({
-            mensaje: "Ha ocurrido un error al tratar de enviar el correo o validar la información.",
-            flag: "false"
-        });
-    }
-}
-
-
-function generateRandomString(length) {
-    return Math.random().toString(36).substring(2, 2 + length).toUpperCase();
-}
-
-// async function sendEmail(email, randomCode, res) {
-//     let transporter = nodemailer.createTransport({
-//         service: 'gmail',
-//         auth: {
-//             user: process.env.EMAIL_USER,
-//             pass: process.env.APP_PASSWORD_GMAIL
-//         }
-//     });
-
-//     let mailOptions = {
-//         from: `NutriPet Healthy <${process.env.EMAIL_USER}>`,
-//         to: email,
-//         subject: 'Codigo para validar TOKEN',
-//         html: `Ingresa este codigo en el chatbot: <strong><h3>${randomCode}</h3></strong>`
-//     }
-
-//     try {
-//         let info = await transporter.sendMail(mailOptions);
-//         console.log({ mensaje: `Correo enviado a: ${info.accepted}, con el codigo: ${randomCode}` });
-//         return {
-//             mensaje: "Se ha enviado el correo exitosamente.",
-//             flag: "true"
-//         };
-
-//     } catch (error) {
-//         console.log('Ha ocurrido un error al tratar de enviar el correo', error);
-//         return {
-//             mensaje: "Ha ocurrido un error al tratar de enviar el correo.",
-//             flag: "false"
-//         };
-//     }
-// }
-
 
 module.exports = router;
