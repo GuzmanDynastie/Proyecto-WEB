@@ -229,12 +229,100 @@ async function handleOrderInformation(req, res) {
 
 
 // Funcion para validar TOKEN y EMAIL
+// async function handleSendEmail(req, res) {
+//     const { token } = req.body;
+//     const email = 'guzmanjrpro@gmail.com';
+
+//     try {
+//         const order = await orderSchema.findOne({ token });;
+//         const user = await userSchema.findOne({ _id: order.id_user, email: email });
+//         console.log(order.id_user);
+//         console.log(user._id);
+//         if (!user) {
+//             return res.json({
+//                 mensaje: "El email no corresponde a la orden ingresada.",
+//                 flag: "false"
+//             });
+//         }
+
+//         const randomCode = `NH-${generateRandomString(6)}`;
+//         const emailResponse = await sendEmail(email, randomCode, res);
+//         if (emailResponse.flag === "false") {
+//             return res.status(500).json(emailResponse);
+//         }
+
+//     } catch (error) {
+//         console.log("Error al validar la informacion.", error);
+//         return res.status(500).json({ mensaje: "Error al validar la informacion." });
+//     }
+// }
+
+
+// // Funcion para crear un codigo random de 6 caracteres
+// function generateRandomString(length) {
+//     return Math.random().toString(36).substring(2, 2 + length).toUpperCase();
+// }
+
+
+// // Funcion para enviar el codigo al email ingresado
+// async function sendEmail(email, randomCode, res) {
+//     let transporter = nodemailer.createTransport({
+//         service: 'gmail',
+//         auth: {
+//             user: process.env.EMAIL_USER,
+//             pass: process.env.APP_PASSWORD_GMAIL
+//         }
+//     });
+
+//     let mailOptions = {
+//         from: `NutriPet Healthy <${process.env.EMAIL_USER}>`,
+//         to: email,
+//         subject: 'Codigo para validar TOKEN',
+//         html: `Ingresa este codigo en el chatbot: <strong><h3>${randomCode}</h3></strong>`
+//     }
+
+//     try {
+//         let info = await transporter.sendMail(mailOptions);
+//         console.log({ mensaje: `Correo enviado a: ${info.accepted}, con el codigo: ${randomCode}` });
+//         return res.json({
+//             mensaje: "Se ha enviado el correo exitosamente.",
+//             flag: "true"
+//         });
+
+//     } catch (error) {
+//         console.log('Ha ocurrido un error al tratar de enviar el correo', error);
+//         return res.status(500).json({
+//             mensaje: "Ha ocurrido un error al tratar de enviar el correo.",
+//             flag: "false"
+//         });
+//     }
+// }
+
+
+
+
+
+
+
+
+
+
+
 async function handleSendEmail(req, res) {
     const { token } = req.body;
-    const email = "guzmanjrpro@gmail.com"
-    
+    const email = 'guzmanjrpro@gmail.com';
+
     try {
-        const order = await orderSchema.findOne({ token });;
+        // Buscar la orden por token
+        const order = await orderSchema.findOne({ token });
+        if (!order) {
+            return res.json({
+                mensaje: "Orden no encontrada.",
+                flag: "false"
+            });
+        }
+
+        // Buscar el usuario por id y email
         const user = await userSchema.findOne({ _id: order.id_user, email: email });
         if (!user) {
             return res.json({
@@ -249,20 +337,21 @@ async function handleSendEmail(req, res) {
             return res.status(500).json(emailResponse);
         }
 
+        return res.json({
+            mensaje: "Correo enviado exitosamente.",
+            flag: "true"
+        });
+
     } catch (error) {
         console.log("Error al validar la informacion.", error);
         return res.status(500).json({ mensaje: "Error al validar la informacion." });
     }
 }
 
-
-// Funcion para crear un codigo random de 6 caracteres
 function generateRandomString(length) {
     return Math.random().toString(36).substring(2, 2 + length).toUpperCase();
 }
 
-
-// Funcion para enviar el codigo al email ingresado
 async function sendEmail(email, randomCode, res) {
     let transporter = nodemailer.createTransport({
         service: 'gmail',
@@ -282,18 +371,19 @@ async function sendEmail(email, randomCode, res) {
     try {
         let info = await transporter.sendMail(mailOptions);
         console.log({ mensaje: `Correo enviado a: ${info.accepted}, con el codigo: ${randomCode}` });
-        return res.json({
+        return {
             mensaje: "Se ha enviado el correo exitosamente.",
             flag: "true"
-        });
+        };
 
     } catch (error) {
         console.log('Ha ocurrido un error al tratar de enviar el correo', error);
-        return res.status(500).json({
+        return {
             mensaje: "Ha ocurrido un error al tratar de enviar el correo.",
             flag: "false"
-        });
+        };
     }
 }
+
 
 module.exports = router;
