@@ -300,14 +300,6 @@ async function handleOrderInformation(req, res) {
 
 
 
-
-
-
-
-
-
-
-
 async function handleSendEmail(req, res) {
     const { token } = req.body;
     const email = 'guzmanjrpro@gmail.com';
@@ -332,21 +324,50 @@ async function handleSendEmail(req, res) {
         }
 
         const randomCode = `NH-${generateRandomString(6)}`;
-        const emailResponse = await sendEmail(email, randomCode, res);
-        if (emailResponse.flag === "false") {
-            return res.status(500).json(emailResponse);
-        }
 
-        return res.json({
-            mensaje: "Correo enviado exitosamente.",
-            flag: "true"
+        let transporter = nodemailer.createTransport({
+            service: 'gmail',
+            auth: {
+                user: process.env.EMAIL_USER,
+                pass: process.env.APP_PASSWORD_GMAIL
+            }
         });
 
+        let mailOptions = {
+            from: `NutriPet Healthy <${process.env.EMAIL_USER}>`,
+            to: email,
+            subject: 'Codigo para validar TOKEN',
+            html: `Ingresa este codigo en el chatbot: <strong><h3>${randomCode}</h3></strong>`
+        };
+
+        try {
+            let info = await transporter.sendMail(mailOptions);
+            console.log({ mensaje: `Correo enviado a: ${info.accepted}, con el codigo: ${randomCode}` });
+            return res.json({
+                mensaje: "Se ha enviado el correo exitosamente.",
+                flag: "true"
+            });
+        } catch (error) {
+            console.log('Ha ocurrido un error al tratar de enviar el correo', error);
+            return res.status(500).json({
+                mensaje: "Ha ocurrido un error al tratar de enviar el correo.",
+                flag: "false"
+            });
+        }
     } catch (error) {
         console.log("Error al validar la informacion.", error);
         return res.status(500).json({ mensaje: "Error al validar la informacion." });
     }
 }
+
+
+
+
+
+
+
+
+
 
 function generateRandomString(length) {
     return Math.random().toString(36).substring(2, 2 + length).toUpperCase();
