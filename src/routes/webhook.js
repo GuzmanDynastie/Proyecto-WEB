@@ -301,28 +301,9 @@ async function handleOrderInformation(req, res) {
 
 
 async function handleSendEmail(req, res) {
-    // const { token } = req.body;
     const email = 'guzmanjrpro@gmail.com';
 
     try {
-        // // Buscar la orden por token
-        // const order = await orderSchema.findOne({ token });
-        // if (!order) {
-        //     return res.json({
-        //         mensaje: "Orden no encontrada.",
-        //         flag: "false"
-        //     });
-        // }
-
-        // // Buscar el usuario por id y email
-        // const user = await userSchema.findOne({ _id: order.id_user, email: email });
-        // if (!user) {
-        //     return res.json({
-        //         mensaje: "El email no corresponde a la orden ingresada.",
-        //         flag: "false"
-        //     });
-        // }
-
         const randomCode = `NH-${generateRandomString(6)}`;
 
         let transporter = nodemailer.createTransport({
@@ -336,75 +317,62 @@ async function handleSendEmail(req, res) {
         let mailOptions = {
             from: `NutriPet Healthy <${process.env.EMAIL_USER}>`,
             to: email,
-            subject: 'Codigo para validar TOKEN',
-            html: `Ingresa este codigo en el chatbot: <strong><h3>${randomCode}</h3></strong>`
+            subject: 'Código para validar TOKEN',
+            html: `Ingresa este código en el chatbot: <strong><h3>${randomCode}</h3></strong>`
         };
 
-        try {
-            let info = await transporter.sendMail(mailOptions);
-            console.log({ mensaje: `Correo enviado a: ${info.accepted}, con el codigo: ${randomCode}` });
-            return res.json({
-                mensaje: "Se ha enviado el correo exitosamente.",
-                flag: "true"
-            });
-        } catch (error) {
-            console.log('Ha ocurrido un error al tratar de enviar el correo', error);
-            return res.status(500).json({
-                mensaje: "Ha ocurrido un error al tratar de enviar el correo.",
-                flag: "false"
-            });
-        }
+        let info = await transporter.sendMail(mailOptions);
+        console.log({ mensaje: `Correo enviado a: ${info.accepted}, con el código: ${randomCode}` });
+        return res.json({
+            mensaje: "Se ha enviado el correo exitosamente.",
+            flag: "true"
+        });
     } catch (error) {
-        console.log("Error al validar la informacion.", error);
-        return res.status(500).json({ mensaje: "Error al validar la informacion." });
+        console.log('Ha ocurrido un error al tratar de enviar el correo o validar la información', error);
+        return res.status(500).json({
+            mensaje: "Ha ocurrido un error al tratar de enviar el correo o validar la información.",
+            flag: "false"
+        });
     }
 }
-
-
-
-
-
-
-
-
 
 
 function generateRandomString(length) {
     return Math.random().toString(36).substring(2, 2 + length).toUpperCase();
 }
 
-async function sendEmail(email, randomCode, res) {
-    let transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user: process.env.EMAIL_USER,
-            pass: process.env.APP_PASSWORD_GMAIL
-        }
-    });
+// async function sendEmail(email, randomCode, res) {
+//     let transporter = nodemailer.createTransport({
+//         service: 'gmail',
+//         auth: {
+//             user: process.env.EMAIL_USER,
+//             pass: process.env.APP_PASSWORD_GMAIL
+//         }
+//     });
 
-    let mailOptions = {
-        from: `NutriPet Healthy <${process.env.EMAIL_USER}>`,
-        to: email,
-        subject: 'Codigo para validar TOKEN',
-        html: `Ingresa este codigo en el chatbot: <strong><h3>${randomCode}</h3></strong>`
-    }
+//     let mailOptions = {
+//         from: `NutriPet Healthy <${process.env.EMAIL_USER}>`,
+//         to: email,
+//         subject: 'Codigo para validar TOKEN',
+//         html: `Ingresa este codigo en el chatbot: <strong><h3>${randomCode}</h3></strong>`
+//     }
 
-    try {
-        let info = await transporter.sendMail(mailOptions);
-        console.log({ mensaje: `Correo enviado a: ${info.accepted}, con el codigo: ${randomCode}` });
-        return {
-            mensaje: "Se ha enviado el correo exitosamente.",
-            flag: "true"
-        };
+//     try {
+//         let info = await transporter.sendMail(mailOptions);
+//         console.log({ mensaje: `Correo enviado a: ${info.accepted}, con el codigo: ${randomCode}` });
+//         return {
+//             mensaje: "Se ha enviado el correo exitosamente.",
+//             flag: "true"
+//         };
 
-    } catch (error) {
-        console.log('Ha ocurrido un error al tratar de enviar el correo', error);
-        return {
-            mensaje: "Ha ocurrido un error al tratar de enviar el correo.",
-            flag: "false"
-        };
-    }
-}
+//     } catch (error) {
+//         console.log('Ha ocurrido un error al tratar de enviar el correo', error);
+//         return {
+//             mensaje: "Ha ocurrido un error al tratar de enviar el correo.",
+//             flag: "false"
+//         };
+//     }
+// }
 
 
 module.exports = router;
