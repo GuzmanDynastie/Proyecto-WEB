@@ -26,9 +26,6 @@ router.post('/webhook', async (req, res) => {
             case 'validateToken':
                 await handleValidateToken(req, res);
                 break;
-            case 'sendEmail':
-                await handleSendEmail(req, res);
-                break;
             default:
                 res.status(400).json({ error: 'Accion no reconocida.' });
         }
