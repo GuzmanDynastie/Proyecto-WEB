@@ -236,17 +236,29 @@ async function handleSendEmail(req, res) {
     const { token, email } = req.body;
 
     try {
-        const order = await orderSchema.findOne({ token });;
+        const order = await orderSchema.findOne({ token });
+        if (!order) {
+            console.log("Order not found");
+            return res.json({
+                mensaje: "Orden no encontrada.",
+                flag: "false"
+            });
+        }
+        console.log("Order found:", order);
+
         const user = await userSchema.findOne({ _id: order.id_user, email: email });
         if (!user) {
+            console.log("User not found or email does not match");
             return res.json({
                 mensaje: "El email no corresponde a la orden ingresada.",
                 flag: "false"
             });
         }
+        console.log("User found:", user);
 
-        // const randomCode = `NH-${generateRandomString(6)}`;
         const emailResponse = await sendEmail(req, res);
+        console.log("Email response:", emailResponse);
+
         if (emailResponse.flag === "false") {
             return res.status(500).json(emailResponse);
         }
