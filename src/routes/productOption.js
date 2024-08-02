@@ -106,27 +106,36 @@ router.post('/admin/update/:id', imageProduct.array('image_product', 10), async 
     const productId = req.params.id;
 
     try {
-        const { status, images: uploadedImages, ...newData } = req.body;
+        const { status, ...newData } = req.body;
+        let imagePaths = [];
 
-        let imagePaths;
-        if (uploadedImages && uploadedImages.length > 0) {
-            imagePaths = saveImageProduct(req.files);
+        if (req.files && req.files.length > 0) {
+            const brand = newData.generalCharacteristics[1];
+            const animalCategory = newData.petCharacteristics[0];
+            const line = newData.generalCharacteristics[2];
+            const category = newData.petCharacteristics[1];
+
+            req.files.forEach(file => {
+                const imagePath = saveImageProduct(file, brand, animalCategory, line, category);
+                imagePaths.push(imagePath);
+            });
         }
 
-        if (!(imagePaths && imagePaths.length > 0)) {
-            delete newData.images;
-        } else {
+        if (imagePaths.length > 0) {
             newData.images = imagePaths;
+        } else {
+            delete newData.images;
         }
 
         const product = await productSchema.findByIdAndUpdate(productId, newData, { new: true }).lean();
 
         if (!product) {
-            return res.status(404).send('Producto no encontrado');
+            return res.status(404).send('Producto no encontrado.');
         }
 
         const infoUpdate = { text: "Producto actualizado con éxito." };
         return res.status(200).render('admin/homeAdmin', { infoUpdate });
+
     } catch (error) {
         console.log(error);
         res.status(500).send('Error interno en el servidor.');
