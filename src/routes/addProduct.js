@@ -24,7 +24,7 @@ router.get('/admin/addProduct', (req, res) => {
     }
 });
 
-router.post('/admin/addProduct', imageProduct.array('image_product', 10), async (req, res) => {
+router.post('/admin/addProduct', imageProduct.array('image_product', 15), async (req, res) => {
     const { piece, stock, pricePerUnit, expiration, principalCharacteristics, petCharacteristics, specifications, generalCharacteristics, others, description } = req.body;
     const images = [];
     const registerErrors = [];

@@ -102,7 +102,7 @@ router.post('/admin/update/product/:id', async (req, res) => {
     }
 });
 
-router.post('/admin/update/:id', imageProduct.array('image_product', 10), async (req, res) => {
+router.post('/admin/update/:id', imageProduct.array('image_product', 15), async (req, res) => {
     const productId = req.params.id;
 
     try {
