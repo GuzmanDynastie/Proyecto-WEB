@@ -1,9 +1,7 @@
 .nav1 {
     background-color: rgb(53, 58, 64);
-    /* position: fixed !important; */
     width: 100%;
     z-index: 1500;
-    /* margin-top: -50px; */
 }
 
 .navbar-brand {
@@ -20,19 +18,11 @@
     transform: scale(1.1);
 }
 
-/* nav div .form-control {
-    width: 500px;
-} */
-
 nav div .boton__ {
     color: rgb(153, 156, 161);
     border: 1px solid rgb(153, 156, 161);
     margin-right: 10px;
 }
-
-/* .camara__ {
-    background-color: rgb(153, 156, 161);
-} */
 
 a.dropdown__ {
     color: rgb(153, 156, 161);

@@ -136,18 +136,6 @@ a {
     width: 700px;
 }
 
-/* @media (max-width: 600px) {
-    .register-input {
-        width: 350px;
-    }
-    .registrar {
-        width: 320px;
-    }
-    .text-area-dis {
-        width: 320px;
-    }
-} */
-
 @media (max-width: 800px) {
     .register-input {
         width: 350px;
