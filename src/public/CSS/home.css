@@ -269,3 +269,10 @@ p {
     flex-wrap: wrap;
     padding-top: 20px;
 }
+
+.fixed {
+    position:fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
