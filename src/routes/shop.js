@@ -48,6 +48,8 @@ router.post('/shopping/shop', async (req, res) => {
             const orConditions = searchTerms.map(term => ({
                 $or: [
                     { 'petCharacteristics.0': { $regex: new RegExp(term, 'i') } },
+                    { 'petCharacteristics.1': { $regex: new RegExp(term, 'i') } },
+                    { 'petCharacteristics.2': { $regex: new RegExp(term, 'i') } },
                     { 'generalCharacteristics.1': { $regex: new RegExp(term, 'i') } },
                     { 'specifications.0': { $regex: new RegExp(term, 'i') } },
                     { 'specifications.1': { $regex: new RegExp(term, 'i') } },
