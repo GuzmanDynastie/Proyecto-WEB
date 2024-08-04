@@ -23,4 +23,3 @@ const connectToDatabase = async (uri) => {
 };
 
 connectToDatabase(db_url);
-console.log(db_url)
