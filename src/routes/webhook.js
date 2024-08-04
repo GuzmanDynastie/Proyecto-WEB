@@ -121,12 +121,12 @@ async function handleDetailsProduct(req, res) {
 // Funcion quer muestra la recomendacion de productos con ETAPA, MASCOTA y RAZA
 async function handleRecomendationProduct(req, res) {
     try {
-        const { etapa: petStage, mascota: petType, raza: petRace } = req.body;
+        const { etapa, mascota, raza } = req.body;
 
         let query = {
             status: true,
             petCharacteristics: {
-                $all: [petStage, petType, petRace]
+                $all: [etapa, mascota, raza]
             }
         };
 
@@ -134,7 +134,7 @@ async function handleRecomendationProduct(req, res) {
 
         if (products.length === 0) {
             query.petCharacteristics = {
-                $all: [petStage, petType, "Todos los tamaños"]
+                $all: [etapa, mascota, "Todos los tamaños"]
             };
             products = await productSchema.find(query).lean();
         }
