@@ -161,6 +161,13 @@ a {
     text-decoration: none;
 }
 
+.fixed {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
 .caracteristicas-flex > div {
     flex-basis: calc(33.333% - 20px); /* Aproximadamente 1/3 del ancho del contenedor con un pequeño margen */
     margin-right: 20px; /* Margen derecho para las columnas */

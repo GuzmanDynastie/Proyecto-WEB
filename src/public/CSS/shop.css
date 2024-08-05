@@ -1,6 +1,5 @@
 nav {
     background-color: rgb(53, 58, 64);
-    position: fixed;
     width: 100%;
     z-index: 1000;
 }
@@ -72,4 +71,11 @@ a {
 
 a:hover {
     color: blue;
+}
+
+.fixed {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
 }

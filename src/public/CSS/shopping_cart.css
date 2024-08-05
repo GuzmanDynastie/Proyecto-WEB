@@ -237,6 +237,13 @@ p.descripcion {
     margin-left: 30px;
 }
 
+.fixed {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
 /* CONTENEDOR COMPRAS */
 @media (max-width: 600px) {
     .contenedor-master {
