@@ -97,20 +97,20 @@ async function handleDetailsProduct(req, res) {
                     ID_product: product._id
                 }));
 
-                const products = formattedProducts.map(product =>
+                const product = formattedProducts.map(products =>
                     `
 <hr style="border: 2px solid #ddd; width: 100%; margin: 10px 0;">
-- <strong>Marca:</strong> ${product.Marca} <br>
-- <strong>Raza:</strong> ${product.Raza} <br>
-- <strong>Categoria:</strong> ${product.Categoria} <br>
-- <strong>Sabor:</strong> ${product.Sabor} <br>
-- <strong>Peso:</strong> ${product.Peso} <br><br>
-<a href="https://nutripet-healthy.up.railway.app/shopping/shop/${product.ID_product}" target="_blank" title="Click para ver el producto" style="display: inline-block; border: 3px solid #ddd; padding: 3px; text-decoration: none; color: black;">
-    <img src="https://nutripet-healthy.up.railway.app/${product.Imagen}" alt="${product.Marca}" style="width: 170px; object-fit: cover; border: 2px solid #ddd;">
+- <strong>Marca:</strong> ${products.Marca} <br>
+- <strong>Raza:</strong> ${products.Raza} <br>
+- <strong>Categoria:</strong> ${products.Categoria} <br>
+- <strong>Sabor:</strong> ${products.Sabor} <br>
+- <strong>Peso:</strong> ${products.Peso} <br><br>
+<a href="https://nutripet-healthy.up.railway.app/shopping/shop/${products.ID_product}" target="_blank" title="Click para ver el producto" style="display: inline-block; border: 3px solid #ddd; padding: 3px; text-decoration: none; color: black;">
+    <img src="https://nutripet-healthy.up.railway.app/${products.Imagen}" alt="${products.Marca}" style="width: 170px; object-fit: cover; border: 2px solid #ddd;">
 </a><br><br>
                 `).join('');
 
-                res.json({ mensaje: `<h4>Los productos que coinciden son:</h4><br>${products}` });
+                res.json({ mensaje: `<h4>Los productos que coinciden son:</h4><br>${product}` });
             }
         } else {
             res.json({ mensaje: 'No existen productos que coincidan con los criterios de búsqueda.' });
