@@ -28,6 +28,4 @@ router.post('/admin/adminDelete/:id', async (req, res) => {
     }
 });
 
-// Mientras navegaba por la tienda en línea, me encontré con una amplia selección de sabores tentadores para perros, que incluían opciones como pollo asado, cordero y arroz, y salmón con batata. Sin embargo, al buscar opciones para mi amado gato, me decepcionó ver que las croquetas estaban disponibles principalmente en sabores de pollo y pescado. Como dueño de un gato que conoce sus preferencias alimenticias, esperaba encontrar una variedad más amplia de opciones que reflejaran la diversidad de sabores que a mi gato le gusta disfrutar. Esta discrepancia me dejó preguntándome si debería considerar cambiar a otra tienda en línea que ofrezca una gama más amplia de sabores para satisfacer las exigentes papilas gustativas de mi gato.
-
 module.exports = router;

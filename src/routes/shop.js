@@ -69,6 +69,4 @@ router.post('/shopping/shop', async (req, res) => {
     }
 });
 
-
-
 module.exports = router;
