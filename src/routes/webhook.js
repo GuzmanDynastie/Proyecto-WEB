@@ -97,16 +97,31 @@ async function handleDetailsProduct(req, res) {
                     ID_product: product._id
                 }));
 
-                res.json({
-                    mensaje: `Los productos que coinciden son:<br><hr> 
-                    - <strong>Marca:</strong> ${formattedProducts[0].Marca}
-                    - <strong>Raza:</strong> ${formattedProducts[0].Raza}
-                    - <strong>Categoria:</strong> ${formattedProducts[0].Categoria}
-                    - <strong>Sabor:</strong> ${formattedProducts[0].Sabor}
-                    - <strong>Peso:</strong> ${formattedProducts[0].Peso}`,
-                    image: `https://nutripet-healthy.up.railway.app/${formattedProducts[0].Imagen}`,
-                    url: `https://nutripet-healthy.up.railway.app/shopping/shop/${formattedProducts[0].ID_product}`
-                });
+                const product =
+                    `
+<hr style="border: 2px solid #ddd; width: 100%; margin: 10px 0;">
+- <strong>Marca:</strong> ${formattedProducts[0].Marca} <br>
+- <strong>Raza:</strong> ${formattedProducts[0].Raza} <br>
+- <strong>Categoria:</strong> ${formattedProducts[0].Categoria} <br>
+- <strong>Sabor:</strong> ${formattedProducts[0].Sabor} <br>
+- <strong>Peso:</strong> ${formattedProducts[0].Peso} <br><br>
+<a href="https://nutripet-healthy.up.railway.app/shopping/shop/${formattedProducts[0].ID_product}" target="_blank" title="Click para ver el producto" style="display: inline-block; border: 3px solid #ddd; padding: 3px; text-decoration: none; color: black;">
+    <img src="https://nutripet-healthy.up.railway.app/${formattedProducts[0].Imagen}" alt="${formattedProducts[0].Marca}" style="width: 170px; object-fit: cover; border: 2px solid #ddd;">
+</a><br><br>
+                `;
+
+                res.json({mensaje: `<h4>Los productos que coinciden son:</h4><br>${product}`});
+
+                // res.json({
+                //     mensaje: `Los productos que coinciden son:<br><hr> 
+                //     - <strong>Marca:</strong> ${formattedProducts[0].Marca}
+                //     - <strong>Raza:</strong> ${formattedProducts[0].Raza}
+                //     - <strong>Categoria:</strong> ${formattedProducts[0].Categoria}
+                //     - <strong>Sabor:</strong> ${formattedProducts[0].Sabor}
+                //     - <strong>Peso:</strong> ${formattedProducts[0].Peso}`,
+                //     image: `https://nutripet-healthy.up.railway.app/${formattedProducts[0].Imagen}`,
+                //     url: `https://nutripet-healthy.up.railway.app/shopping/shop/${formattedProducts[0].ID_product}`
+                // });
             }
         } else {
             res.json({ mensaje: 'No existen productos que coincidan con los criterios de búsqueda.' });
