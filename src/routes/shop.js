@@ -11,18 +11,31 @@ router.get('/shopping/category/:category', (req, res) => {
 router.get('/shopping/shop', async (req, res) => {
     try {
         let query = { status: true };
-        if (selectedCategory === 'todo') {
-            selectedCategory = null;
-            const products = await productSchema.find({ status: true }).lean();
-            return res.render('shopping/shop', { products });
-        } else if (selectedCategory) {
+        const page = parseInt(req.query.page) || 1;
+        const limit = 20;
+
+        if (selectedCategory && selectedCategory !== 'todo') {
             query.petCharacteristics = selectedCategory;
         }
-        const products = await productSchema.find(query).lean();
-        res.render('shopping/shop', { products });
+
+        const [products, totalProducts] = await Promise.all([
+            productSchema.find(query)
+                .skip((page - 1) * limit)
+                .limit(limit)
+                .lean(),
+            productSchema.countDocuments(query)
+        ]);
+
+        const totalPages = Math.ceil(totalProducts / limit);
+
+        res.render('shopping/shop', {
+            products,
+            currentPage: page,
+            totalPages
+        });
     } catch (error) {
         console.error(error);
-        res.status(500).send('Error interno del servidor');
+        res.status(500).send('Error interno del servidor.');
     }
 });
 
