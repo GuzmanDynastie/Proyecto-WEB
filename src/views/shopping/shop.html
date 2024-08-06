@@ -64,4 +64,30 @@
     </div>
 </div>
 
+<footer>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination pagination-m">
+            {{#if (gt currentPage 1)}}
+            <li class="page-item">
+                <a class="page-link" href="?page={{subtract currentPage 1}}" aria-label="Previous">
+                    <span aria-hidden="true">Previous</span>
+                </a>
+            </li>
+            {{/if}}
+            {{#each (range 1 totalPages)}}
+            <li class="page-item {{#if (eq ../currentPage this)}}active{{/if}}">
+                <a class="page-link" href="?page={{this}}">{{this}}</a>
+            </li>
+            {{/each}}
+            {{#if (lt currentPage totalPages)}}
+            <li class="page-item">
+                <a class="page-link" href="?page={{add currentPage 1}}" aria-label="Next">
+                    <span aria-hidden="true">Next</span>
+                </a>
+            </li>
+            {{/if}}
+        </ul>
+    </nav>
+</footer>
+
 <script src="/DOM/home.js"></script>
