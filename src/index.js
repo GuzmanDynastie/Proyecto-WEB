@@ -27,13 +27,20 @@ const whiteList = ipAddresses.flatMap(ip => [
   `http://${ip}:3001`
 ]);
 
-Handlebars.registerHelper('lt', function(a, b) {
-  return a < b;
+Handlebars.registerHelper('gt', (a, b) => a > b);
+Handlebars.registerHelper('lt', (a, b) => a < b);
+Handlebars.registerHelper('eq', (a, b) => a === b);
+Handlebars.registerHelper('add', (a, b) => a + b);
+Handlebars.registerHelper('subtract', (a, b) => a - b);
+Handlebars.registerHelper('range', (start, end) => {
+  let result = [];
+  for (let i = start; i <= end; i++) {
+    result.push(i);
+  }
+  return result;
 });
 
-Handlebars.registerHelper('eq', function(a, b) {
-  return a === b;
-});
+
 
 // Initilizations
 const app = express();
