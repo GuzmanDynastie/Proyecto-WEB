@@ -28,10 +28,14 @@ router.get('/shopping/shop', async (req, res) => {
 
         const totalPages = Math.ceil(totalProducts / limit);
 
+        const { brandsWithCounts, flavorsWithCounts } = await getBrandsAndFlavors();
+
         res.render('shopping/shop', {
             products,
             currentPage: page,
-            totalPages
+            totalPages,
+            brandsWithCounts,
+            flavorsWithCounts
         });
     } catch (error) {
         console.error(error);
@@ -81,5 +85,46 @@ router.post('/shopping/shop', async (req, res) => {
         res.status(500).send('Error interno del servidor');
     }
 });
+
+
+// Función para obtener la lista de marcas y sabores omitiendo las repetidas y llamando a countBrandsAndFlavors
+async function getBrandsAndFlavors() {
+    try {
+        const uniqueBrands = await productSchema.distinct("generalCharacteristics.1", { status: true });
+        const uniqueFlavors = await productSchema.distinct("specifications.0", { status: true });
+
+        const { countsBrands, countsFlavors } = await countBrandsAndFlavors(uniqueBrands, uniqueFlavors);
+
+        return {
+            brandsWithCounts: uniqueBrands.map((brand, index) => ({ brand, count: countsBrands[index] })),
+            flavorsWithCounts: uniqueFlavors.map((flavor, index) => ({ flavor, count: countsFlavors[index] }))
+        };
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+// Función que recibe la lista de las marcas y sabores e itera en cada una para devolver una lista de productos por marca y sabor
+async function countBrandsAndFlavors(brands, flavors) {
+    try {
+        const countsBrands = [];
+        const countsFlavors = [];
+
+        for (const brand of brands) {
+            const count = await productSchema.countDocuments({ status: true, "generalCharacteristics.1": brand });
+            countsBrands.push(count);
+        }
+
+        for (const flavor of flavors) {
+            const count = await productSchema.countDocuments({ status: true, "specifications.0": flavor });
+            countsFlavors.push(count);
+        }
+
+        return { countsBrands, countsFlavors };
+    } catch (error) {
+        console.log(error);
+    }
+};
+
 
 module.exports = router;
