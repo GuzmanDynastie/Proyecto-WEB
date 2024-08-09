@@ -24,22 +24,20 @@
         <nav class="navbar-lateral">
             <h5>Sabor</h5>
             <ul>
-                <li><a class="second-nav" href="#">
-                        <span class="nav-item" title="Mix, 30 resultados">Mix (30)</span>
+                {{#each flavorsWithCounts}}
+                    <li><a class="second-nav" href="#">
+                        <span class="nav-item" title="{{flavor}}, {{count}} resultados">{{flavor}} ({{count}})</span>
                     </a></li>
-                <li><a class="second-nav" href="#">
-                        <span class="nav-item" title="Pollo y Arroz, 20 resultados">Pollo y Arroz (20)</span>
-                    </a></li>
+                {{/each}}
             </ul>
 
             <h5>Marca</h5>
             <ul>
-                <li><a class="second-nav" href="#">
-                        <span class="nav-item" title="Nupec, 20 resultados">Nupec (20)</span>
+                {{#each brandsWithCounts}}
+                    <li><a class="second-nav" href="#">
+                        <span class="nav-item" title="{{brand}}, {{count}} resultados">{{brand}} ({{count}})</span>
                     </a></li>
-                <li><a class="second-nav" href="#">
-                        <span class="nav-item" title="Pedigree, 30 resultados">Pedigree (30)</span>
-                    </a></li>
+                {{/each}}
             </ul>
         </nav>
     </div>
