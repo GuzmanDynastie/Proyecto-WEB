@@ -62,9 +62,11 @@ ol.carrusel__ {
 .container-1 {
     display: flex;
     justify-content: center;
-    max-width: calc(60% - 0%); /*  */
+    max-width: calc(60% - 0%);
+    /*  */
     margin-top: 30px;
-    margin-left: 20%; /*  */
+    margin-left: 20%;
+    /*  */
     flex-wrap: wrap;
 }
 
@@ -176,15 +178,16 @@ hr {
 }
 
 .image-about {
-    width: 650px;
-    text-align: center;
-    padding-top: 20px;
+    max-width: 100%;
+    height: auto;
+    padding: 20px 20px;
 }
 
 .determine-age {
     display: flex;
     flex-wrap: wrap;
     text-align: center;
+    justify-content: center;
 }
 
 .determine-age-info {
@@ -208,12 +211,17 @@ h3 {
 
 p {
     font-size: larger;
+    text-align: justify;
+}
+
+.info-determine p {
+    margin-left: 20px;
 }
 
 .p2 {
-    margin-left: 80px;
-    width: 900px;
-    text-align: start;
+    margin-left: 60px !important;
+    width: 980px;
+    text-align: justify;
 }
 
 .image-determine-age {
@@ -221,17 +229,21 @@ p {
 }
 
 .info-determine {
-    width: 950px;
+    width: 1080px;
+    margin-right: 30px;
 }
 
 .image-determine {
+    border: 5px solid rgb(92, 92, 92);
+    border-radius: 5px;
     text-align: center;
-    margin-left: 180px;
+    margin-bottom: 30px;
 }
 
 .together-determine-age-info {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .title-feed-pets {
@@ -247,6 +259,7 @@ p {
 .p3 {
     width: 1200px;
     text-align: start;
+    text-align: justify;
 }
 
 .conteiner-footer {
@@ -261,8 +274,122 @@ p {
 }
 
 .fixed {
-    position:fixed;
+    position: fixed;
     top: 0;
     width: 100%;
     z-index: 1000;
+}
+
+@media (min-width: 400px) and (max-width: 500px) {
+
+    /* general settings */
+    .navbar-brand {
+        font-size: 12px;
+    }
+
+    .nav-item {
+        font-size: 14px;
+    }
+
+    #collapsibleNavId {
+        width: 100px;
+    }
+
+    hr {
+        width: 485px;
+    }
+
+    p {
+        margin-left: 20px;
+        width: 450px;
+        font-size: 12px;
+    }
+
+    .p2 {
+        margin-left: 100px !important;
+    }
+
+    .p2,
+    .p3 {
+        width: 480px;
+        font-size: 12px;
+    }
+
+    h1 {
+        font-size: 18px;
+    }
+
+    h3 {
+        margin-left: 20px;
+        font-size: 16px;
+    }
+
+    /* first block */
+    .info-determine {
+        margin-left: -70px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 500px;
+    }
+
+    .text-about {
+        margin-top: 20px;
+        width: 500px;
+    }
+
+    .image-determine-age {
+        width: 250px;
+        height: 350px;
+    }
+
+    img {
+        width: 300px;
+        height: 170px;
+    }
+
+    /* second block */
+    h5 {
+        margin-left: 80px;
+        font-size: 14px;
+        width: 520px;
+    }
+
+    .determine-age-info p {
+        margin-left: 90px;
+        width: 450px;
+    }
+
+    .determine-age-info .together-determine-age-info .info-determine p {
+        width: 440px;
+    }
+
+    .determine-age-info {
+        border: 5px solid rgb(92, 92, 92);
+        width: 480px;
+        margin-left: 10px;
+        margin-top: 20px;
+        border-radius: 10px;
+    }
+
+    /* third block */
+    .how-to-feed-pets {
+        width: 500px;
+    }
+
+    .how-to-feed-pets-container {
+        width: 400px;
+    }
+
+    /* four block */
+    .how-to-feed-pets-container p {
+        width: 445px;
+        margin-left: -30px;
+    }
+
+    h4 {
+        font-size: 16px;
+        margin-left: -30px;
+        margin-bottom: 0;
+    }
 }
