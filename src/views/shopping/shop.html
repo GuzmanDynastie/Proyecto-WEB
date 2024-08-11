@@ -25,7 +25,7 @@
             <h5>Sabor</h5>
             <ul>
                 {{#each flavorsWithCounts}}
-                    <li><a class="second-nav" href="#">
+                    <li><a class="second-nav" href="#" onclick="submitInformationForm('{{flavor}}')">
                         <span class="nav-item" title="{{flavor}}, {{count}} resultados">{{flavor}} ({{count}})</span>
                     </a></li>
                 {{/each}}
@@ -34,7 +34,7 @@
             <h5>Marca</h5>
             <ul>
                 {{#each brandsWithCounts}}
-                    <li><a class="second-nav" href="#">
+                    <li><a class="second-nav" href="#" onclick="submitInformationForm('{{brand}}')">
                         <span class="nav-item" title="{{brand}}, {{count}} resultados">{{brand}} ({{count}})</span>
                     </a></li>
                 {{/each}}
@@ -89,3 +89,4 @@
 </footer>
 
 <script src="/DOM/home.js"></script>
+<script src="/DOM/shop.js"></script>
