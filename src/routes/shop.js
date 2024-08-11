@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const { promises } = require('nodemailer/lib/xoauth2');
 const productSchema = require('../models/product')
 
 let selectedCategory = null;
@@ -28,7 +29,7 @@ router.get('/shopping/shop', async (req, res) => {
 
         const totalPages = Math.ceil(totalProducts / limit);
 
-        const { brandsWithCounts, flavorsWithCounts } = await getBrandsAndFlavors();
+        const { brandsWithCounts, flavorsWithCounts } = await getBrandsAndFlavors(selectedCategory);
 
         res.render('shopping/shop', {
             products,
@@ -78,8 +79,15 @@ router.post('/shopping/shop', async (req, res) => {
         if (selectedCategory) {
             query.petCharacteristics = selectedCategory;
         }
+
+        const { brandsWithCounts, flavorsWithCounts } = await getBrandsAndFlavors(selectedCategory);
+
         const products = await productSchema.find(query).lean();
-        res.render('shopping/shop', { products });
+        res.render('shopping/shop', {
+            products,
+            brandsWithCounts,
+            flavorsWithCounts
+        });
     } catch (error) {
         console.error(error);
         res.status(500).send('Error interno del servidor');
@@ -88,12 +96,16 @@ router.post('/shopping/shop', async (req, res) => {
 
 
 // Función para obtener la lista de marcas y sabores omitiendo las repetidas y llamando a countBrandsAndFlavors
-async function getBrandsAndFlavors() {
+async function getBrandsAndFlavors(category) {
     try {
-        const uniqueBrands = await productSchema.distinct("generalCharacteristics.1", { status: true });
-        const uniqueFlavors = await productSchema.distinct("specifications.0", { status: true });
+        const query = category === 'todo' ? { status: true } : { status: true, "petCharacteristics.0": category };
 
-        const { countsBrands, countsFlavors } = await countBrandsAndFlavors(uniqueBrands, uniqueFlavors);
+        const [uniqueBrands, uniqueFlavors] = await Promise.all([
+            productSchema.distinct("generalCharacteristics.1", query),
+            productSchema.distinct("specifications.0", query)
+        ]);
+
+        const { countsBrands, countsFlavors } = await countBrandsAndFlavors(uniqueBrands, uniqueFlavors, category);
 
         return {
             brandsWithCounts: uniqueBrands.map((brand, index) => ({ brand, count: countsBrands[index] })),
@@ -101,28 +113,37 @@ async function getBrandsAndFlavors() {
         };
     } catch (error) {
         console.log(error);
+        return {
+            brandsWithCounts: [],
+            flavorsWithCounts: []
+        };
     }
 }
 
 // Función que recibe la lista de las marcas y sabores e itera en cada una para devolver una lista de productos por marca y sabor
-async function countBrandsAndFlavors(brands, flavors) {
+async function countBrandsAndFlavors(brands, flavors, category) {
     try {
+        const query = category === 'todo' ? { status: true } : { status: true, "petCharacteristics.0": category };
+
         const countsBrands = [];
         const countsFlavors = [];
 
-        for (const brand of brands) {
-            const count = await productSchema.countDocuments({ status: true, "generalCharacteristics.1": brand });
-            countsBrands.push(count);
-        }
-
-        for (const flavor of flavors) {
-            const count = await productSchema.countDocuments({ status: true, "specifications.0": flavor });
-            countsFlavors.push(count);
-        }
+            for (const brand of brands) {
+                const count = await productSchema.countDocuments({ "generalCharacteristics.1": brand, ...query });
+                countsBrands.push(count);
+            }
+            for (const flavor of flavors) {
+                const count = await productSchema.countDocuments({ "specifications.0": flavor, ...query });
+                countsFlavors.push(count);
+            }
 
         return { countsBrands, countsFlavors };
     } catch (error) {
         console.log(error);
+        return {
+            countsBrands: [],
+            countsFlavors: []
+        };
     }
 };
 
