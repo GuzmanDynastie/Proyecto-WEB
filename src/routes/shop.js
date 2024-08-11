@@ -76,7 +76,7 @@ router.post('/shopping/shop', async (req, res) => {
             }));
             query.$and = orConditions;
         }
-        if (selectedCategory) {
+        if (selectedCategory && selectedCategory !== 'todo') {
             query.petCharacteristics = selectedCategory;
         }
 
@@ -128,16 +128,19 @@ async function countBrandsAndFlavors(brands, flavors, category) {
         const countsBrands = [];
         const countsFlavors = [];
 
-            for (const brand of brands) {
-                const count = await productSchema.countDocuments({ "generalCharacteristics.1": brand, ...query });
-                countsBrands.push(count);
-            }
-            for (const flavor of flavors) {
-                const count = await productSchema.countDocuments({ "specifications.0": flavor, ...query });
-                countsFlavors.push(count);
-            }
+        for (const brand of brands) {
+            const count = await productSchema.countDocuments({ "generalCharacteristics.1": brand, ...query });
+            countsBrands.push(count);
+        }
+        for (const flavor of flavors) {
+            const count = await productSchema.countDocuments({ "specifications.0": flavor, ...query });
+            countsFlavors.push(count);
+        }
 
-        return { countsBrands, countsFlavors };
+        return { 
+            countsBrands, 
+            countsFlavors 
+        };
     } catch (error) {
         console.log(error);
         return {
