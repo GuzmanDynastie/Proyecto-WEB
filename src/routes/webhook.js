@@ -183,6 +183,8 @@ async function handleRecomendationProduct(req, res) {
 // Funcion para validar si el token ingresado es valido
 async function handleValidateToken(req, res) {
     const { token } = req.body;
+
+    console.log(token);
     try {
         const order = await orderSchema.findOne({ token });
         if (!order) {
@@ -210,7 +212,7 @@ async function handleOrderInformation(req, res) {
     const { token, email } = req.body;
 
     try {
-        const order = await orderSchema.findOne({ token });;
+        const order = await orderSchema.findOne({ token });
         const user = await userSchema.findOne({ _id: order.id_user, email: email });
         if (!user) {
             return res.json({
