@@ -105,8 +105,8 @@ async function handleDetailsProduct(req, res) {
 - <strong>Categoria:</strong> ${products.Categoria} <br>
 - <strong>Sabor:</strong> ${products.Sabor} <br>
 - <strong>Peso:</strong> ${products.Peso} <br><br>
-<a href="https://nutripet-healthy.up.railway.app/shopping/shop/${products.ID_product}" target="_blank" title="Click para ver el producto" style="display: inline-block; border: 3px solid #ddd; padding: 3px; text-decoration: none; color: black;">
-    <img src="https://nutripet-healthy.up.railway.app/${products.Imagen}" alt="${products.Marca}" style="width: 170px; object-fit: cover; border: 2px solid #ddd;">
+<a href="https://proyecto-web-ng1s.onrender.com/shopping/shop/${products.ID_product}" target="_blank" title="Click para ver el producto" style="display: inline-block; border: 3px solid #ddd; padding: 3px; text-decoration: none; color: black;">
+    <img src="https://proyecto-web-ng1s.onrender.com/${products.Imagen}" alt="${products.Marca}" style="width: 170px; object-fit: cover; border: 2px solid #ddd;">
 </a><br><br>
                 `).join('');
 
@@ -162,8 +162,8 @@ async function handleRecomendationProduct(req, res) {
 - <strong>Categoria:</strong> ${product.Categoria} <br>
 - <strong>Sabor:</strong> ${product.Sabor} <br>
 - <strong>Peso:</strong> ${product.Peso} <br><br>
-<a href="https://nutripet-healthy.up.railway.app/shopping/shop/${product.ID_product}" target="_blank" title="Click para ver el producto" style="display: inline-block; border: 3px solid #ddd; padding: 3px; text-decoration: none; color: black;">
-    <img src="https://nutripet-healthy.up.railway.app/${product.Imagen}" alt="${product.Marca}" style="width: 170px; object-fit: cover; border: 2px solid #ddd;">
+<a href="https://proyecto-web-ng1s.onrender.com/shopping/shop/${product.ID_product}" target="_blank" title="Click para ver el producto" style="display: inline-block; border: 3px solid #ddd; padding: 3px; text-decoration: none; color: black;">
+    <img src="https://proyecto-web-ng1s.onrender.com/${product.Imagen}" alt="${product.Marca}" style="width: 170px; object-fit: cover; border: 2px solid #ddd;">
 </a><br><br>
             `).join('');
 
