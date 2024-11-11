@@ -22,8 +22,8 @@
 <div class="modal-dialog modal-dialog-centered modal-fullscreen" role="document">
     <div class="modal-content">
         <div class="info-together-addProduct">
-            <form action="/admin/{{#if product}}update/{{product._id}}{{else}}addProduct{{/if}}"
-                method="POST" enctype="multipart/form-data">
+            <form action="/admin/{{#if product}}update/{{product._id}}{{else}}addProduct{{/if}}" method="POST"
+                enctype="multipart/form-data">
                 <div class="modal-body-producto">
                     <hr>
                     <h2>Informacion principal</h2>
@@ -68,7 +68,7 @@
                     <h2>Características Principales</h2>
                     <div class="box-caracteristicas-producto">
                         <input class="input-caracteristicas-producto" type="text" id="peso_neto"
-                            name="principalCharacteristics" placeholder="Peso Neto (Producto)"
+                            name="principalCharacteristics" placeholder="Peso Neto (Producto)*"
                             value="{{product.principalCharacteristics}}">
                     </div>
 
@@ -77,29 +77,63 @@
                     <h2>Características de la Mascota</h2>
                     <div class="box-caracteristicas-producto">
                         <input class="input-caracteristicas-producto" type="text" id="mascota_recomendada"
-                            name="petCharacteristics[]" placeholder="Mascota Recomendada" required
+                            name="petCharacteristics[]" placeholder="Mascota Recomendada*" required
                             value="{{product.petCharacteristics.[0]}}">
                         <input class="input-caracteristicas-producto" type="text" id="etapa_vida_mascota"
-                            name="petCharacteristics[]" placeholder="Etapa de Vida de la Mascota" required
+                            name="petCharacteristics[]" placeholder="Etapa de Vida de la Mascota*" required
                             value="{{product.petCharacteristics.[1]}}">
                         <input class="input-caracteristicas-producto" type="text" id="tamaño_raza"
-                            name="petCharacteristics[]" placeholder="Tamaño de la Raza"
+                            name="petCharacteristics[]" placeholder="Tamaño de la Raza*"
                             value="{{product.petCharacteristics.[2]}}">
+                    </div>
+
+                    <hr>
+
+                    
+                    <h2>Porcion del alimento para perros</h2>
+                    <div class="box-caracteristicas-producto">
+                        <input class="input-caracteristicas-producto" type="text" id="raza_mini"
+                            name="dog_food_portion[]" placeholder="Raza Mini (menor 5 kgs)"
+                            value="{{product.dog_food_portion.[0]}}">
+                        <input class="input-caracteristicas-producto" type="text" id="raza_pequena"
+                            name="dog_food_portion[]" placeholder="Raza Pequeña (5 - 14 kgs)"
+                            value="{{product.dog_food_portion.[1]}}">
+                        <input class="input-caracteristicas-producto" type="text" id="raza_mediana"
+                            name="dog_food_portion[]" placeholder="Raza Mediana (14 - 25 kgs)"
+                            value="{{product.dog_food_portion.[2]}}">
+                        <input class="input-caracteristicas-producto" type="text" id="raza_grande"
+                            name="dog_food_portion[]" placeholder="Raza Grande (mayor 25 kgs)"
+                            value="{{product.dog_food_portion.[3]}}">
+                    </div>
+
+                    <hr>
+
+                    <h2>Porcion del alimento para gatos</h2>
+                    <div class="box-caracteristicas-producto">
+                        <input class="input-caracteristicas-producto" type="text" id="gato_kitten"
+                            name="cat_food_portion[]" placeholder="Kittens (menor a 1 año)"
+                            value="{{product.cat_food_portion.[0]}}">
+                        <input class="input-caracteristicas-producto" type="text" id="gato_adulto"
+                            name="cat_food_portion[]" placeholder="Adulto (entre 1 y 3 años)"
+                            value="{{product.cat_food_portion.[1]}}">
+                        <input class="input-caracteristicas-producto" type="text" id="gato_senior"
+                            name="cat_food_portion[]" placeholder="Senior (mayor a 3 años)"
+                            value="{{product.cat_food_portion.[2]}}">
                     </div>
 
                     <hr>
                     <h2>Especificaciones</h2>
                     <div class="box-caracteristicas-producto">
                         <input class="input-caracteristicas-producto" type="text" id="sabor" name="specifications[]"
-                            placeholder="Sabor" required value="{{product.specifications.[0]}}">
+                            placeholder="Sabor*" required value="{{product.specifications.[0]}}">
                         <input class="input-caracteristicas-producto" type="text" id="peso_unidad"
-                            name="specifications[]" placeholder="Peso de la Unidad" required
+                            name="specifications[]" placeholder="Peso de la Unidad*" required
                             value="{{product.specifications.[1]}}">
                         <input class="input-caracteristicas-producto" type="text" id="tipo_envase"
-                            name="specifications[]" placeholder="Tipo de Envase" required
+                            name="specifications[]" placeholder="Tipo de Envase*" required
                             value="{{product.specifications.[2]}}">
                         <input class="input-caracteristicas-producto" type="text" id="tipo_comida"
-                            name="specifications[]" placeholder="Tipo de Comida para Mascotas" required
+                            name="specifications[]" placeholder="Tipo de Comida para Mascotas*" required
                             value="{{product.specifications.[3]}}">
                         <input class="input-caracteristicas-producto" type="text" id="ingredientes"
                             name="specifications[]" placeholder="Ingredientes" value="{{product.specifications.[4]}}">
@@ -113,13 +147,13 @@
                     <h2>Características Generales</h2>
                     <div class="box-caracteristicas-producto">
                         <input class="input-caracteristicas-producto" type="text" id="fabricante"
-                            name="generalCharacteristics[]" placeholder="Fabricante" required
+                            name="generalCharacteristics[]" placeholder="Fabricante*" required
                             value="{{product.generalCharacteristics.[0]}}">
                         <input class="input-caracteristicas-producto" type="text" id="marca"
-                            name="generalCharacteristics[]" placeholder="Marca" required
+                            name="generalCharacteristics[]" placeholder="Marca*" required
                             value="{{product.generalCharacteristics.[1]}}">
                         <input class="input-caracteristicas-producto" type="text" id="linea"
-                            name="generalCharacteristics[]" placeholder="Línea" required
+                            name="generalCharacteristics[]" placeholder="Línea*" required
                             value="{{product.generalCharacteristics.[2]}}">
                         <input class="input-caracteristicas-producto" type="text" id="nombre"
                             name="generalCharacteristics[]" placeholder="Nombre"
@@ -138,7 +172,7 @@
                     <hr>
                     <h2>Descripción</h2>
                     <div class="box-caracteristicas-producto">
-                        <textarea name="description" id="" class="form-control" rows="15" placeholder="Descripcion"
+                        <textarea name="description" id="" class="form-control" rows="15" placeholder="Descripcion*"
                             required>{{product.description}}</textarea>
                     </div>
                     <input type="submit" value="{{#if product}}Actualizar{{else}}Registrar{{/if}}" class="registrar"
