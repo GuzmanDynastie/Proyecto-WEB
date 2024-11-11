@@ -25,7 +25,7 @@ router.get('/admin/addProduct', (req, res) => {
 });
 
 router.post('/admin/addProduct', imageProduct.array('image_product', 15), async (req, res) => {
-    const { piece, stock, pricePerUnit, expiration, principalCharacteristics, petCharacteristics, specifications, generalCharacteristics, others, description } = req.body;
+    const { piece, stock, pricePerUnit, expiration, principalCharacteristics, petCharacteristics, dog_food_portion, cat_food_portion, specifications, generalCharacteristics, others, description } = req.body;
     const images = [];
     const registerErrors = [];
     const registerSuccessful = [{ text: 'El producto se ha registrado exitosamente!' }];
@@ -44,7 +44,7 @@ router.post('/admin/addProduct', imageProduct.array('image_product', 15), async 
         if (registerErrors.length > 0) {
             res.render('admin/addProduct', { registerErrors });
         } else {
-            const newSchema = new productSchema({ images, piece, stock, pricePerUnit, expiration, principalCharacteristics, petCharacteristics, specifications, generalCharacteristics, others, description });
+            const newSchema = new productSchema({ images, piece, stock, pricePerUnit, expiration, principalCharacteristics, petCharacteristics, dog_food_portion, cat_food_portion, specifications, generalCharacteristics, others, description });
             await newSchema.save();
             res.render('admin/addProduct', { registerSuccessful });
         }
