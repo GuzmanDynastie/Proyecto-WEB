@@ -40,8 +40,6 @@ Handlebars.registerHelper('range', (start, end) => {
   return result;
 });
 
-
-
 // Initilizations
 const app = express();
 require('./config/database');
