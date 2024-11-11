@@ -264,28 +264,6 @@ img {
     margin-left: 320px;
 }
 
-/* CREDIT CARD */
-@media (max-width: 600px) {
-    .box-radio-1, .box-radio-2 {
-        width: 480px;
-    }
-    .input-card {
-        width: 220px;
-    }
-    .input-xs-1 {
-        margin-left: 20px;
-        width: 80px;
-    }
-    .input-xs-2 {
-        margin-left: -20px;
-        width: 100px;
-    }
-    .input-titular {
-        width: 430px;
-    }
-
-}
-
 /* PAYPAL */
 @media (max-width: 600px) {
     .informacion-envio {
