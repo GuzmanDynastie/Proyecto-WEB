@@ -13,6 +13,16 @@ const productSchema = new Schema({
         required: false, 
         default: '' 
     }],
+    dog_food_portion: [{
+        type: String,
+        required: false,
+        default: ''
+    }],
+    cat_food_portion: [{
+        type: String,
+        required: false,
+        default: ''
+    }],
     specifications: [{ 
         type: String, 
         required: false, 
